@@ -44,7 +44,6 @@
   .txt {
     top: 50%;
     z-index: 3;
-    text-align: left;
     position: absolute;
     transform: translateY(-50%);
     img {

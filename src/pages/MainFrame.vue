@@ -14,7 +14,9 @@
       <div class="page-5 page">
         <InfoCollect/>
       </div>
-      <div class="page-6 page"></div>
+      <div class="page-6 page">
+        <Comments/>
+      </div>
       <div class="page-7 page"></div>
       <div class="page-8 page"></div>
       <div class="page-9 page"></div>
@@ -27,6 +29,7 @@
   import Guide1 from './guide1/Guide1'
   import Guide2 from './guide2/Guide2'
   import InfoCollect from './infoCollect/InfoCollect'
+  import Comments from './comments/Comments'
 
   export default {
     name: 'MainFrame',
@@ -41,7 +44,7 @@
       }
     },
     components: {
-      Home, Guide1, Guide2, InfoCollect
+      Home, Guide1, Guide2, InfoCollect, Comments
     }
   }
 </script>

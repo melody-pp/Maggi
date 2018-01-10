@@ -13,8 +13,9 @@
 </template>
 <script>
   import Modal from '../../components/Modal'
+
   export default {
-    components:{Modal}
+    components: {Modal}
   }
 
 </script>
@@ -24,14 +25,13 @@
   }
 
   .bg-container img {
-    vertical-align: middle;
     height: 50vh;
+    vertical-align: middle;
   }
 
   .txt {
-    z-index: 3;
     top: 50%;
-    text-align: left;
+    z-index: 3;
     position: absolute;
     transform: translateY(-50%);
     img {
