@@ -1,7 +1,7 @@
 <template>
   <div class="fullpage-container">
     <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
-      <div class="page-1 page">
+      <!--<div class="page-1 page">
         <Home/>
       </div>
       <div class="page-2 page">
@@ -10,13 +10,15 @@
       <div class="page-3 page">
         <Guide2/>
       </div>
-      <div class="page-4 page"></div>
+      <div class="page-4 page">
+        <Guide3/>
+      </div>
       <div class="page-5 page">
         <InfoCollect/>
       </div>
-      <div class="page-6 page"></div>
-      <div class="page-7 page"></div>
-      <div class="page-8 page"></div>
+      <div class="page-6 page"><PersonalInfo/></div>
+      <div class="page-7 page"><Prize/></div>-->
+      <div class="page-8 page"><LeaveInfo/></div>
       <div class="page-9 page"></div>
     </div>
   </div>
@@ -26,11 +28,15 @@
   import Home from './home/Home'
   import Guide1 from './guide1/Guide1'
   import Guide2 from './guide2/Guide2'
+  import Guide3 from './guide3/Guide3'
   import InfoCollect from './infoCollect/InfoCollect'
+  import PersonalInfo from './personalInfo/PersonalInfo'
+  import Prize from './prize/Prize'
+  import LeaveInfo from './leaveInfo/LeaveInfo'
 
   export default {
     name: 'MainFrame',
-    data () {
+    data() {
       return {
         opts: {
           start: 0,
@@ -41,7 +47,7 @@
       }
     },
     components: {
-      Home, Guide1, Guide2, InfoCollect
+      Home, Guide1, Guide2, Guide3, InfoCollect,PersonalInfo,Prize,LeaveInfo
     }
   }
 </script>
@@ -55,7 +61,7 @@
     position: absolute;
   }
 
-  .page-1, .page-5, .page-6, .page-7, .page-8 {
+  .page-1, .page-2, .page-3, .page-4, .page-5, .page-6, .page-7, .page-8 {
     background: url("../assets/index/background.jpg") no-repeat;
     background-size: cover;
   }

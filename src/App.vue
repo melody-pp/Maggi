@@ -41,7 +41,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #fff;
     margin-top: 60px;
   }
 
@@ -61,4 +61,15 @@
     overflow: hidden;
     _zoom: 1;
   }
+  .btn {
+    width: 48.4vw;
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .themeTxt {
+    margin: 6.5vh auto 3vh;
+  }
+
 </style>

@@ -5,8 +5,8 @@
     </div>
     <img class="gatherImg" src="../../assets/infoCollect/02.png" alt="">
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <img class="btn" src="../../assets/infoCollect/03.jpg" alt="">
-    <el-input type="textarea" :rows="3" placeholder="请输入2018年相对家人说的话" v-model="textarea"/>
+    <img class="btn" src="../../assets/btn/btnSelfprotrait.png" alt="">
+    <el-input type="textarea" :rows="3" placeholder="请输入2018年想对家人说的话" v-model="textarea"/>
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@
   }
 
   .gatherImg {
-    margin: 2vh 0;
+    margin: 2vh 0 2.5vh;
   }
 
   .homeTxt {
@@ -40,13 +40,7 @@
     left: 25%;
   }
 
-  .btn {
-    width: 68.27%;
-    position: absolute;
-    bottom: 13vh;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
 
   .el-textarea {
     width: 88% !important;
