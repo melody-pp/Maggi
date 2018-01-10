@@ -53,7 +53,7 @@
       }
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect,PersonalInfo,Prize,LeaveInfo
+      Home, Guide1, Guide2, Guide3, InfoCollect,PersonalInfo,Prize,LeaveInfo,Comments
     }
   }
 </script>
