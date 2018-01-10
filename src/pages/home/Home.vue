@@ -4,7 +4,7 @@
       <img src="../../assets/index/topText.png" alt="">
     </el-header>
 
-    <el-main class="main">
+    <el-main class="main clearfix">
       <img src="../../assets/index/01.jpg" alt="">
       <img src="../../assets/index/02.jpg" alt="">
       <img src="../../assets/index/03.jpg" alt="">

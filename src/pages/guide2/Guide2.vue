@@ -1,7 +1,7 @@
 <template>
   <div class="guidePage1">
     <div class="bg-container">
-      <div class="topImg">
+      <div class="topImg clearfix">
         <img src="../../assets/p2/01.jpg" alt="">
         <img src="../../assets/p2/02.jpg" alt="">
         <img src="../../assets/p2/03.jpg" alt="">
@@ -10,7 +10,7 @@
       <img src="../../assets/p2/05.jpg" alt="">
     </div>
     <div class="txt">
-      <img style="width: 49.06%;" src="../../assets/p2/06.png" alt="">
+      <img style="width: 49.06%;margin-bottom: 3vh;" src="../../assets/p2/06.png" alt="">
       <img style="width: 76.66%;" src="../../assets/p2/07.png" alt="">
     </div>
     <Modal :z-index="2"/>
@@ -48,7 +48,7 @@
     position: absolute;
     transform: translateY(-50%);
     img {
-      margin-left: 15px;
+      margin-left: 4vw;
     }
   }
 </style>

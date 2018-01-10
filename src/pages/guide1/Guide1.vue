@@ -5,7 +5,7 @@
       <img src="../../assets/p1/02.jpg" alt="">
     </div>
     <div class="txt">
-      <img style="width: 47.73%;" src="../../assets/p1/03.png" alt="">
+      <img style="width: 47.73%;margin-bottom: 3vh;" src="../../assets/p1/03.png" alt="">
       <img style="width: 62.93%;" src="../../assets/p1/04.png" alt="">
     </div>
     <Modal :z-index="2"/>
@@ -35,7 +35,7 @@
     position: absolute;
     transform: translateY(-50%);
     img {
-      margin-left: 15px;
+      margin-left: 4vw;
     }
   }
 </style>
