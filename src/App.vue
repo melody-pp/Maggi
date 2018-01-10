@@ -5,8 +5,33 @@
 </template>
 
 <script>
+  // 这里根据实际的公众号信息填写
+  const appid = ''
+  const secret = ''
+  const grant_type = 'authorization_code'
+
   export default {
-    name: 'app'
+    name: 'app',
+    created () {
+      let code = this.$route.query.code
+
+      if (code) {
+        this.getOpenId(code)
+      } else {
+        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${location.href}&response_type=code&scope=snsapi_base#wechat_redirect`
+      }
+    },
+    methods: {
+      getOpenId (code) {
+        this.axios.get(
+          'https://api.weixin.qq.com/sns/oauth2/access_token',
+          {params: {appid, secret, code, grant_type}}
+        ).then(res => {
+          window.openid = res.data.openid
+          window.access_token = res.data.access_token
+        })
+      }
+    }
   }
 </script>
 
