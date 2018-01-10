@@ -44,7 +44,6 @@
     color: #fff;
     margin-top: 60px;
   }
-
   img {
     width: 100%;
   }

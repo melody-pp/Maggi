@@ -19,6 +19,11 @@
       <div class="page-6 page"><PersonalInfo/></div>
       <div class="page-7 page"><Prize/></div>-->
       <div class="page-8 page"><LeaveInfo/></div>
+      <div class="page-6 page">
+        <Comments/>
+      </div>
+      <div class="page-7 page"></div>
+      <div class="page-8 page"></div>
       <div class="page-9 page"></div>
     </div>
   </div>
@@ -33,6 +38,7 @@
   import PersonalInfo from './personalInfo/PersonalInfo'
   import Prize from './prize/Prize'
   import LeaveInfo from './leaveInfo/LeaveInfo'
+  import Comments from './comments/Comments'
 
   export default {
     name: 'MainFrame',
