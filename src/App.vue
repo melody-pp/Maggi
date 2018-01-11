@@ -6,7 +6,7 @@
 
 <script>
   // 这里根据实际的公众号信息填写
- /* const appid = 'wx073d89db692f82e0'
+  const appid = 'wx073d89db692f82e0'
   const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
   const grant_type = 'authorization_code'
   const getParamStr = params => '?' + Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
@@ -20,7 +20,7 @@
         this.getOpenId(code)
       } else {
         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
-          + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_base'})
+          + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_userinfo'})
           + '#wechat_redirect'
       }
     },
@@ -28,12 +28,19 @@
       getOpenId (code) {
         const url = 'https://api.weixin.qq.com/sns/oauth2/access_token' + getParamStr({appid, secret, code, grant_type})
         this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
-          window.openid = res.data.openid
-          window.access_token = res.data.access_token
+          this.getUserInfo(res.data.openid, res.data.access_token)
+        })
+      },
+      getUserInfo (openid, access_token) {
+        this.axios.get(
+          'https://api.weixin.qq.com/sns/userinfo',
+          {params: {openid, access_token, lang: 'zh_CN'}}
+        ).then(res => {
+          console.log(res)
         })
       }
     }
-  }*/
+  }
 </script>
 
 <style lang="scss">

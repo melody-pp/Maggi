@@ -1,6 +1,6 @@
 <template>
   <div class="arrowUp">
-    <img ref="arrow" src="../assets/index/001.png" @click="moveDown">
+    <img ref="arrow" src="../assets/index/001.png" @click="moveDown" @touchstart="moveDown">
   </div>
 </template>
 

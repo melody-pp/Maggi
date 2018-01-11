@@ -30,6 +30,8 @@
 
   export default {
     name: 'Home',
+    props: ['moveIn'],
+    components: {ArrowBtn},
     data () {
       return {
         showArrow: false,
@@ -48,15 +50,6 @@
         ]
       }
     },
-    props: ['moveIn'],
-    watch: {
-      moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          this.animate()
-        }
-      }
-    },
     mounted () {
       this.animate()
       setTimeout(() => this.showArrow = true, 2500)
@@ -66,13 +59,11 @@
         this.dialogVisible = true
         setTimeout(() => this.$refs.carousel.setActiveItem(index))
       },
-
       animate () {
         this.showImgs()
         setTimeout(this.showTop.bind(this), 2000)
         setTimeout(this.showBottom.bind(this), 2500)
       },
-
       showTop () {
         const topImg = this.$refs.topImg
         const topStyler = styler(topImg)
@@ -83,7 +74,6 @@
           duration: 1000
         }).start(topStyler.set)
       },
-
       showBottom () {
         const bottomImg = this.$refs.bottomImg
         const bottomStyler = styler(bottomImg)
@@ -94,12 +84,10 @@
           duration: 1000
         }).start(bottomStyler.set)
       },
-
       showImgs () {
         const $imgs = Array.from(document.querySelectorAll('.main>img'))
         $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 300))
       },
-
       showImg (img) {
         const imgStyler = styler(img)
         const imgAni = value({scale: 0, opacity: 0}, imgStyler.set)
@@ -109,7 +97,6 @@
           to: {scale: 1, opacity: 1},
         }).start(imgAni)
       },
-
       resetNodes () {
         for (const img of document.querySelectorAll('.main>img')) {
           img.style.opacity = 0
@@ -119,12 +106,19 @@
         this.$refs.bottomImg.style.opacity = 0
       }
     },
-    components: {ArrowBtn}
+    watch: {
+      moveIn (newVal) {
+        if (newVal) {
+          this.resetNodes()
+          this.animate()
+        }
+      }
+    },
   }
 </script>
 
 <style scoped lang="scss">
-  img {
+  .el-container img {
     opacity: 0;
   }
 
