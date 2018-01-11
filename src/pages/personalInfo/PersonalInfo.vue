@@ -39,6 +39,10 @@
     margin: 0 auto;
   }
 
+  .themeTxt {
+    display: inline-block;
+  }
+
   .num {
     font-size: 8vw;
     color: #fff;
