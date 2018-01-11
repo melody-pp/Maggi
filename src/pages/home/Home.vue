@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="header">
-      <img src="../../assets/index/topText.png" alt="">
+      <img src="../../assets/index/topText.png" ref="topImg">
     </el-header>
 
     <el-main class="main clearfix">
@@ -9,7 +9,7 @@
     </el-main>
 
     <el-footer>
-      <img src="../../assets/index/bottomText.png" alt="">
+      <img src="../../assets/index/bottomText.png" ref="bottomImg">
     </el-footer>
 
     <ArrowBtn v-show="showArrow"/>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { tween, styler, value, spring } from 'popmotion'
+  import { tween, styler, value, spring, easing } from 'popmotion'
   import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
@@ -53,12 +53,13 @@
       moveIn (newVal) {
         if (newVal) {
           this.resetNodes()
-          this.showImgs()
+          this.animate()
         }
       }
     },
     mounted () {
-      this.showImgs()
+      this.animate()
+      setTimeout(() => this.showArrow = true, 2500)
     },
     methods: {
       showDialog (index) {
@@ -66,10 +67,37 @@
         setTimeout(() => this.$refs.carousel.setActiveItem(index))
       },
 
+      animate () {
+        this.showImgs()
+        setTimeout(this.showTop.bind(this), 2000)
+        setTimeout(this.showBottom.bind(this), 2500)
+      },
+
+      showTop () {
+        const topImg = this.$refs.topImg
+        const topStyler = styler(topImg)
+        tween({
+          from: {opacity: 0, y: -50},
+          to: {opacity: 1, y: 0},
+          ease: easing.easeInOut,
+          duration: 1000
+        }).start(topStyler.set)
+      },
+
+      showBottom () {
+        const bottomImg = this.$refs.bottomImg
+        const bottomStyler = styler(bottomImg)
+        tween({
+          from: {opacity: 0, y: 50},
+          to: {opacity: 1, y: 0},
+          ease: easing.easeInOut,
+          duration: 1000
+        }).start(bottomStyler.set)
+      },
+
       showImgs () {
         const $imgs = Array.from(document.querySelectorAll('.main>img'))
-        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 500))
-        setTimeout(() => this.showArrow = true, 2500)
+        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 300))
       },
 
       showImg (img) {
@@ -87,15 +115,19 @@
           img.style.opacity = 0
           img.style.scale = 0
         }
+        this.$refs.topImg.style.opacity = 0
+        this.$refs.bottomImg.style.opacity = 0
       }
     },
-    components: {
-      ArrowBtn
-    }
+    components: {ArrowBtn}
   }
 </script>
 
 <style scoped lang="scss">
+  img {
+    opacity: 0;
+  }
+
   .header {
     width: 79.2vw;
     height: auto !important;
@@ -103,21 +135,20 @@
   }
 
   .el-footer {
-    height: auto !important;
-    width: 49.87vw;
     padding: 0;
+    width: 49.87vw;
+    height: auto !important;
     margin: 3.65vh auto 7.3vh;
   }
 
   .main {
     padding: 0;
-    background-color: #fff;
     overflow: hidden;
     vertical-align: middle;
+    background-color: #fff;
     img {
       float: left;
       height: 16vh;
-      opacity: 0;
       vertical-align: middle;
     }
 
