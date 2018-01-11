@@ -5,12 +5,9 @@
     <form>
       <el-input v-model="name" placeholder="姓名"/>
       <el-input v-model="tel" placeholder="手机号"/>
-      <!--<el-input v-model="" placeholder="省"/>-->
-      <!--<el-input v-model="" placeholder="市"/>-->
-      <!--<el-input v-model="" placeholder="区"/>-->
+      <area-cascader type='text' v-model="area" :level="1"/>
       <el-input v-model="address" placeholder="详细地址"/>
-      <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" alt="">
-      <el-button @click="save">保存并查看排行榜</el-button>
+      <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="save">
     </form>
   </div>
 </template>
@@ -22,6 +19,7 @@
         name: '',
         tel: '',
         address: '',
+        area: ''
       }
     },
     methods: {
@@ -47,14 +45,4 @@
   .activityrules {
     width: 88vw;
   }
-
-  form {
-    .el-input_inner {
-      border: none !important;
-      border-bottom: 1px solid #fff !important;
-      width: 80vw !important;
-      background-color: transparent !important;
-    }
-  }
-
 </style>

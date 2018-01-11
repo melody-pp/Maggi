@@ -37,6 +37,7 @@
   .theme1 {
     width: 4.53vw;
     float: left;
+    margin-top: 3px;
   }
 
   .theme2 {
@@ -52,6 +53,7 @@
     font-size: 8vw;
     color: #fff;
     float: left;
+    margin-top: -6px;
   }
 
   .headPortrait {
@@ -59,8 +61,7 @@
   }
 
   .like {
-    background: url("../../assets/personalInfo/like.png") no-repeat;
-    background-position: 0 -10.67vw;
+    background: url("../../assets/personalInfo/like.png") no-repeat 0 -10.67vw;
     display: block;
     width: 10.67vw;
     height: 10.67vw;
@@ -68,7 +69,7 @@
     position: absolute;
     top: 1.5vh;
     left: 50%;
-    transform: translatex(107%);
+    transform: translateX(107%);
   }
 
   .headPortraitBox {
@@ -78,7 +79,7 @@
       position: absolute;
       top: 1.5vh;
       left: 50%;
-      transform: translatex(200%);
+      transform: translateX(200%);
       font-size: 7vw;
     }
   }
@@ -99,9 +100,8 @@
 
   .btnBox {
     position: absolute;
+    width: 100vw;
     bottom: 10vh;
-    left: 50%;
-    transform: translateX(-50%);
     img {
       width: 41.33vw;
     }

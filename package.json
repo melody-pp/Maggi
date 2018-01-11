@@ -16,6 +16,7 @@
     "jquery": "^3.2.1",
     "popmotion": "^8.1.7",
     "vue": "^2.5.2",
+    "vue-area-linkage": "^1.2.5",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

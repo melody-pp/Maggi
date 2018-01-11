@@ -78,4 +78,10 @@
     margin: 6.5vh auto 3vh;
   }
 
+  .el-input input {
+    border: none !important;
+    border-bottom: 1px solid #fff !important;
+    width: 80vw !important;
+    background-color: transparent !important;
+  }
 </style>
