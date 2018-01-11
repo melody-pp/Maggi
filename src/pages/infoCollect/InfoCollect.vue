@@ -9,6 +9,7 @@
     <el-input type="textarea" :rows="3" placeholder="请输入2018年想对家人说的话" v-model="textarea"/>
   </div>
 </template>
+
 <script>
   export default {
     data () {
@@ -18,6 +19,7 @@
     }
   }
 </script>
+
 <style scoped lang="scss">
   .bg {
     position: relative;
@@ -39,8 +41,6 @@
     top: 18%;
     left: 25%;
   }
-
-
 
   .el-textarea {
     width: 88% !important;

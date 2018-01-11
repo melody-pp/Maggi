@@ -22,8 +22,8 @@
     <img class="btn" src="../../assets/btn/giftBtn.png" alt="">
   </div>
 </template>
-<style scoped lang="scss">
 
+<style scoped lang="scss">
   .theme {
     width: 32.8vw;
     float: left;
@@ -83,7 +83,8 @@
     text-align: left;
     line-height: 3.48vh;
   }
-  .giftBtn{
+
+  .giftBtn {
     width: 48.4vw;
   }
 </style>

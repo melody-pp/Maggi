@@ -10,13 +10,16 @@
     </div>
   </div>
 </template>
+
 <style scoped lang="scss">
   .theme {
     width: 43.37vw;
   }
-.rules{
-  width: 88.53vw;
-}
+
+  .rules {
+    width: 88.53vw;
+  }
+
   .btnGift {
     position: absolute;
     bottom: 10vh;

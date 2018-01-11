@@ -16,6 +16,7 @@
     <Modal :z-index="2"/>
   </div>
 </template>
+
 <script>
   import Modal from '../../components/Modal'
 
@@ -23,6 +24,7 @@
     components: {Modal}
   }
 </script>
+
 <style scoped lang="scss">
   .guidePage1 {
     position: relative;

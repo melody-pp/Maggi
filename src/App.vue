@@ -35,31 +35,29 @@
   }*/
 </script>
 
-<style>
+<style lang="scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #fff;
-    margin-top: 60px;
-  }
-  img {
-    width: 100%;
   }
 
-  .clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden
+  img {
+    width: 100%;
   }
 
   .clearfix {
     overflow: hidden;
     _zoom: 1;
+    &:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden
+    }
   }
+
   .btn {
     width: 48.4vw;
     position: absolute;
@@ -67,6 +65,7 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
   .themeTxt {
     margin: 6.5vh auto 3vh;
   }

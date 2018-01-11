@@ -9,18 +9,18 @@
       <img style="width: 62.93%;" src="../../assets/p3/content.png" alt="">
     </div>
     <img class="doubtTxt" src="../../assets/p3/doubt.png" alt="">
-
     <Modal :z-index="2"/>
   </div>
 </template>
+
 <script>
   import Modal from '../../components/Modal'
 
   export default {
     components: {Modal}
   }
-
 </script>
+
 <style scoped lang="scss">
   .guidePage1 {
     position: relative;
