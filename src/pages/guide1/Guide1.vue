@@ -33,7 +33,7 @@
   }
 
   .txt {
-    top: 35.32vh;
+    top: 25.21vh;
     z-index: 3;
     position: absolute;
     text-align: left;

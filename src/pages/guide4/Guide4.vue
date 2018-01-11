@@ -30,7 +30,7 @@
 
   .txt {
     z-index: 3;
-    top: 32.65vh;
+    top: 25.21vh;
     text-align: left;
     position: absolute;
     img {
