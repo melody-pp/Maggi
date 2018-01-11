@@ -1,37 +1,36 @@
 <template>
-    <div id="fullpage">
-      <div class="page-1 section">
-        <Home/>
-      </div>
-      <div class="page-2 section">
-        <Guide1/>
-      </div>
-      <div class="page-3 section">
-        <Guide2/>
-      </div>
-      <div class="page-4 section">
-        <Guide3/>
-      </div>
-      <div class="page-5 section">
-        <Guide4/>
-      </div>
-      <div class="page-6 section">
-        <Prize/>
-      </div>
-      <div class="page-7 section">
-        <InfoCollect/>
-      </div>
-      <div class="page-8 section">
-        <PersonalInfo/>
-
-      </div>
-      <div class="page-9 section">
-        <LeaveInfo/>
-      </div>
-      <div class="page-10 section">
-        <Comments/>
-      </div>
+  <div id="fullpage">
+    <div class="page-1 section">
+      <Home :moveIn="current===1"/>
     </div>
+    <div class="page-2 section">
+      <Guide1 :moveIn="current===2"/>
+    </div>
+    <div class="page-3 section">
+      <Guide2 :moveIn="current===3"/>
+    </div>
+    <div class="page-4 section">
+      <Guide3 :moveIn="current===4"/>
+    </div>
+    <div class="page-5 section">
+      <Guide4 :moveIn="current===5"/>
+    </div>
+    <div class="page-6 section">
+      <Prize :moveIn="current===6"/>
+    </div>
+    <div class="page-7 section">
+      <InfoCollect :moveIn="current===7"/>
+    </div>
+    <div class="page-8 section">
+      <PersonalInfo :moveIn="current===8"/>
+    </div>
+    <div class="page-9 section">
+      <LeaveInfo :moveIn="current===9"/>
+    </div>
+    <div class="page-10 section">
+      <Comments :moveIn="current===10"/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -49,11 +48,22 @@
 
   export default {
     name: 'MainFrame',
+    data () {
+      return {
+        current: 1
+      }
+    },
     mounted () {
-      $('#fullpage').fullpage({verticalCentered: false})
+      const that = this
+      $('#fullpage').fullpage({
+        verticalCentered: false,
+        onLeave (index, nextIndex, direction) {
+          that.current = nextIndex
+        }
+      })
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments,Guide4
+      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments, Guide4
     }
   }
 </script>

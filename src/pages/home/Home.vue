@@ -48,6 +48,15 @@
         ]
       }
     },
+    props: ['moveIn'],
+    watch: {
+      moveIn (newVal) {
+        if (newVal) {
+          this.resetNodes()
+          this.showImgs()
+        }
+      }
+    },
     mounted () {
       this.showImgs()
     },
@@ -71,6 +80,13 @@
           from: imgAni.get(),
           to: {scale: 1, opacity: 1},
         }).start(imgAni)
+      },
+
+      resetNodes () {
+        for (const img of document.querySelectorAll('.main>img')) {
+          img.style.opacity = 0
+          img.style.scale = 0
+        }
       }
     },
     components: {

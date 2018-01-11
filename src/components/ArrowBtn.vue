@@ -1,10 +1,11 @@
 <template>
   <div class="arrowUp">
-    <img ref="arrow" src="../assets/index/001.png" alt="">
+    <img ref="arrow" src="../assets/index/001.png" @click="moveDown">
   </div>
 </template>
 
 <script>
+  import $ from 'jquery'
   import { tween, styler, easing } from 'popmotion'
 
   export default {
@@ -18,6 +19,11 @@
         flip: Infinity,
         duration: 500
       }).start(arrowStyler.set('y'))
+    },
+    methods: {
+      moveDown () {
+        $('#fullpage').fullpage.moveSectionDown()
+      }
     }
   }
 </script>
