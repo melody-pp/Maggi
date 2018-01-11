@@ -43,6 +43,7 @@
   }
 
   .el-textarea {
+    resize: none;
     width: 88% !important;
   }
 </style>
