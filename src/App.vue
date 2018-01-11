@@ -6,13 +6,13 @@
 
 <script>
   // 这里根据实际的公众号信息填写
-  /*const appid = ''
-  const secret = ''
+  const appid = 'wx073d89db692f82e0'
+  const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
   const grant_type = 'authorization_code'
 
   export default {
     name: 'app',
-    created() {
+    created () {
       let code = this.$route.query.code
 
       if (code) {
@@ -22,7 +22,7 @@
       }
     },
     methods: {
-      getOpenId(code) {
+      getOpenId (code) {
         this.axios.get(
           'https://api.weixin.qq.com/sns/oauth2/access_token',
           {params: {appid, secret, code, grant_type}}
@@ -32,7 +32,7 @@
         })
       }
     }
-  }*/
+  }
 </script>
 
 <style lang="scss">
