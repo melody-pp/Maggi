@@ -12,7 +12,7 @@
       <img src="../../assets/index/bottomText.png" alt="">
     </el-footer>
 
-    <ArrowBtn/>
+    <ArrowBtn v-show="showArrow"/>
 
     <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false">
       <el-carousel ref="carousel" type="card" height="20vh" indicator-position="none">
@@ -32,6 +32,7 @@
     name: 'Home',
     data () {
       return {
+        showArrow: false,
         dialogVisible: false,
         imgs: [
           require('../../assets/index/01.jpg'),
@@ -59,6 +60,7 @@
       showImgs () {
         const $imgs = Array.from(document.querySelectorAll('.main>img'))
         $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 500))
+        setTimeout(() => this.showArrow = true, 2500)
       },
 
       showImg (img) {
