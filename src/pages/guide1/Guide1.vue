@@ -17,9 +17,8 @@
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
-
   export default {
-    components: {Modal,ArrowBtn}
+    components: {Modal, ArrowBtn}
   }
 </script>
 

@@ -46,7 +46,7 @@
   }
 
   form {
-    .el-input__inner {
+    .el-input_inner {
       border: none!important;
       border-bottom: 1px solid #fff!important;
       width: 80vw!important;

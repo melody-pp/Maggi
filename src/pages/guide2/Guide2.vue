@@ -13,15 +13,17 @@
       <img style="width: 49.06%;margin-bottom: 3.65vh;" src="../../assets/p2/06.png" alt="">
       <img style="width: 76.66%;" src="../../assets/p2/07.png" alt="">
     </div>
+    <ArrowBtn/>
     <Modal :z-index="2"/>
   </div>
 </template>
 
 <script>
   import Modal from '../../components/Modal'
+  import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
-    components: {Modal}
+    components: {Modal, ArrowBtn}
   }
 </script>
 
