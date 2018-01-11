@@ -25,7 +25,10 @@
       getOpenId (code) {
         this.axios.get(
           'https://api.weixin.qq.com/sns/oauth2/access_token',
-          {params: {appid, secret, code, grant_type}}
+          {
+            params: {appid, secret, code, grant_type},
+            headers: {'Access-Control-Allow-Origin': '*'}
+          }
         ).then(res => {
           window.openid = res.data.openid
           window.access_token = res.data.access_token
