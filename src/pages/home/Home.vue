@@ -5,16 +5,7 @@
     </el-header>
 
     <el-main class="main clearfix">
-      <img src="../../assets/index/01.jpg" alt="">
-      <img src="../../assets/index/02.jpg" alt="">
-      <img src="../../assets/index/03.jpg" alt="">
-      <img src="../../assets/index/04.jpg" alt="">
-      <img src="../../assets/index/05.jpg" alt="">
-      <img src="../../assets/index/06.jpg" alt="">
-      <img src="../../assets/index/07.jpg" alt="">
-      <img src="../../assets/index/08.jpg" alt="">
-      <img src="../../assets/index/09.jpg" alt="">
-      <img src="../../assets/index/10.jpg" alt="">
+      <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
     </el-main>
 
     <el-footer>
@@ -22,6 +13,14 @@
     </el-footer>
 
     <ArrowBtn/>
+
+    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :modal="false" :show-close="false">
+      <el-carousel ref="carousel" type="card" height="20vh" indicator-position="none" :autoplay="false">
+        <el-carousel-item v-for="(img, index) of imgs" :key="index">
+          <img :src="img" alt="">
+        </el-carousel-item>
+      </el-carousel>
+    </el-dialog>
   </el-container>
 </template>
 
@@ -32,12 +31,25 @@
     name: 'Home',
     data () {
       return {
-        opts: {
-          start: 0,
-          dir: 'v',
-          loop: false,
-          duration: 300,
-        }
+        dialogVisible: false,
+        imgs: [
+          require('../../assets/index/01.jpg'),
+          require('../../assets/index/02.jpg'),
+          require('../../assets/index/03.jpg'),
+          require('../../assets/index/04.jpg'),
+          require('../../assets/index/05.jpg'),
+          require('../../assets/index/06.jpg'),
+          require('../../assets/index/07.jpg'),
+          require('../../assets/index/08.jpg'),
+          require('../../assets/index/09.jpg'),
+          require('../../assets/index/10.jpg'),
+        ]
+      }
+    },
+    methods: {
+      showDialog (index) {
+        this.dialogVisible = true
+        setTimeout(() => this.$refs.carousel.setActiveItem(index))
       }
     },
     components: {
