@@ -1,36 +1,33 @@
 <template>
-  <div id="fullpage">
-    <div class="page-1 section">
-      <Home/>
+    <div id="fullpage">
+      <div class="page-1 section">
+        <Home/>
+      </div>
+      <div class="page-2 section">
+        <Guide1/>
+      </div>
+      <div class="page-3 section">
+        <Guide2/>
+      </div>
+      <div class="page-4 section">
+        <Guide3/>
+      </div>
+      <div class="page-5 section">
+        <InfoCollect/>
+      </div>
+      <div class="page-6 section">
+        <PersonalInfo/>
+      </div>
+      <div class="page-7 section">
+        <Prize/>
+      </div>
+      <div class="page-8 section">
+        <LeaveInfo/>
+      </div>
+      <div class="page-6 section">
+        <Comments/>
+      </div>
     </div>
-    <div class="page-2 section">
-      <Guide1/>
-    </div>
-    <div class="page-3 section">
-      <Guide2/>
-    </div>
-    <div class="page-4 section">
-      <Guide3/>
-    </div>
-    <div class="page-5 section">
-      <InfoCollect/>
-    </div>
-    <div class="page-6 section">
-      <PersonalInfo/>
-    </div>
-    <div class="page-7 section">
-      <Prize/>
-    </div>
-    <div class="page-8 section">
-      <LeaveInfo/>
-    </div>
-    <div class="page-6 section">
-      <Comments/>
-    </div>
-    <div class="page-7 section"></div>
-    <div class="page-8 section"></div>
-    <div class="page-9 section"></div>
-  </div>
 </template>
 
 <script>
@@ -60,5 +57,6 @@
   .page-1, .page-2, .page-3, .page-4, .page-5, .page-6, .page-7, .page-8 {
     background: url("../assets/index/background.jpg") no-repeat;
     background-size: cover;
+    overflow: hidden;
   }
 </style>
