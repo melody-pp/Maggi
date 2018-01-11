@@ -1,4 +1,4 @@
-function broadcast(children, eventName, params) {
+function broadcast (children, eventName, params) {
   children && children.forEach(child => {
     let context = child.context
     context && context.$emit.apply(context, [eventName].concat(params))
@@ -6,7 +6,7 @@ function broadcast(children, eventName, params) {
   })
 }
 
-function addEventListener(el, eventName, callback, useCapture) {
+function addEventListener (el, eventName, callback, useCapture) {
   if (el.addEventListener) {
     el.addEventListener(eventName, callback, !!useCapture)
   } else {
@@ -14,10 +14,12 @@ function addEventListener(el, eventName, callback, useCapture) {
   }
 }
 
-function noop() {}
+function noop () {}
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 
 class Fullpage {
-  constructor(el, options, vnode) {
+  constructor (el, options, vnode) {
     this.assignOpts(options)
     this.el = el
     this.startY = 0
@@ -45,7 +47,7 @@ class Fullpage {
     })
   }
 
-  resize() {
+  resize () {
     this.width = this.opts.width || this.el.offsetWidth
     this.height = this.opts.height || this.el.offsetHeight
 
@@ -58,30 +60,30 @@ class Fullpage {
     }
   }
 
-  setOptions(options) {
+  setOptions (options) {
     this.assignOpts(options, this.opts)
   }
 
-  toggleAnimate(curIndex) {
-    broadcast(this.vnode.children, 'toogle.animate', curIndex)
+  toggleAnimate (curIndex) {
+    broadcast(this.vnode.children, 'toggle.animate', curIndex)
   }
 
-  assignOpts(opts = {}, o = Fullpage.defaultOptions) {
+  assignOpts (opts = {}, o = Fullpage.defaultOptions) {
     this.opts = Object.assign(o, opts)
   }
 
-  initScrollDirection() {
+  initScrollDirection () {
     this.opts.dir === 'v' || this.el.classList.add('fullpage-wp-h')
   }
 
-  initEvent(el) {
+  initEvent (el) {
     const _this = this
 
     //****************************************//
     //          deal touch event              //
     //****************************************//
     if ('ontouchstart' in document) {
-      el.addEventListener('touchstart', function(e) {
+      el.addEventListener('touchstart', function (e) {
         if (_this.opts.isMoving) {
           return false
         }
@@ -89,7 +91,7 @@ class Fullpage {
         _this.startX = e.targetTouches[0].pageX
         _this.startY = e.targetTouches[0].pageY
       })
-      el.addEventListener('touchend', function(e) {
+      el.addEventListener('touchend', function (e) {
         if (_this.opts.isMoving) {
           return false
         }
@@ -101,7 +103,7 @@ class Fullpage {
 
         _this.moveTo(curIndex, true)
       })
-      document.body.addEventListener('touchmove', function(e) {
+      /*document.body.addEventListener('touchmove', function (e) {
         const overflow = _this.opts.overflow
 
         const currentPage = _this.pageEles[_this.curIndex]
@@ -120,14 +122,14 @@ class Fullpage {
 
           e.preventDefault()
         }
-      })
+      })*/
     }
 
     //****************************************//
     //          deal mouse event              //
     //****************************************//
-    let isMousedown = false
-    addEventListener(el, 'mousedown', function(e) {
+    /*let isMousedown = false
+    addEventListener(el, 'mousedown', function (e) {
       if (_this.opts.isMoving) {
         return false
       }
@@ -137,7 +139,7 @@ class Fullpage {
       _this.startY = e.pageY
     })
     addEventListener(el, 'mouseup', () => isMousedown = false)
-    addEventListener(el, 'mousemove', function(e) {
+    addEventListener(el, 'mousemove', function (e) {
       if (_this.opts.isMoving || !isMousedown) {
         return false
       }
@@ -148,14 +150,14 @@ class Fullpage {
       const curIndex = der + _this.curIndex
 
       _this.moveTo(curIndex, true)
-    })
+    })*/
 
     //****************************************//
     //          deal wheel event              //
     //****************************************//
     let isBusy = false
     const interval = 400
-    addEventListener(el, 'wheel', function(e) {
+    addEventListener(el, 'wheel', function (e) {
       if (_this.opts.isMoving) {
         return false
       }
@@ -174,21 +176,23 @@ class Fullpage {
 
       _this.moveTo(curIndex, true)
     })
-    addEventListener(el, 'transitionend', function() {
+
+    // transitionend
+    addEventListener(el, 'transitionend', function () {
       _this.toggleAnimate(_this.curIndex)
       _this.opts.afterChange.call(_this, _this.pageEles[_this.curIndex], _this.curIndex)
       _this.opts.isMoving = false
     })
 
     // resize
-    addEventListener(window, 'resize', function() {
+    addEventListener(window, 'resize', function () {
       if (el.offsetHeight !== _this.height) {
         _this.resize()
       }
     })
   }
 
-  move(dist) {
+  move (dist) {
     let xPx = 0
     let yPx = 0
     this.opts.dir === 'v' ? (yPx = dist) : (xPx = dist)
@@ -196,7 +200,7 @@ class Fullpage {
     this.el.style.cssText += `;transform: translate3d(${xPx}px, ${yPx}px, 0px);`
   }
 
-  moveTo(curIndex, anim) {
+  moveTo (curIndex, anim) {
     if (this.opts.overflow === 'scroll' && !Fullpage.iSWhetherEnds(this.pageEles[this.curIndex], this.direction)) {
       return
     }
@@ -228,23 +232,23 @@ class Fullpage {
     this.move(dist)
   }
 
-  movePrev() {
+  movePrev () {
     this.moveTo(this.curIndex - 1, true)
   }
 
-  moveNext() {
+  moveNext () {
     this.moveTo(this.curIndex + 1, true)
   }
 
-  update() {
+  update () {
     this.pageEles = this.el.children
     this.total = this.pageEles.length
     this.resize()
   }
 
-  destroy() {}
+  destroy () {}
 
-  static iSWhetherEnds(target, direction) {
+  static iSWhetherEnds (target, direction) {
     if (direction > 0) {
       return target.scrollTop <= 0
     } else {
@@ -292,12 +296,12 @@ class Fullpage {
 }
 
 class Animate {
-  constructor(el, binding, vnode) {
+  constructor (el, binding, vnode) {
     const vm = vnode.context
     const animate = binding.value
 
     el.style.opacity = '0'
-    vm.$on('toogle.animate', curIndex => {
+    vm.$on('toggle.animate', curIndex => {
       const curPage = +el.parentNode.getAttribute('data-id')
 
       if (curIndex === curPage) {
@@ -309,7 +313,7 @@ class Animate {
     })
   }
 
-  static addAnimated(el, animate) {
+  static addAnimated (el, animate) {
     const delay = animate.delay || 0
     el.classList.add('animated')
 
@@ -319,22 +323,22 @@ class Animate {
     }, delay)
   }
 
-  static removeAnimated(el, animate) {
+  static removeAnimated (el, animate) {
     const cls = el.getAttribute('class')
     cls && cls.includes('animated') && el.classList.remove(animate.value)
   }
 }
 
 export default {
-  install: function install(Vue, options) {
+  install: function install (Vue, options) {
     Vue.directive('fullpage', {
-      inserted: function inserted(el, binding, vnode) {
+      inserted: function inserted (el, binding, vnode) {
         const opts = binding.value || {}
         el.$fullpage = new Fullpage(el, opts, vnode)
         el.$fullpage.$update = () => Vue.nextTick(() => el.$fullpage.update())
       },
 
-      componentUpdated: function componentUpdated(el, binding, vnode) {
+      componentUpdated: function componentUpdated (el, binding, vnode) {
         const opts = binding.value || {}
         const that = el.$fullpage
 
@@ -343,7 +347,7 @@ export default {
     })
 
     Vue.directive('animate', {
-      inserted: function inserted(el, binding, vnode) {
+      inserted: function inserted (el, binding, vnode) {
         el.$animate = new Animate(el, binding || {}, vnode)
       }
     })

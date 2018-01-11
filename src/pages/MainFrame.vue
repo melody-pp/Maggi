@@ -1,7 +1,7 @@
 <template>
   <div class="fullpage-container">
     <div class="fullpage-wp" v-fullpage="opts" ref="fullpage">
-      <!--<div class="page-1 page">
+      <div class="page-1 page">
         <Home/>
       </div>
       <div class="page-2 page">
@@ -16,9 +16,15 @@
       <div class="page-5 page">
         <InfoCollect/>
       </div>
-      <div class="page-6 page"><PersonalInfo/></div>
-      <div class="page-7 page"><Prize/></div>-->
-      <div class="page-8 page"><LeaveInfo/></div>
+      <div class="page-6 page">
+        <PersonalInfo/>
+      </div>
+      <div class="page-7 page">
+        <Prize/>
+      </div>
+      <div class="page-8 page">
+        <LeaveInfo/>
+      </div>
       <div class="page-6 page">
         <Comments/>
       </div>
@@ -42,7 +48,7 @@
 
   export default {
     name: 'MainFrame',
-    data() {
+    data () {
       return {
         opts: {
           start: 0,
@@ -53,7 +59,7 @@
       }
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect,PersonalInfo,Prize,LeaveInfo,Comments
+      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments
     }
   }
 </script>
