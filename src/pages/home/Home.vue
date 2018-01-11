@@ -58,26 +58,17 @@
 
       showImgs () {
         const $imgs = Array.from(document.querySelectorAll('.main>img'))
-        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200))
+        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 500))
       },
 
       showImg (img) {
         const imgStyler = styler(img)
-        const imgAni = value({scale: 1.2}, imgStyler.set)
+        const imgAni = value({scale: 0, opacity: 0}, imgStyler.set)
 
-        tween({
-          from: {opacity: 0, scale: 0},
-          to: {opacity: 1, scale: 1.2},
-        }).start({
-          update: imgStyler.set,
-          complete () {
-            spring({
-              velocity: imgAni.getVelocity(),
-              from: imgAni.get(),
-              to: {scale: 1},
-            }).start(imgAni)
-          }
-        })
+        spring({
+          from: imgAni.get(),
+          to: {scale: 1, opacity: 1},
+        }).start(imgAni)
       }
     },
     components: {
