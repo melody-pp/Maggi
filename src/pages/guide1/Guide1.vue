@@ -5,16 +5,20 @@
       <img src="../../assets/p1/02.jpg" ref="img2">
     </div>
     <div class="txt" ref="text">
-      <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p1/03.png" alt="">
-      <img style="width: 80%;" src="../../assets/p1/content.png" alt="">
+      <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p1/03.png" ref="title">
+      <img style="width: 80%;" src="../../assets/p1/content.png" ref="content">
     </div>
+
     <ArrowBtn v-show="showArrow"/>
-    <Modal :z-index="2"/>
+
+    <transition enter-active-class="animated zoomIn">
+      <Modal :z-index="2" v-show="showModal"/>
+    </transition>
   </div>
 </template>
 
 <script>
-  import { tween, styler, value, spring, easing } from 'popmotion'
+  import { tween, styler, value, spring, easing, keyframes } from 'popmotion'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -23,7 +27,8 @@
     components: {Modal, ArrowBtn},
     data () {
       return {
-        showArrow: false
+        showArrow: false,
+        showModal: false,
       }
     },
     mounted () {
@@ -31,24 +36,53 @@
       setTimeout(() => this.showArrow = true, 2000)
     },
     methods: {
-      animate () {},
+      animate () {
+        this.showImg1()
+        this.showImg2()
+        setTimeout(() => this.showModal = true, 1500)
+        setTimeout(() => this.showText(this.$refs.title), 2000)
+        setTimeout(() => this.showText(this.$refs.content), 3500)
+      },
+      showImg1 () {
+        const img = this.$refs.img1
+        const imgStyler = styler(img)
+        tween({
+          from: {rotateZ: 360, scale: 0, opacity: 0, y: 200,},
+          to: {rotateZ: 0, scale: 1, opacity: 1, y: 0,},
+          duration: 1500,
+          easings: easing.easeInOut,
+        }).start(imgStyler.set)
+      },
+      showImg2 () {
+        const img = this.$refs.img2
+        const imgStyler = styler(img)
+        tween({
+          from: {rotateZ: -360, scale: 0, opacity: 0, y: -200,},
+          to: {rotateZ: 0, scale: 1, opacity: 1, y: 0,},
+          duration: 1500,
+          easings: easing.easeInOut,
+        }).start(imgStyler.set)
+      },
+      showText (text) {
+        const textStyler = styler(text)
+        tween({
+          from: {x: -200, opacity: 0},
+          to: {x: 0, opacity: 1},
+          duration: 1500,
+          easings: easing.easeInOut,
+        }).start(textStyler.set)
+      },
       resetNodes () {
-        const text = this.$refs.text
-        const img1 = this.$refs.img1
-        const img2 = this.$refs.img2
-
-        text.style.scale = 0
-        text.style.opacity = 0
-        img1.style.opacity = 0
-        img2.style.opacity = 0
+        this.showModal = false
+        this.$refs.img1.style.opacity = 0
+        this.$refs.img2.style.opacity = 0
+        this.$refs.title.style.opacity = 0
+        this.$refs.content.style.opacity = 0
       }
     },
     watch: {
       moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          this.animate()
-        }
+        newVal ? this.animate() : this.resetNodes()
       }
     },
   }
@@ -57,11 +91,21 @@
 <style scoped lang="scss">
   .guidePage1 {
     position: relative;
+    height: 100vh;
+    img {
+      opacity: 0;
+    }
   }
 
-  .bg-container img {
-    height: 50vh;
-    vertical-align: middle;
+  .bg-container {
+    height: 100vh;
+    &.animating {
+      line-height: 100vh;
+    }
+    img {
+      height: 50vh;
+      vertical-align: middle;
+    }
   }
 
   .txt {

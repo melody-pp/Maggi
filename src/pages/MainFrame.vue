@@ -58,7 +58,7 @@
       $('#fullpage').fullpage({
         verticalCentered: false,
         onLeave (index, nextIndex, direction) {
-          that.current = nextIndex
+          setTimeout(() => that.current = nextIndex, 700)
         }
       })
     },

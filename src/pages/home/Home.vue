@@ -108,10 +108,7 @@
     },
     watch: {
       moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          this.animate()
-        }
+        newVal ? this.animate() : this.resetNodes()
       }
     },
   }
