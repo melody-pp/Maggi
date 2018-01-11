@@ -48,6 +48,7 @@
     z-index: 3;
     position: absolute;
     transform: translateY(-50%);
+    text-align: left;
     img {
       margin-left: 4vw;
     }
