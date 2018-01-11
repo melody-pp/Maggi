@@ -13,18 +13,22 @@
         <Guide3/>
       </div>
       <div class="page-5 section">
-        <InfoCollect/>
+        <Guide4/>
       </div>
       <div class="page-6 section">
-        <PersonalInfo/>
-      </div>
-      <div class="page-7 section">
         <Prize/>
       </div>
+      <div class="page-7 section">
+        <InfoCollect/>
+      </div>
       <div class="page-8 section">
+        <PersonalInfo/>
+
+      </div>
+      <div class="page-9 section">
         <LeaveInfo/>
       </div>
-      <div class="page-6 section">
+      <div class="page-10 section">
         <Comments/>
       </div>
     </div>
@@ -41,6 +45,7 @@
   import Prize from './prize/Prize'
   import LeaveInfo from './leaveInfo/LeaveInfo'
   import Comments from './comments/Comments'
+  import Guide4 from './guide4/Guide4'
 
   export default {
     name: 'MainFrame',
@@ -48,13 +53,13 @@
       $('#fullpage').fullpage({verticalCentered: false})
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments
+      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments,Guide4
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .page-1, .page-2, .page-3, .page-4, .page-5, .page-6, .page-7, .page-8 {
+  .page-1, .page-2, .page-3, .page-4, .page-5, .page-6, .page-7, .page-8, .page-9, .page-10, .page-11 {
     background: url("../assets/index/background.jpg") no-repeat;
     background-size: cover;
     overflow: hidden;

@@ -1,10 +1,12 @@
 <template>
   <div>
+    <img style="width: 56.4vw;" src="../../assets/comments/theme.png" alt="">
     <div class="rank-type">
-      <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">发布时间排行</div>
-      <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">点赞人数排行</div>
+      <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">心意排行榜</div>
+      <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">最新上榜</div>
     </div>
     <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
+    <img class="btn" src="../../assets/comments/button1.png" alt="">
   </div>
 </template>
 

@@ -6,7 +6,7 @@
 
 <script>
   // 这里根据实际的公众号信息填写
-  const appid = 'wx073d89db692f82e0'
+ /* const appid = 'wx073d89db692f82e0'
   const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
   const grant_type = 'authorization_code'
   const getParamStr = params => '?' + Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
@@ -33,7 +33,7 @@
         })
       }
     }
-  }
+  }*/
 </script>
 
 <style lang="scss">

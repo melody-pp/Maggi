@@ -16,10 +16,15 @@
       <span class="like"></span>
       <span class="likeNum">116</span>
     </div>
+    <p>我是张大厨</p>
     <div class="remark">
       2018年我想对父母说，爸妈儿子今年又不能陪你们过年了，二老不必记挂我，我这一切都好，你们要照顾好自己，爸妈新年快乐！
     </div>
-    <img class="btn" src="../../assets/btn/giftBtn.png" alt="">
+    <div class="btnBox">
+      <img class="" src="../../assets/personalInfo/button.png" alt="">
+      <img class="" src="../../assets/personalInfo/button2.png" alt="">
+    </div>
+
   </div>
 </template>
 
@@ -90,5 +95,15 @@
 
   .giftBtn {
     width: 48.4vw;
+  }
+
+  .btnBox {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      width: 41.33vw;
+    }
   }
 </style>

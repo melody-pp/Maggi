@@ -5,8 +5,8 @@
     </div>
     <img class="gatherImg" src="../../assets/infoCollect/02.png" alt="">
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="3" placeholder="请输入2018年想对家人说的话" v-model="textarea"/>
-    <img class="btn" src="../../assets/btn/btnSelfprotrait.png" alt="">
+    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" v-model="textarea"/>
+    <img class="btn" src="../../assets/infoCollect/button.png" alt="">
   </div>
 </template>
 

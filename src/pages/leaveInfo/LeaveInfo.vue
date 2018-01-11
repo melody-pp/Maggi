@@ -9,6 +9,7 @@
       <!--<el-input v-model="" placeholder="市"/>-->
       <!--<el-input v-model="" placeholder="区"/>-->
       <el-input v-model="address" placeholder="详细地址"/>
+      <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" alt="">
       <el-button @click="save">保存并查看排行榜</el-button>
     </form>
   </div>
@@ -40,11 +41,11 @@
 
 <style scoped lang="scss">
   .theme {
-    width: 57.47vw;
+    width: 45.73vw;
   }
 
   .activityrules {
-    width: 88.93vw;
+    width: 88vw;
   }
 
   form {

@@ -6,7 +6,7 @@
     </div>
     <div class="txt">
       <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p1/03.png" alt="">
-      <img style="width: 62.93%;" src="../../assets/p1/04.png" alt="">
+      <img style="width: 80%;" src="../../assets/p1/content.png" alt="">
     </div>
     <ArrowBtn/>
     <Modal :z-index="2"/>

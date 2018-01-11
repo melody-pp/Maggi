@@ -11,7 +11,7 @@
     </div>
     <div class="txt">
       <img style="width: 49.06%;margin-bottom: 3.65vh;" src="../../assets/p2/06.png" alt="">
-      <img style="width: 76.66%;" src="../../assets/p2/07.png" alt="">
+      <img style="width: 76.4vw;" src="../../assets/p2/content.png" alt="">
     </div>
     <ArrowBtn/>
     <Modal :z-index="2"/>

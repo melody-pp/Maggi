@@ -1,23 +1,33 @@
 <template>
   <div>
-    <div class="themeTxt">
-      <img class="theme" src="../../assets/prize/theme.png" alt="">
-      <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
+    <div class="prizeBox">
+      <img src="../../assets/prize/Warm-air-blower.png" alt="">
+      <img src="../../assets/prize/Vacuum-cup.png" alt="">
+      <img src="../../assets/prize/Intelligent-bracelet.png" alt="">
+      <img src="../../assets/prize/Charging.png" alt="">
     </div>
-    <div class="btnGift">
-      <img class="follow" src="../../assets/btn/follow.png" alt="">
-      <img class="leaveInfo" src="../../assets/btn/leaveInfo.png" alt="">
-    </div>
+    <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
+
+    <img class="btn" src="../../assets/prize/start.png" alt="">
+    <img class="theRules" src="../../assets/prize/The-rules.png" alt="">
   </div>
 </template>
 
 <style scoped lang="scss">
-  .theme {
-    width: 43.37vw;
-  }
+  .prizeBox {
+    img {
+      width: 22vw;
+    }
 
+  }
+  .theRules {
+    width: 17.6vw;
+    position: absolute;
+    right: 5vw;
+    bottom: 12vh;
+  }
   .rules {
-    width: 88.53vw;
+    width: 89.47vw;
   }
 
   .btnGift {
