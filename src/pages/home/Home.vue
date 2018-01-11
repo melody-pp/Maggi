@@ -14,8 +14,8 @@
 
     <ArrowBtn/>
 
-    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :modal="false" :show-close="false">
-      <el-carousel ref="carousel" type="card" height="20vh" indicator-position="none" :autoplay="false">
+    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false">
+      <el-carousel ref="carousel" type="card" height="20vh" indicator-position="none">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
           <img :src="img" alt="">
         </el-carousel-item>
