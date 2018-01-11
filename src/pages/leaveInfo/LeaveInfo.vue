@@ -25,9 +25,11 @@
     },
     methods: {
       save () {
-        this.axios.post(
+        this.axios.get(
           '/meiji/public/admin/info/store',
-          {name: this.name, tel: this.tel, address: this.address}
+          {
+            params: {name: this.name, tel: this.tel, address: this.address}
+          }
         ).then(res => {
           this.$message.success('保存成功！')
         })
@@ -47,10 +49,10 @@
 
   form {
     .el-input_inner {
-      border: none!important;
-      border-bottom: 1px solid #fff!important;
-      width: 80vw!important;
-      background-color: transparent!important;
+      border: none !important;
+      border-bottom: 1px solid #fff !important;
+      width: 80vw !important;
+      background-color: transparent !important;
     }
   }
 
