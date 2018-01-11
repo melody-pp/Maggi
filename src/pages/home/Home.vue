@@ -28,25 +28,6 @@
   import { tween, styler, value, spring } from 'popmotion'
   import ArrowBtn from '../../components/ArrowBtn'
 
-  const showImg = img => {
-    const imgStyler = styler(img)
-    const imgAni = value({scale: 1.2}, imgStyler.set)
-
-    tween({
-      from: {opacity: 0, scale: 0},
-      to: {opacity: 1, scale: 1.2},
-    }).start({
-      update: imgStyler.set,
-      complete: function () {
-        spring({
-          velocity: imgAni.getVelocity(),
-          from: imgAni.get(),
-          to: {scale: 1},
-        }).start(imgAni)
-      }
-    })
-
-  }
   export default {
     name: 'Home',
     data () {
@@ -67,13 +48,36 @@
       }
     },
     mounted () {
-      const $imgs = Array.from(document.querySelectorAll('.main>img'))
-      $imgs.forEach((img, i) => setTimeout(() => showImg(img), i * 200))
+      this.showImgs()
     },
     methods: {
       showDialog (index) {
         this.dialogVisible = true
         setTimeout(() => this.$refs.carousel.setActiveItem(index))
+      },
+
+      showImgs () {
+        const $imgs = Array.from(document.querySelectorAll('.main>img'))
+        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200))
+      },
+
+      showImg (img) {
+        const imgStyler = styler(img)
+        const imgAni = value({scale: 1.2}, imgStyler.set)
+
+        tween({
+          from: {opacity: 0, scale: 0},
+          to: {opacity: 1, scale: 1.2},
+        }).start({
+          update: imgStyler.set,
+          complete () {
+            spring({
+              velocity: imgAni.getVelocity(),
+              from: imgAni.get(),
+              to: {scale: 1},
+            }).start(imgAni)
+          }
+        })
       }
     },
     components: {
