@@ -63,7 +63,7 @@
   .btn {
     width: 48.4vw;
     position: absolute;
-    bottom: 4.975vh;
+    bottom: 10vh;
     left: 50%;
     transform: translateX(-50%);
   }

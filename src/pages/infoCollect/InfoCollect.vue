@@ -27,7 +27,7 @@
   }
 
   .title {
-    margin: 6.5vh auto 0;
+    margin: 5.47vh auto 0;
     width: 65.5%;
   }
 

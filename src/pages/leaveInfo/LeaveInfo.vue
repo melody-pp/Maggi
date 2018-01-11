@@ -44,4 +44,13 @@
   .activityrules {
     width: 88.93vw;
   }
+
+  form {
+    .el-input input {
+      border: none;
+      border-bottom: 1px solid #fff;
+      width: 80%;
+    }
+  }
+
 </style>
