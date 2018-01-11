@@ -1,5 +1,4 @@
 <template>
-  <div class="fullpage-container">
     <div id="fullpage">
       <div class="page-1 section">
         <Home/>
@@ -29,7 +28,6 @@
         <Comments/>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
