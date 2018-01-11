@@ -10,7 +10,7 @@
       <img src="../../assets/p2/05.jpg" alt="">
     </div>
     <div class="txt">
-      <img style="width: 49.06%;margin-bottom: 3vh;" src="../../assets/p2/06.png" alt="">
+      <img style="width: 49.06%;margin-bottom: 3.65vh;" src="../../assets/p2/06.png" alt="">
       <img style="width: 76.66%;" src="../../assets/p2/07.png" alt="">
     </div>
     <Modal :z-index="2"/>
@@ -44,10 +44,9 @@
   }
 
   .txt {
-    top: 50%;
+    top: 25.21vh;
     z-index: 3;
     position: absolute;
-    transform: translateY(-50%);
     text-align: left;
     img {
       margin-left: 4vw;

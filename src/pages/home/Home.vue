@@ -21,13 +21,13 @@
       <img src="../../assets/index/bottomText.png" alt="">
     </el-footer>
 
-    <div class="arrowUp">
-      <img src="../../assets/index/001.png" alt="">
-    </div>
+    <ArrowBtn/>
   </el-container>
 </template>
 
 <script>
+  import ArrowBtn from '../../components/ArrowBtn'
+
   export default {
     name: 'Home',
     data () {
@@ -39,6 +39,9 @@
           duration: 300,
         }
       }
+    },
+    components: {
+      ArrowBtn
     }
   }
 </script>
@@ -47,19 +50,14 @@
   .header {
     width: 75vw;
     height: auto !important;
-    margin: 7vh auto 5vh;
+    margin: 6.47vh auto 4.98vh;
   }
 
   .el-footer {
     height: auto !important;
     width: 38.8vw;
     padding: 0;
-    margin: 5vh auto 0;
-  }
-
-  .arrowUp {
-    margin: 4vh auto 0;
-    width: 9.33vw;
+    margin: 3.65vh auto 7.3vh;
   }
 
   .main {
