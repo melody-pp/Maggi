@@ -16,13 +16,13 @@
     created () {
       let code = this.$route.query.code
 
-      if (code) {
+      /*if (code) {
         this.getOpenId(code)
       } else {
         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
           + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_userinfo'})
           + '#wechat_redirect'
-      }
+      }*/
     },
     methods: {
       getOpenId (code) {
@@ -32,11 +32,9 @@
         })
       },
       getUserInfo (openid, access_token) {
-        this.axios.get(
-          'https://api.weixin.qq.com/sns/userinfo',
-          {params: {openid, access_token, lang: 'zh_CN'}}
-        ).then(res => {
-          console.log(res)
+        const url = 'https://api.weixin.qq.com/sns/userinfo' + getParamStr({openid, access_token, lang: 'zh_CN'})
+        this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
+          window.userInfo = res.data
         })
       }
     }
