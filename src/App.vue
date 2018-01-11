@@ -23,13 +23,8 @@
     },
     methods: {
       getOpenId (code) {
-        this.axios.get(
-          'https://api.weixin.qq.com/sns/oauth2/access_token',
-          {
-            params: {appid, secret, code, grant_type},
-            headers: {'Access-Control-Allow-Origin': '*'}
-          }
-        ).then(res => {
+        const url = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${appid}&secret=${secret}&code=${code}&grant_type=${grant_type}`
+        this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
           window.openid = res.data.openid
           window.access_token = res.data.access_token
         })
