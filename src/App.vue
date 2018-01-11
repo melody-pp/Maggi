@@ -9,6 +9,7 @@
   const appid = 'wx073d89db692f82e0'
   const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
   const grant_type = 'authorization_code'
+  const getParamStr = params => '?' + Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
 
   export default {
     name: 'app',
@@ -18,12 +19,14 @@
       if (code) {
         this.getOpenId(code)
       } else {
-        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${location.href}&response_type=code&scope=snsapi_base#wechat_redirect`
+        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
+          + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_base'})
+          + '#wechat_redirect'
       }
     },
     methods: {
       getOpenId (code) {
-        const url = `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${appid}&secret=${secret}&code=${code}&grant_type=${grant_type}`
+        const url = 'https://api.weixin.qq.com/sns/oauth2/access_token' + getParamStr({appid, secret, code, grant_type})
         this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
           window.openid = res.data.openid
           window.access_token = res.data.access_token
