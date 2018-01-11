@@ -28,9 +28,6 @@
       <div class="page-6 page">
         <Comments/>
       </div>
-      <div class="page-7 page"></div>
-      <div class="page-8 page"></div>
-      <div class="page-9 page"></div>
     </div>
   </div>
 </template>

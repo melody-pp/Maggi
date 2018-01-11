@@ -46,10 +46,11 @@
   }
 
   form {
-    .el-input input {
-      border: none;
-      border-bottom: 1px solid #fff;
-      width: 80%;
+    .el-input__inner {
+      border: none!important;
+      border-bottom: 1px solid #fff!important;
+      width: 80vw!important;
+      background-color: transparent!important;
     }
   }
 
