@@ -25,6 +25,7 @@
   .comment {
     color: #fff;
     font-size: 14px;
+    text-align: left;
     position: relative;
     padding: 5vw 0 0 24vw;
 
