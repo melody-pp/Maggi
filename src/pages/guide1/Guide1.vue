@@ -71,6 +71,7 @@
       },
       resetNodes () {
         this.showModal = false
+        this.showArrow = false
         this.$refs.img1.style.opacity = 0
         this.$refs.img2.style.opacity = 0
         this.$refs.title.style.opacity = 0

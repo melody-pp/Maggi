@@ -99,6 +99,7 @@
         }).start(imgAni)
       },
       resetNodes () {
+        this.showArrow = false
         for (const img of document.querySelectorAll('.main>img')) {
           img.style.opacity = 0
           img.style.scale = 0
