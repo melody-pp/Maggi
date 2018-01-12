@@ -5,16 +5,30 @@
     </div>
     <img class="gatherImg" src="../../assets/infoCollect/02.png" alt="">
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" v-model="textarea"/>
-    <img class="btn" src="../../assets/infoCollect/button.png" alt="">
+    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" v-model="content"/>
+    <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
   </div>
 </template>
 
 <script>
+  import $ from 'jquery'
+
   export default {
     data () {
       return {
-        textarea: ''
+        content: ''
+      }
+    },
+    methods: {
+      submit () {
+        this.axios({
+            method: 'post',
+            url: '/meiji/public/api/messagestore',
+            data: {content: this.content}
+          }
+        ).then(res => {
+          this.$message.success('提交成功！')
+        })
       }
     }
   }
