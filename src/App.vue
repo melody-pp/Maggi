@@ -36,6 +36,7 @@
         const url = 'https://api.weixin.qq.com/sns/userinfo' + getParamStr({openid, access_token, lang: 'zh_CN'})
         this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
           window.userInfo = res.data
+          console.log(res.data)
         })
       },
       getJsapiTicket (access_token) {
@@ -134,5 +135,29 @@
     border-bottom: 1px solid #fff !important;
     width: 80vw !important;
     background-color: transparent !important;
+    color: #fff !important;
+    height: 8vh;
+    font-size: 3.9vw;
+  }
+
+  .el-cascader__label {
+    color: #fff !important;
+  }
+
+  form {
+    margin-top: 7vh;
+  }
+
+  .el-message-box {
+    width: 80vw;
+    height: 74vh;
+    margin-top: 3vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    i.el-icon-close::before {
+      background: url("./assets/leaveInfo/close.png") no-repeat 0 0;
+      background-size: 6.67vw 0.08vh;
+      width: 6.67vw;
+      height: 0.08vh;
+    }
   }
 </style>

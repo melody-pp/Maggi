@@ -1,12 +1,14 @@
 <template>
   <div>
-    <img style="width: 56.4vw;" src="../../assets/comments/theme.png" alt="">
+    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png" alt="">
     <div class="rank-type">
       <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">心意排行榜</div>
       <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">最新上榜</div>
     </div>
-    <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
-    <img class="btn" src="../../assets/comments/button1.png" alt="">
+    <div class="rankContent">
+      <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
+    </div>
+    <img style="bottom:4vh;" class="btn" src="../../assets/comments/button1.png" alt="">
   </div>
 </template>
 
@@ -120,7 +122,7 @@
   .rank-type {
     font-size: 0;
     text-align: center;
-    padding: 5vw 0;
+    padding: 4vw 0;
     div {
       color: #fff;
       display: inline-block;
@@ -134,4 +136,8 @@
     }
   }
 
+  .rankContent {
+    height: 65vh;
+    overflow: auto;
+  }
 </style>

@@ -1,13 +1,18 @@
 <template>
   <div>
-    <img class="theme" src="../../assets/leaveInfo/theme.png" alt="">
+    <img class="theme themeTxt" src="../../assets/leaveInfo/theme.png" alt="">
     <img class="activityrules" src="../../assets/leaveInfo/Activity-rules.png" alt="">
     <form>
       <el-input v-model="name" placeholder="姓名"/>
       <el-input v-model="tel" placeholder="手机号"/>
       <area-cascader type='text' v-model="area" :level="1"/>
       <el-input v-model="address" placeholder="详细地址"/>
+      <div class="agreenBox clearfix">
+        <span class="agreenBtn" @click="changeBtn"></span>
+        <el-button type="text" @click="open5">我已阅读协议</el-button>
+      </div>
       <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="save">
+
     </form>
   </div>
 </template>
@@ -24,13 +29,20 @@
     },
     methods: {
       save () {
-        this.axios.get(
+        this.axios.post(
           '/meiji/public/admin/info/store',
-          {
-            params: {name: this.name, tel: this.tel, address: this.address}
-          }
+          {name: this.name, tel: this.tel, address: this.address}
         ).then(res => {
           this.$message.success('保存成功！')
+        })
+      },
+      changeBtn () {
+
+      },
+      open5 () {
+        this.$alert('<div><p>雀巢重视对消费者个人隐私权的保护，为各位消费者设立本隐私权声明并将努力更新本声明的内容，使其更加全面并更加符合您的期望。</p><p>1． 隐私权条款的适用范围</p><p>在您自愿提供您的相关信息（例如您的姓名、电话、电子邮件信箱、地址等，以下简称“个人信息”）之后，将由雀巢根据本隐私权声明予以保护。除以本声明第3条中规定的相关方式使用您提交的个人信息之外，在未征得您许可的情况下，雀巢不会将该信息对外公开或提供给其他第三方。</p><p>2． 可能要求您提供的信息类型</p>', '雀巢专业餐饮大厨精英荟会员注册协议', {
+          dangerouslyUseHTMLString: true,
+          center: true
         })
       }
     }
@@ -44,5 +56,28 @@
 
   .activityrules {
     width: 88vw;
+    margin-top: 2vh;
   }
+
+  .agreenBox {
+    margin-left: 10vw;
+    margin-top: 5vw;
+    span, button {
+      float: left;
+    }
+    button {
+      padding: 3px;
+      color: #fff;
+    }
+    .agreenBtn {
+      display: inline-block;
+      width: 5.33vw;
+      height: 3.15vh;
+      background: url("../../assets/leaveInfo/reading.png") no-repeat 0 -3.15vh;
+      background-size: 5.33vw 6.3vh;
+      cursor: pointer;
+      margin-right: 2vw;
+    }
+  }
+
 </style>

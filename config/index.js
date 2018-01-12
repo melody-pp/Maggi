@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/dist/',
     proxyTable: {
       '/meiji/public': {
-        target: 'http://47.104.4.171/',
+        target: 'http://2048j.century-galaxy.com/',
         changeOrigin: true
       }
     },
