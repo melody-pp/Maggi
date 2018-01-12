@@ -4,7 +4,7 @@
       <img src="../../assets/p1/01.jpg" ref="img1">
       <img src="../../assets/p1/02.jpg" ref="img2">
     </div>
-    <div class="txt" ref="text">
+    <div class="txt">
       <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p1/03.png" ref="title">
       <img style="width: 80%;" src="../../assets/p1/content.png" ref="content">
     </div>
@@ -31,15 +31,12 @@
         showModal: false,
       }
     },
-    mounted () {
-      this.animate()
-      setTimeout(() => this.showArrow = true, 2000)
-    },
     methods: {
       animate () {
         this.showImg1()
         this.showImg2()
         setTimeout(() => this.showModal = true, 1500)
+        setTimeout(() => this.showArrow = true, 2000)
         setTimeout(() => this.showText(this.$refs.title), 2000)
         setTimeout(() => this.showText(this.$refs.content), 3500)
       },
@@ -82,7 +79,10 @@
     },
     watch: {
       moveIn (newVal) {
-        newVal ? this.animate() : this.resetNodes()
+        if (newVal) {
+          this.resetNodes()
+          setTimeout(this.animate.bind(this), 700)
+        }
       }
     },
   }
@@ -91,17 +91,9 @@
 <style scoped lang="scss">
   .guidePage1 {
     position: relative;
-    height: 100vh;
-    img {
-      opacity: 0;
-    }
   }
 
   .bg-container {
-    height: 100vh;
-    &.animating {
-      line-height: 100vh;
-    }
     img {
       height: 50vh;
       vertical-align: middle;

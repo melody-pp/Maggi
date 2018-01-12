@@ -51,8 +51,8 @@
       }
     },
     mounted () {
+      this.resetNodes()
       this.animate()
-      setTimeout(() => this.showArrow = true, 2500)
     },
     methods: {
       showDialog (index) {
@@ -63,6 +63,7 @@
         this.showImgs()
         setTimeout(this.showTop.bind(this), 2000)
         setTimeout(this.showBottom.bind(this), 2500)
+        setTimeout(() => this.showArrow = true, 2500)
       },
       showTop () {
         const topImg = this.$refs.topImg
@@ -108,17 +109,16 @@
     },
     watch: {
       moveIn (newVal) {
-        newVal ? this.animate() : this.resetNodes()
+        if (newVal) {
+          this.resetNodes()
+          setTimeout(this.animate.bind(this), 700)
+        }
       }
     },
   }
 </script>
 
 <style scoped lang="scss">
-  .el-container img {
-    opacity: 0;
-  }
-
   .header {
     width: 79.2vw;
     height: auto !important;
