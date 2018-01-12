@@ -1,22 +1,26 @@
 <template>
   <div>
     <div class="prizeBox">
+      <marquee behavior="scroll" direction="left">
       <img src="../../assets/prize/Warm-air-blower.png" alt="">
       <img src="../../assets/prize/Vacuum-cup.png" alt="">
       <img src="../../assets/prize/Intelligent-bracelet.png" alt="">
       <img src="../../assets/prize/Charging.png" alt="">
+      <img src="../../assets/prize/Electronic-gift-card.png" alt="">
+      <img src="../../assets/prize/The-cook.png" alt="">
+      </marquee>
     </div>
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
     <div>
       <div class="agreenBox clearfix">
 
-        <span class="agreenBtn" @click="changeBtn"></span>
+        <span class="agreenBtn" @click=""></span>
         <span style="margin-right: 17vw;">关注公众号</span>
-        <span class="agreenBtn" @click="changeBtn"></span>
+        <span class="agreenBtn" @click=""></span>
         <span>我已了解活动规则</span>
       </div>
     </div>
-    <img class="btn" src="../../assets/prize/start.png" alt="">
+    <img class="btn" style="bottom:5vh;" src="../../assets/prize/start.png" alt="">
     <img class="theRules" src="../../assets/prize/The-rules.png" alt="">
   </div>
 </template>
@@ -34,12 +38,12 @@
     width: 17.6vw;
     position: absolute;
     right: 5vw;
-    bottom: 12vh;
+    bottom: 7vh;
   }
 
   .rules {
     width: 89.47vw;
-    margin-top: 4vh;
+    margin-top: 3vh;
   }
 
   .btnGift {
@@ -53,7 +57,7 @@
   }
 
   .agreenBox {
-    margin-top: 5vh;
+    margin-top: 4vh;
     .agreenBtn {
       display: inline-block;
       width: 5.33vw;

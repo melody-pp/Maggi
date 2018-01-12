@@ -30,7 +30,7 @@
       save () {
         this.axios.post(
           '/meiji/public/admin/info/store',
-          {name: this.name, tel: this.tel, address: this.address}
+          {name: this.name, tel: this.tel, address: this.area + this.address}
         ).then(res => {
           this.$message.success('保存成功！')
         })

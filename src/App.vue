@@ -5,8 +5,9 @@
 </template>
 
 <script>
+
   // 这里根据实际的公众号信息填写
-  const appid = 'wx073d89db692f82e0'
+ /* const appid = 'wx073d89db692f82e0'
   const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
   const grant_type = 'authorization_code'
   const getParamStr = params => '?' + Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
@@ -16,13 +17,13 @@
     created () {
       let code = this.$route.query.code
 
-     /* if (code) {
-        this.getOpenId(code)
-      } else {
-        location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
-          + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_userinfo'})
-          + '#wechat_redirect'
-      }*/
+      /!* if (code) {
+         this.getOpenId(code)
+       } else {
+         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
+           + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_userinfo'})
+           + '#wechat_redirect'
+       }*!/
     },
     methods: {
       getOpenId (code) {
@@ -90,7 +91,7 @@
         })
       }
     }
-  }
+  }*/
 </script>
 
 <style lang="scss">
@@ -142,6 +143,7 @@
 
   .el-cascader__label {
     color: #fff !important;
+    line-height: 8vh;
   }
 
   form {
