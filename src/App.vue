@@ -5,54 +5,22 @@
 </template>
 
 <script>
-
-  // 这里根据实际的公众号信息填写
- /* const appid = 'wx073d89db692f82e0'
-  const secret = 'ba696d051d0ec2da5a0d4cca9727f2a0'
-  const grant_type = 'authorization_code'
-  const getParamStr = params => '?' + Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
-
   export default {
     name: 'app',
-    created () {
-      let code = this.$route.query.code
+    mounted () {
+      const {openid, nickname, headimgurl, timestamp, nonceStr, signature} = this.$route.query
 
-      /!* if (code) {
-         this.getOpenId(code)
-       } else {
-         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
-           + getParamStr({appid, redirect_uri: location.href, response_type: 'code', scope: 'snsapi_userinfo'})
-           + '#wechat_redirect'
-       }*!/
+      this.configWX(timestamp, nonceStr, signature)
+      window.userInfo = {openid, nickname, headimgurl}
     },
     methods: {
-      getOpenId (code) {
-        const url = 'https://api.weixin.qq.com/sns/oauth2/access_token' + getParamStr({appid, secret, code, grant_type})
-        this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
-          this.getUserInfo(res.data.openid, res.data.access_token)
-          this.getJsapiTicket(res.data.access_token)
-        })
-      },
-      getUserInfo (openid, access_token) {
-        const url = 'https://api.weixin.qq.com/sns/userinfo' + getParamStr({openid, access_token, lang: 'zh_CN'})
-        this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
-          window.userInfo = res.data
-          console.log(window.userInfo)
-        })
-      },
-      getJsapiTicket (access_token) {
-        const url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket' + getParamStr({access_token, type: 'jsapi'})
-        this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
-          console.log(res.data.ticket)
-        })
-      },
-      configWx (timestamp, nonceStr, signature) {
-        // 配置微信jsSDK，用户分享至朋友圈或分享给朋友时的展示形式，参数应从后端获取
+      configWX (timestamp, nonceStr, signature) {
         const wx = require('weixin-js-sdk')
+        const appId = 'wx073d89db692f82e0'
 
         wx.config({
           debug: false, // 调试模式
-          appId: appid, // 必填，公众号的唯一标识
+          appId, // 必填，公众号的唯一标识
           timestamp, // 必填，生成签名的时间戳
           nonceStr, // 必填，生成签名的随机串
           signature,// 必填，签名
@@ -91,7 +59,7 @@
         })
       }
     }
-  }*/
+  }
 </script>
 
 <style lang="scss">
