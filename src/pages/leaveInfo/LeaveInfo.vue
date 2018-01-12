@@ -12,6 +12,7 @@
         <el-button type="text" @click="open5">我已阅读协议</el-button>
       </div>
       <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="save">
+
     </form>
   </div>
 </template>
@@ -39,7 +40,7 @@
 
       },
       open5 () {
-        this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
+        this.$alert('<div><p>雀巢重视对消费者个人隐私权的保护，为各位消费者设立本隐私权声明并将努力更新本声明的内容，使其更加全面并更加符合您的期望。</p><p>1． 隐私权条款的适用范围</p><p>在您自愿提供您的相关信息（例如您的姓名、电话、电子邮件信箱、地址等，以下简称“个人信息”）之后，将由雀巢根据本隐私权声明予以保护。除以本声明第3条中规定的相关方式使用您提交的个人信息之外，在未征得您许可的情况下，雀巢不会将该信息对外公开或提供给其他第三方。</p><p>2． 可能要求您提供的信息类型</p>', '雀巢专业餐饮大厨精英荟会员注册协议', {
           dangerouslyUseHTMLString: true,
           center: true
         })
