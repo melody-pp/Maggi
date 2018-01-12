@@ -16,7 +16,7 @@
       <span class="like"></span>
       <span class="likeNum">116</span>
     </div>
-    <p>我是张大厨</p>
+    <div class="nickName">我是张大厨</div>
     <div class="remark">
       2018年我想对父母说，爸妈儿子今年又不能陪你们过年了，二老不必记挂我，我这一切都好，你们要照顾好自己，爸妈新年快乐！
     </div>
@@ -30,7 +30,7 @@
 
 <style scoped lang="scss">
   .theme {
-    width: 32.8vw;
+    width: 37.47vw;
     float: left;
   }
 
@@ -47,12 +47,18 @@
 
   .themeTxt {
     display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .nickName {
+    margin-bottom: 5vh;
   }
 
   .num {
     font-size: 8vw;
-    color: #fff;
+    color: #fe8e00;
     float: left;
+    margin: 0 10px;
     margin-top: -6px;
   }
 
@@ -74,7 +80,7 @@
 
   .headPortraitBox {
     position: relative;
-    margin: 5vh auto;
+    margin: 5vh auto 3vh;
     .likeNum {
       position: absolute;
       top: 1.5vh;

@@ -22,13 +22,10 @@
       <InfoCollect :moveIn="current===7"/>
     </div>
     <div class="page-8 section">
-      <PersonalInfo :moveIn="current===8"/>
+      <LeaveInfo :moveIn="current===8"/>
     </div>
     <div class="page-9 section">
-      <LeaveInfo :moveIn="current===9"/>
-    </div>
-    <div class="page-10 section">
-      <Comments :moveIn="current===10"/>
+      <Comments :moveIn="current===9"/>
     </div>
   </div>
 </template>

@@ -16,7 +16,7 @@
     created () {
       let code = this.$route.query.code
 
-      /*if (code) {
+     /* if (code) {
         this.getOpenId(code)
       } else {
         location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize'
@@ -35,7 +35,7 @@
         const url = 'https://api.weixin.qq.com/sns/userinfo' + getParamStr({openid, access_token, lang: 'zh_CN'})
         this.axios.get('https://bird.ioliu.cn/v2', {params: {url}}).then(res => {
           window.userInfo = res.data
-          console.log(res.data)
+          console.log(window.userInfo)
         })
       }
     }
@@ -101,7 +101,13 @@
     width: 80vw;
     height: 74vh;
     margin-top: 3vh;
-    background-color: rgba(255, 255, 255, 0.6);
+    background: url("./assets/background.png") no-repeat;
+    background-size: cover;
+    border: none;
+    p {
+      color: #fff;
+      text-align: left;
+    }
     i.el-icon-close::before {
       background: url("./assets/leaveInfo/close.png") no-repeat 0 0;
       background-size: 6.67vw 0.08vh;

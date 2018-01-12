@@ -7,7 +7,15 @@
       <img src="../../assets/prize/Charging.png" alt="">
     </div>
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
+    <div>
+      <div class="agreenBox clearfix">
 
+        <span class="agreenBtn" @click="changeBtn"></span>
+        <span style="margin-right: 17vw;">关注公众号</span>
+        <span class="agreenBtn" @click="changeBtn"></span>
+        <span>我已了解活动规则</span>
+      </div>
+    </div>
     <img class="btn" src="../../assets/prize/start.png" alt="">
     <img class="theRules" src="../../assets/prize/The-rules.png" alt="">
   </div>
@@ -15,19 +23,23 @@
 
 <style scoped lang="scss">
   .prizeBox {
+    margin-top: 2vh;
     img {
       width: 22vw;
     }
 
   }
+
   .theRules {
     width: 17.6vw;
     position: absolute;
     right: 5vw;
     bottom: 12vh;
   }
+
   .rules {
     width: 89.47vw;
+    margin-top: 4vh;
   }
 
   .btnGift {
@@ -37,6 +49,20 @@
     transform: translateX(-50%);
     img {
       width: 44.27vw;
+    }
+  }
+
+  .agreenBox {
+    margin-top: 5vh;
+    .agreenBtn {
+      display: inline-block;
+      width: 5.33vw;
+      height: 3.15vh;
+      background: url("../../assets/leaveInfo/reading.png") no-repeat 0 -3.15vh;
+      background-size: 5.33vw 6.3vh;
+      cursor: pointer;
+      margin-right: 2vw;
+      vertical-align: -6px;
     }
   }
 </style>
