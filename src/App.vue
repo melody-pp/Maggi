@@ -75,6 +75,10 @@
     width: 100%;
   }
 
+  form {
+    margin-top: 7vh;
+  }
+
   .clearfix {
     overflow: hidden;
     _zoom: 1;
@@ -114,26 +118,27 @@
     line-height: 8vh;
   }
 
-  form {
-    margin-top: 7vh;
-  }
-
-  .el-message-box {
-    width: 80vw;
-    height: 74vh;
-    margin-top: 3vh;
+  .agreement {
     background: url("./assets/background.png") no-repeat;
-    background-size: cover;
-    border: none;
-    p {
-      color: #fff;
-      text-align: left;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    .el-dialog {
+      background: url("./assets/background.png") no-repeat;
+      margin: 10vh 5vw !important;
+      height: 80vh;
+      width: 90vw;
     }
-    i.el-icon-close::before {
-      background: url("./assets/leaveInfo/close.png") no-repeat 0 0;
-      background-size: 6.67vw 0.08vh;
-      width: 6.67vw;
-      height: 0.08vh;
+    .el-dialog__header {
+      color: #fff;
+      padding: 10px;
+    }
+    .el-dialog__body {
+      color: #fff;
+      padding: 10px;
+      max-height: 70vh;
+      overflow: scroll;
+      text-align: left;
     }
   }
 </style>
