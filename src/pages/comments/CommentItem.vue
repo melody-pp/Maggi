@@ -1,6 +1,7 @@
 <template>
   <div class="comment">
-    <span class="ranking">NO{{index+1}}</span>
+    <img v-if="index<3" class="ranking-img" :src="imgUrls[index]">
+    <span v-else class="ranking">{{index+1}}</span>
     <img :src="pic" alt="头像">
     <div class="right">
       <div class="content">
@@ -17,7 +18,16 @@
 <script>
   export default {
     name: 'comment-item',
-    props: ['pic', 'content', 'liked', 'likes', 'index']
+    props: ['pic', 'content', 'liked', 'likes', 'index'],
+    data () {
+      return {
+        imgUrls: [
+          require('../../assets/comments/NO1.png'),
+          require('../../assets/comments/NO2.png'),
+          require('../../assets/comments/NO3.png'),
+        ]
+      }
+    }
   }
 </script>
 
@@ -36,6 +46,11 @@
       width: 10vw;
       border-radius: 50%;
     }
+    .ranking-img {
+      width: 4.8vw;
+      left: 4vw;
+      top: 3.5vh;
+    }
   }
 
   .right {
@@ -50,8 +65,8 @@
     font-weight: 300;
     margin-right: 1vw;
     position: absolute;
-    top: 5vw;
-    left: 2vw;
+    top: 4.5vh;
+    left: 5vw;
   }
 
   .info {
@@ -60,6 +75,7 @@
     .liked {
       width: 5.2vw;
       vertical-align: -5px;
+      margin-right: 1vw;
     }
   }
 </style>

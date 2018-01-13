@@ -5,7 +5,7 @@
       <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">心意排行榜</div>
       <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">最新上榜</div>
     </div>
-    <div class="rankContent">
+    <div class="rankContent" ref="rankContent" @touchmove="touchmove" @touchstart="touchstart">
       <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
     </div>
     <img style="bottom:4vh;" class="btn" src="../../assets/comments/button1.png" alt="">
@@ -20,6 +20,7 @@
     components: {CommentItem},
     data () {
       return {
+        positionY: null,
         rankType: 'likedNum',
         comments: [
           {
@@ -115,6 +116,16 @@
         ]
       }
     },
+    methods: {
+      touchstart (event) {
+        this.positionY = event.touches[0].clientY
+      },
+      touchmove (event) {
+        const currentY = event.touches[0].clientY
+        this.$refs.rankContent.scrollTop += (this.positionY - currentY) * 2
+        this.positionY = currentY
+      }
+    }
   }
 </script>
 
