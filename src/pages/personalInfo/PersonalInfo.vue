@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="personalInfo">
     <div>
       <div class="themeTxt clearfix">
         <img class="theme" src="../../assets/personalInfo/theme.png" alt="">
@@ -22,12 +22,24 @@
     </div>
     <div class="btnBox">
       <img class="" src="../../assets/personalInfo/button.png" alt="">
-      <img class="" src="../../assets/personalInfo/button2.png" alt="">
+      <img @click="toComments" src="../../assets/personalInfo/button2.png" alt="">
     </div>
 
   </div>
 </template>
-
+<script>
+  export default {
+    data(){
+      return{
+      }
+    },
+    methods: {
+      toComments(){
+        this.$router.push({path:'/comments'})
+      }
+    }
+  }
+</script>
 <style scoped lang="scss">
   .theme {
     width: 37.47vw;
@@ -111,5 +123,12 @@
     img {
       width: 41.33vw;
     }
+  }
+
+  .personalInfo {
+    background: url("../../assets/index/background.jpg") no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
   }
 </style>

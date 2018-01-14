@@ -1,6 +1,8 @@
 <template>
   <div class="comment">
+
     <img v-if="index<3" class="ranking-img" :src="imgUrls[index]">
+
     <span v-else class="ranking">{{index+1}}</span>
     <img :src="pic" alt="头像">
     <div class="right">
@@ -8,8 +10,8 @@
         {{content}}
       </div>
       <div class="info">
-        <img class="liked" src="../../assets/comments/button.png" alt="">
-        <span class="likes">{{likes}}</span>
+          <img class="liked" src="../../assets/comments/button.png" alt="">
+        <span class="likesNum">{{likes}}</span>
       </div>
     </div>
   </div>
@@ -46,6 +48,7 @@
       width: 10vw;
       border-radius: 50%;
     }
+
     .ranking-img {
       width: 4.8vw;
       left: 4vw;
@@ -75,7 +78,11 @@
     .liked {
       width: 5.2vw;
       vertical-align: -5px;
-      margin-right: 1vw;
+    }
+    .likesNum{
+      display: inline-block;
+      width: 8vw;
+      text-align: center;
     }
   }
 </style>
