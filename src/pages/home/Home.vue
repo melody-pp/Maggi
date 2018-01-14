@@ -14,7 +14,8 @@
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false" class="home-dialog">
+    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false"
+               class="home-dialog">
       <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
           <img :src="img" style="width:auto; height:auto; max-width:100%; max-height: 100%;vertical-align: middle;">
@@ -27,6 +28,7 @@
 <script>
   import { tween, styler, value, spring, easing } from 'popmotion'
   import ArrowBtn from '../../components/ArrowBtn'
+  import { showUpvote, sample } from '../../utils/utils'
 
   export default {
     name: 'Home',
@@ -53,6 +55,8 @@
     mounted () {
       this.resetNodes()
       this.animate()
+      const colors = ['#abcdef', '#bbbbbb', '#cccccc', '#dddddd']
+      document.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
     },
     methods: {
       showDialog (index) {
