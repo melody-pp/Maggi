@@ -55,7 +55,7 @@
       $('#fullpage').fullpage({
         verticalCentered: false,
         onLeave (index, nextIndex, direction) {
-          if (direction === 'up' && nextIndex === 8 && document.querySelector('.rankContent').scrollTop) {
+          if (window.disableFullpage) {
             return false
           }
           that.current = nextIndex

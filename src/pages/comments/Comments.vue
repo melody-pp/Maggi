@@ -119,6 +119,7 @@
     methods: {
       touchstart (event) {
         this.positionY = event.touches[0].clientY
+        window.disableFullpage = !!document.querySelector('.rankContent').scrollTop
       },
       touchmove (event) {
         const currentY = event.touches[0].clientY
