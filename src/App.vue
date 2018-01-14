@@ -63,10 +63,11 @@
 </script>
 
 <style lang="scss">
-  body{
+  body {
     margin: 0;
     padding: 0;
   }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -105,6 +106,22 @@
 
   .themeTxt {
     margin: 6.5vh auto 3vh;
+  }
+
+  .v-modal {
+    opacity: .8;
+  }
+
+  .home-dialog {
+    .el-dialog {
+      background: transparent;
+      .el-carousel__item{
+        line-height: 25vh;
+      }
+      .el-carousel__item--card {
+        text-align: center;
+      }
+    }
   }
 
   .el-input input {

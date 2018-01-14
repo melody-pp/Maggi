@@ -14,10 +14,10 @@
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false">
-      <el-carousel ref="carousel" type="card" height="20vh" indicator-position="none">
+    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false" class="home-dialog">
+      <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
-          <img :src="img" alt="">
+          <img :src="img" style="width:auto; height:auto; max-width:100%; max-height: 100%;vertical-align: middle;">
         </el-carousel-item>
       </el-carousel>
     </el-dialog>
