@@ -4,9 +4,9 @@
       <img src="../../assets/index/topText.png" ref="topImg">
     </el-header>
 
-    <el-main class="main clearfix">
+    <div ref="main" class="main clearfix">
       <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
-    </el-main>
+    </div>
 
     <el-footer>
       <img src="../../assets/index/bottomText.png" ref="bottomImg">
@@ -64,6 +64,7 @@
         setTimeout(this.showTop.bind(this), 2000)
         setTimeout(this.showBottom.bind(this), 2500)
         setTimeout(() => this.showArrow = true, 2500)
+        setTimeout(this.showMainBG.bind(this), 2000)
       },
       showTop () {
         const topImg = this.$refs.topImg
@@ -74,6 +75,16 @@
           ease: easing.easeInOut,
           duration: 1000
         }).start(topStyler.set)
+      },
+      showMainBG () {
+        const main = this.$refs.main
+        const mainStyler = styler(main)
+        tween({
+          from: {background: 'rgba(0,0,0,0)'},
+          to: {background: 'rgba(255,255,255,1)'},
+          ease: easing.easeInOut,
+          duration: 1000
+        }).start(mainStyler.set)
       },
       showBottom () {
         const bottomImg = this.$refs.bottomImg
@@ -104,6 +115,7 @@
           img.style.opacity = 0
           img.style.scale = 0
         }
+        this.$refs.main.style.background = 'rgba(0,0,0,0)'
         this.$refs.topImg.style.opacity = 0
         this.$refs.bottomImg.style.opacity = 0
       }
