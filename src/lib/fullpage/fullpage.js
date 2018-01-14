@@ -181,7 +181,6 @@ $.fn.fullpage = function (options) {
   var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|playbook|silk|BlackBerry|BB10|Windows Phone|Tizen|Bada|webOS|IEMobile|Opera Mini)/)
   var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints))
   var container = $(this)
-  var windowsHeight = $window.height()
   var isResizing = false
   var isWindowFocused = true
   var lastScrolledDestiny
@@ -438,8 +437,6 @@ $.fn.fullpage = function (options) {
 
     isResizing = true
 
-    windowsHeight = $window.height()  //updating global var
-
     $(SECTION_SEL).each(function () {
       var slidesWrap = $(this).find(SLIDES_WRAPPER_SEL)
       var slides = $(this).find(SLIDE_SEL)
@@ -449,7 +446,7 @@ $.fn.fullpage = function (options) {
         $(this).find(TABLE_CELL_SEL).css('height', getTableHeight($(this)) + 'px')
       }
 
-      $(this).css('height', windowsHeight + 'px')
+      $(this).css('height', $window.height() + 'px')
 
       //adjusting the position fo the FULL WIDTH slides...
       if (slides.length > 1) {
@@ -638,9 +635,6 @@ $.fn.fullpage = function (options) {
     container.addClass(WRAPPER)
     $('html').addClass(ENABLED)
 
-    //due to https://github.com/alvarotrigo/fullPage.js/issues/1502
-    windowsHeight = $window.height()
-
     container.removeClass(DESTROYED) //in case it was destroyed before initializing it again
 
     addInternalSelectors()
@@ -734,7 +728,7 @@ $.fn.fullpage = function (options) {
     }
     startingSection = $(SECTION_ACTIVE_SEL)
 
-    section.css('height', windowsHeight + 'px')
+    section.css('height', $window.height() + 'px')
 
     if (options.paddingTop) {
       section.css('padding-top', options.paddingTop)
@@ -988,7 +982,7 @@ $.fn.fullpage = function (options) {
           if (options.fitToSection &&
 
             //is the destination element bigger than the viewport?
-            $(SECTION_ACTIVE_SEL).outerHeight() <= windowsHeight
+            $(SECTION_ACTIVE_SEL).outerHeight() <= $window.height()
           ) {
             fitToSection()
           }
@@ -1320,11 +1314,11 @@ $.fn.fullpage = function (options) {
     //top of the desination will be at the top of the viewport
     var position = elemPosition.top
     var isScrollingDown = elemPosition.top > previousDestTop
-    var sectionBottom = position - windowsHeight + element.outerHeight()
+    var sectionBottom = position - $window.height() + element.outerHeight()
     var bigSectionsDestination = options.bigSectionsDestination
 
     //is the destination element bigger than the viewport?
-    if (element.outerHeight() > windowsHeight) {
+    if (element.outerHeight() > $window.height()) {
       //scrolling up?
       if (!isScrollingDown && !bigSectionsDestination || bigSectionsDestination === 'bottom') {
         position = sectionBottom
@@ -1353,7 +1347,7 @@ $.fn.fullpage = function (options) {
   function scrollPage (element, callback, isMovementUp) {
     if (typeof element === 'undefined') { return } //there's no element to scroll, leaving the function
 
-    var dtop = getDestinationPosition(element)
+    var dtop = (element.index()) * window.innerHeight
     var slideAnchorLink
     var slideIndex
 
@@ -2046,7 +2040,7 @@ $.fn.fullpage = function (options) {
     slidesNav.find('li').eq(slideIndex).find('a').addClass(ACTIVE)
   }
 
-  var previousHeight = windowsHeight
+  var previousHeight = $window.height()
 
   //when resizing the site, we adjust the heights of the sections, slimScroll...
   function resizeHandler () {
@@ -2191,7 +2185,7 @@ $.fn.fullpage = function (options) {
   }
 
   function getTableHeight (element) {
-    var sectionHeight = windowsHeight
+    var sectionHeight = $window.height()
 
     if (options.paddingTop || options.paddingBottom) {
       var section = element
@@ -2200,7 +2194,7 @@ $.fn.fullpage = function (options) {
       }
 
       var paddings = parseInt(section.css('padding-top')) + parseInt(section.css('padding-bottom'))
-      sectionHeight = (windowsHeight - paddings)
+      sectionHeight = ($window.height() - paddings)
     }
 
     return sectionHeight

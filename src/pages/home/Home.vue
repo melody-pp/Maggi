@@ -56,7 +56,7 @@
       this.resetNodes()
       this.animate()
       const colors = ['#abcdef', '#bbbbbb', '#cccccc', '#dddddd']
-      document.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
+      // document.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
     },
     methods: {
       showDialog (index) {

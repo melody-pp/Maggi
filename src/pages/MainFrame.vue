@@ -52,13 +52,30 @@
     },
     mounted () {
       const that = this
-      $('#fullpage').fullpage({
+      const $app = $('#app')
+      const $fullpage = $('#fullpage')
+      const total = window.innerHeight
+
+      $fullpage.fullpage({
+        css3: false,
         verticalCentered: false,
         onLeave (index, nextIndex, direction) {
           if (window.disableFullpage) {
             return false
           }
           that.current = nextIndex
+        }
+      })
+
+      window.addEventListener('resize', () => {
+        if (window.innerHeight === total) {
+          setTimeout(() => {
+            for (const page of document.querySelectorAll('#fullpage>.section')) {
+              page.style.height = '100vh'
+            }
+            $app.css('margin-top', -$app.position().top + 'px')
+            $fullpage.fullpage.moveTo(that.current)
+          }, 500)
         }
       })
     },
