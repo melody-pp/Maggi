@@ -159,39 +159,39 @@
     }
 
     img:nth-child(1) {
-      width: 41.33vw;
+      width: 42.113vw;
     }
     img:nth-child(2) {
       width: 19.6vw;
-      margin: 0 1.383vw;
+      margin: 0 0.6vw;
     }
     img:nth-child(3) {
-      width: 36.304vw;
+      width: 37.087vw;
     }
     img:nth-child(4) {
-      width: 18.13vw;
-      margin-right: 1.383vw;
+      width: 18.913vw;
+      margin-right: 0.6vw;
     }
     img:nth-child(5) {
-      width: 22.93vw;
-      margin-right: 1.383vw;
+      width: 23.713vw;
+      margin-right: 0.6vw;
     }
     img:nth-child(6) {
       width: 35.33vw;
-      margin-right: 1.383vw;
+      margin-right: 0.6vw;
     }
     img:nth-child(7) {
-      width: 19.46vw;
+      width: 20.243vw;
     }
     img:nth-child(8) {
       width: 41.33vw;
     }
     img:nth-child(9) {
-      width: 19.6vw;
-      margin: 0 1.383vw;
+      width: 20.383vw;
+      margin: 0 0.6vw;
     }
     img:nth-child(10) {
-      width: 36.304vw;
+      width: 37.087vw;
     }
   }
 </style>
