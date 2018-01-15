@@ -1,8 +1,6 @@
 <template>
   <div class="comment">
-
     <img v-if="index<3" class="ranking-img" :src="imgUrls[index]">
-
     <span v-else class="ranking">{{index+1}}</span>
     <img :src="pic" alt="头像">
     <div class="right">
