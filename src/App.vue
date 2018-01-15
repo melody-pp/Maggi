@@ -157,7 +157,7 @@
     }
     .el-dialog__body {
       color: #fff;
-      padding: 10px;
+      padding: 0 20px;
       max-height: 70vh;
       overflow: scroll;
       text-align: left;
