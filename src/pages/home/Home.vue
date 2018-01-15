@@ -1,16 +1,16 @@
 <template>
-  <el-container>
-    <el-header class="header">
+  <div>
+    <div class="header">
       <img src="../../assets/index/topText.png" ref="topImg">
-    </el-header>
+    </div>
 
     <div ref="main" class="main clearfix">
       <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
     </div>
 
-    <el-footer>
+    <div class="footer">
       <img src="../../assets/index/bottomText.png" ref="bottomImg">
-    </el-footer>
+    </div>
 
     <ArrowBtn v-show="showArrow"/>
 
@@ -22,7 +22,7 @@
         </el-carousel-item>
       </el-carousel>
     </el-dialog>
-  </el-container>
+  </div>
 </template>
 
 <script>
@@ -140,7 +140,7 @@
     margin: 6.47vh auto 4.98vh;
   }
 
-  .el-footer {
+  .footer {
     padding: 0;
     width: 49.87vw;
     height: auto !important;

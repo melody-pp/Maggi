@@ -1,7 +1,16 @@
 <template>
   <div>
-    <div class="prizeBox">
-      <Carousel :imgs="imgs"/>
+    <div id="Glide" class="glide">
+      <div class="glide__wrapper">
+        <ul class="glide__track">
+          <li class="glide__slide"><img src="../../assets/prize/Warm-air-blower.png"></li>
+          <li class="glide__slide"><img src="../../assets/prize/Vacuum-cup.png"></li>
+          <li class="glide__slide"><img src="../../assets/prize/Intelligent-bracelet.png"></li>
+          <li class="glide__slide"><img src="../../assets/prize/Charging.png"></li>
+          <li class="glide__slide"><img src="../../assets/prize/Electronic-gift-card.png"></li>
+          <li class="glide__slide"><img src="../../assets/prize/The-cook.png"></li>
+        </ul>
+      </div>
     </div>
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
     <div>
@@ -33,24 +42,20 @@
   </div>
 </template>
 <script>
-  import Carousel from '../../components/Carousel'
+  import $ from 'jquery'
 
   export default {
-    components: {Carousel},
     data () {
       return {
         dialogVisible: false,
         follow: true,
         knowRule: true,
-        imgs: [
-          require('../../assets/prize/Warm-air-blower.png'),
-          require('../../assets/prize/Vacuum-cup.png'),
-          require('../../assets/prize/Intelligent-bracelet.png'),
-          require('../../assets/prize/Charging.png'),
-          require('../../assets/prize/Electronic-gift-card.png'),
-          require('../../assets/prize/The-cook.png'),
-        ]
       }
+    },
+    mounted () {
+      $('#Glide').glide({
+        type: 'carousel'
+      })
     },
     methods: {
       showDialog () {
@@ -68,8 +73,11 @@
   }
 </script>
 <style scoped lang="scss">
-  .prizeBox {
+  .glide {
     margin-top: 2vh;
+    img {
+      width: 22vw;
+    }
   }
 
   .close {
