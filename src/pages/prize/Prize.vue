@@ -1,14 +1,7 @@
 <template>
   <div>
     <div class="prizeBox">
-      <marquee behavior="scroll" direction="left">
-        <img src="../../assets/prize/Warm-air-blower.png" alt="">
-        <img src="../../assets/prize/Vacuum-cup.png" alt="">
-        <img src="../../assets/prize/Intelligent-bracelet.png" alt="">
-        <img src="../../assets/prize/Charging.png" alt="">
-        <img src="../../assets/prize/Electronic-gift-card.png" alt="">
-        <img src="../../assets/prize/The-cook.png" alt="">
-      </marquee>
+      <Carousel :imgs="imgs"/>
     </div>
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
     <div>
@@ -40,12 +33,23 @@
   </div>
 </template>
 <script>
+  import Carousel from '../../components/Carousel'
+
   export default {
+    components: {Carousel},
     data () {
       return {
         dialogVisible: false,
         follow: true,
-        knowRule: true
+        knowRule: true,
+        imgs: [
+          require('../../assets/prize/Warm-air-blower.png'),
+          require('../../assets/prize/Vacuum-cup.png'),
+          require('../../assets/prize/Intelligent-bracelet.png'),
+          require('../../assets/prize/Charging.png'),
+          require('../../assets/prize/Electronic-gift-card.png'),
+          require('../../assets/prize/The-cook.png'),
+        ]
       }
     },
     methods: {
@@ -66,10 +70,6 @@
 <style scoped lang="scss">
   .prizeBox {
     margin-top: 2vh;
-    img {
-      width: 22vw;
-    }
-
   }
 
   .close {
