@@ -10,7 +10,7 @@
         {{content}}
       </div>
       <div class="info">
-          <img class="liked" src="../../assets/comments/button.png" alt="">
+        <img ref="liked" class="liked" src="../../assets/comments/button.png" alt="">
         <span class="likesNum">{{likes}}</span>
       </div>
     </div>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import { showUpvote, sample } from '../../utils/utils'
+
   export default {
     name: 'comment-item',
     props: ['pic', 'content', 'liked', 'likes', 'index'],
@@ -29,6 +31,10 @@
           require('../../assets/comments/NO3.png'),
         ]
       }
+    },
+    mounted () {
+      const colors = ['#abcdef', '#bbbbbb', '#cccccc', '#dddddd']
+      this.$refs.liked.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
     }
   }
 </script>
@@ -79,7 +85,7 @@
       width: 5.2vw;
       vertical-align: -5px;
     }
-    .likesNum{
+    .likesNum {
       display: inline-block;
       width: 8vw;
       text-align: center;

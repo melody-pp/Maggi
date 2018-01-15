@@ -28,7 +28,6 @@
 <script>
   import { tween, styler, value, spring, easing } from 'popmotion'
   import ArrowBtn from '../../components/ArrowBtn'
-  import { showUpvote, sample } from '../../utils/utils'
 
   export default {
     name: 'Home',
@@ -55,8 +54,7 @@
     mounted () {
       this.resetNodes()
       this.animate()
-      const colors = ['#abcdef', '#bbbbbb', '#cccccc', '#dddddd']
-      // document.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
+
     },
     methods: {
       showDialog (index) {
