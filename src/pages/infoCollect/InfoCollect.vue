@@ -63,10 +63,10 @@
   }
 
   .homeTxt {
-    width: 12.26%;
+    width: 12.26vw;
     position: absolute;
-    top: 18%;
-    left: 25%;
+    top: 23vh;
+    left: 25vw;
   }
 
   .el-textarea {

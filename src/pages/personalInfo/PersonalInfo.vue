@@ -90,7 +90,7 @@
     width: 17.6vw;
     position: absolute;
     left: 8vw;
-    bottom: 21vh;
+    bottom: 19vh;
   }
 
   .close {
@@ -153,7 +153,7 @@
   .btnBox {
     position: absolute;
     width: 100vw;
-    bottom: 10vh;
+    bottom: 1.5vh;
     img {
       width: 41.33vw;
     }

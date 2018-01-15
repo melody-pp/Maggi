@@ -109,6 +109,7 @@
     .linkTxt {
       padding-bottom: 2px;
       border-bottom: 1px solid #fff;
+      display: inline-block;
     }
     .agreeBtn {
       display: inline-block;
