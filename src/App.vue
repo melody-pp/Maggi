@@ -115,7 +115,7 @@
   .home-dialog {
     .el-dialog {
       background: transparent;
-      .el-carousel__item{
+      .el-carousel__item {
         line-height: 25vh;
       }
       .el-carousel__item--card {

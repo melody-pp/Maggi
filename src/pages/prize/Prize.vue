@@ -1,16 +1,12 @@
 <template>
   <div>
-    <div id="Glide" class="glide">
-      <div class="glide__wrapper">
-        <ul class="glide__track">
-          <li class="glide__slide"><img src="../../assets/prize/Warm-air-blower.png"></li>
-          <li class="glide__slide"><img src="../../assets/prize/Vacuum-cup.png"></li>
-          <li class="glide__slide"><img src="../../assets/prize/Intelligent-bracelet.png"></li>
-          <li class="glide__slide"><img src="../../assets/prize/Charging.png"></li>
-          <li class="glide__slide"><img src="../../assets/prize/Electronic-gift-card.png"></li>
-          <li class="glide__slide"><img src="../../assets/prize/The-cook.png"></li>
-        </ul>
-      </div>
+    <div id="slick" class="slick">
+      <div><img src="../../assets/prize/Warm-air-blower.png"></div>
+      <div><img src="../../assets/prize/Vacuum-cup.png"></div>
+      <div><img src="../../assets/prize/Intelligent-bracelet.png"></div>
+      <div><img src="../../assets/prize/Charging.png"></div>
+      <div><img src="../../assets/prize/Electronic-gift-card.png"></div>
+      <div><img src="../../assets/prize/The-cook.png"></div>
     </div>
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
     <div>
@@ -53,8 +49,15 @@
       }
     },
     mounted () {
-      $('#Glide').glide({
-        type: 'carousel'
+      $('#slick').slick({
+        arrows: false,
+        infinite: true,
+        autoplay: true,
+        centerMode: true,
+        speed: 600,
+        slidesToShow: 3,
+        autoplaySpeed: 1500,
+        easing: 'ease-out',
       })
     },
     methods: {
@@ -73,10 +76,20 @@
   }
 </script>
 <style scoped lang="scss">
-  .glide {
+  .slick {
     margin-top: 2vh;
+
     img {
-      width: 22vw;
+      width: 20vw;
+      opacity: .7;
+      transition: all 500ms;
+    }
+
+    .slick-current {
+      img {
+        transform: scale(1.2);
+        opacity: 1;
+      }
     }
   }
 
