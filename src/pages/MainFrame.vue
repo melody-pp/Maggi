@@ -2,30 +2,39 @@
   <div id="fullpage">
     <div class="page-1 section">
       <Home :moveIn="current===1"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-2 section">
       <Guide1 :moveIn="current===2"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-3 section">
       <Guide2 :moveIn="current===3"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-4 section">
       <Guide3 :moveIn="current===4"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-5 section">
       <Guide4 :moveIn="current===5"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-6 section">
       <Prize :moveIn="current===6"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-7 section">
       <InfoCollect :moveIn="current===7"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-8 section">
       <Tips :moveIn="current===8"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-9 section">
       <Comments :moveIn="current===9"/>
+      <img class="logo" src="../assets/logo.png" alt="">
     </div>
   </div>
 </template>
@@ -91,5 +100,13 @@
     background-size: cover;
     overflow: hidden;
 
+  }
+
+  .logo {
+    position: absolute;
+    bottom: 1vh;
+    right: 2vw;
+    width: 10.67vw;
+    z-index: 100;
   }
 </style>
