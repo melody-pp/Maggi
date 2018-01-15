@@ -9,10 +9,10 @@
         <!-- <span :class="['agreeBtn',{follow}]" @click="follow=!follow"></span>
          <span style="margin-right: 17vw;">关注公众号</span>-->
         <span :class="['agreeBtn',{knowRule}]" @click="knowRule=!knowRule"></span>
-        <span @click="showDialog">我已了解活动规则</span>
+        <span class="linkTxt" @click="showDialog">我已了解活动规则</span>
       </div>
     </div>
-    <img class="btn" style="bottom:5vh;" src="../../assets/prize/start.png" alt="">
+    <img class="btn" src="../../assets/prize/start.png" alt="">
     <!--<img class="theRules" src="../../assets/prize/The-rules.png" alt="">-->
     <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
@@ -106,6 +106,11 @@
     width: 80vw;
     margin: 0 auto;
     margin-top: 3vh;
+    .linkTxt {
+      padding-bottom: 2px;
+      border-bottom: 1px solid #fff;
+      display: inline-block;
+    }
     .agreeBtn {
       display: inline-block;
       width: 5.33vw;

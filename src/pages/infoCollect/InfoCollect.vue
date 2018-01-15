@@ -5,7 +5,7 @@
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" :maxlength="80" v-model="content"/>
+    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……" :maxlength="80" v-model="content"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
   </div>
 </template>
@@ -49,6 +49,7 @@
   .bg {
     position: relative;
     height: 100%;
+    overflow: hidden;
   }
 
   .title {
@@ -62,10 +63,10 @@
   }
 
   .homeTxt {
-    width: 12.26%;
+    width: 12.26vw;
     position: absolute;
-    top: 18%;
-    left: 25%;
+    top: 23vh;
+    left: 25vw;
   }
 
   .el-textarea {
