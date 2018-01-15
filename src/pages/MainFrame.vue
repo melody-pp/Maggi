@@ -90,5 +90,6 @@
     background: url("../assets/index/background.jpg") no-repeat;
     background-size: cover;
     overflow: hidden;
+
   }
 </style>

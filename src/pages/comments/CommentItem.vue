@@ -33,7 +33,7 @@
       }
     },
     mounted () {
-      const colors = ['#abcdef', '#bbbbbb', '#cccccc', '#dddddd']
+      const colors = ['#0fafef', '#bb1687', '#5ccca3', '#dd840e']
       this.$refs.liked.addEventListener('touchstart', event => showUpvote(event, sample(colors)))
     }
   }
