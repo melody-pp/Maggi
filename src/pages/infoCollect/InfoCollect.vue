@@ -3,7 +3,7 @@
     <div class="title">
       <img src="../../assets/infoCollect/01.png" alt="">
     </div>
-    <img class="gatherImg" src="../../assets/infoCollect/02.png" alt="">
+    <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
     <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" v-model="content"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
@@ -12,11 +12,25 @@
 
 <script>
   import $ from 'jquery'
+  import Ripple from '../../lib/Ripple'
 
   export default {
     data () {
       return {
         content: ''
+      }
+    },
+    mounted () {
+      const canvas = this.$refs.canvas
+      const ctx = canvas.getContext('2d')
+      const mainImg = document.createElement('img')
+      const width = window.innerWidth
+      const height = 656 / 750 * width
+
+      mainImg.src = require('../../assets/infoCollect/02.png')
+      mainImg.onload = () => {
+        ctx.drawImage(mainImg, 0, 0)
+        new Ripple(ctx, 0, 0, 800, mainImg)
       }
     },
     methods: {
@@ -45,7 +59,8 @@
     width: 65.5%;
   }
 
-  .gatherImg {
+  .canvas {
+    width: 100vw;
     margin: 2vh 0 2.5vh;
   }
 
