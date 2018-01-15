@@ -12,7 +12,7 @@ const svgAnimate = svg => {
       {x: Math.random() * 30 - 15, y: -150, opacity: 0},
     ],
     easings: easing.linear,
-    duration: 1000,
+    duration: 1500,
   }).start({
     update: styler(svg).set,
     complete () {
