@@ -174,6 +174,7 @@
     width: 100%;
     img {
       width: 36.27vw;
+      vertical-align: middle;
     }
   }
 </style>

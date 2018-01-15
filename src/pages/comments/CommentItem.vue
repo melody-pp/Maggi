@@ -78,7 +78,7 @@
 
   .info {
     text-align: right;
-    margin: 4px 0;
+    margin: 2px 0;
 
     .liked {
       width: 4.6vw;
