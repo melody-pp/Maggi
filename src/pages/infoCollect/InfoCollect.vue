@@ -5,7 +5,7 @@
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" v-model="content"/>
+    <el-input type="textarea" :rows="3" placeholder="2018年春节，我想说……" :maxlength="80" v-model="content"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
   </div>
 </template>
@@ -21,11 +21,8 @@
       }
     },
     mounted () {
-      const canvas = this.$refs.canvas
-      const ctx = canvas.getContext('2d')
+      const ctx = this.$refs.canvas.getContext('2d')
       const mainImg = document.createElement('img')
-      const width = window.innerWidth
-      const height = 656 / 750 * width
 
       mainImg.src = require('../../assets/infoCollect/02.png')
       mainImg.onload = () => {
