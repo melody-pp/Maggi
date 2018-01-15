@@ -78,9 +78,10 @@
 
   .info {
     text-align: right;
+    margin: 4px 0;
 
     .liked {
-      width: 5.2vw;
+      width: 4.6vw;
       vertical-align: -5px;
     }
     .likesNum {

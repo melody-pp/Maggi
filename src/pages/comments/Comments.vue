@@ -2,8 +2,8 @@
   <div class="comments">
     <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png" alt="">
     <div class="rank-type">
-      <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">最新上榜</div>
       <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">心意排行榜</div>
+      <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">最新上榜</div>
     </div>
     <div class="rankContent" ref="rankContent" @touchmove="touchmove" @touchstart="touchstart">
       <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
@@ -24,7 +24,7 @@
     data () {
       return {
         positionY: null,
-        rankType: 'createTime',
+        rankType: 'likedNum',
         comments: [
           {
             pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
