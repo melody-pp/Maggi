@@ -27,7 +27,7 @@
       mainImg.src = require('../../assets/infoCollect/02.png')
       mainImg.onload = () => {
         ctx.drawImage(mainImg, 0, 0)
-        new Ripple(ctx, 0, 0, 800, mainImg)
+        new Ripple(ctx, 0, -100, 800, mainImg)
       }
     },
     methods: {
