@@ -8,7 +8,10 @@
     <div class="rankContent" ref="rankContent" @touchmove="touchmove" @touchstart="touchstart">
       <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :key="index"/>
     </div>
-    <img style="bottom:4vh;" class="btn" src="../../assets/comments/button1.png" @click="toPersonalInfo">
+    <div class="btnBox">
+      <img class="" src="../../assets/comments/button1.png" @click="">
+      <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
+    </div>
   </div>
 </template>
 
@@ -161,5 +164,16 @@
     background-size: cover;
     overflow: hidden;
     height: 100vh;
+  }
+
+  .btnBox {
+    position: absolute;
+    bottom: 1.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    img {
+      width: 36.27vw;
+    }
   }
 </style>

@@ -13,8 +13,8 @@
     <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
     <div>
       <div class="agreeBox clearfix">
-        <span :class="['agreeBtn',{follow}]" @click="follow=!follow"></span>
-        <span style="margin-right: 17vw;">关注公众号</span>
+        <!-- <span :class="['agreeBtn',{follow}]" @click="follow=!follow"></span>
+         <span style="margin-right: 17vw;">关注公众号</span>-->
         <span :class="['agreeBtn',{knowRule}]" @click="knowRule=!knowRule"></span>
         <span @click="showDialog">我已了解活动规则</span>
       </div>
@@ -63,7 +63,7 @@
       return {
         dialogVisible: false,
         follow: true,
-        knowRule:true
+        knowRule: true
       }
     },
     methods: {
@@ -120,7 +120,10 @@
   }
 
   .agreeBox {
-    margin-top: 4vh;
+    text-align: left;
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 3vh;
     .agreeBtn {
       display: inline-block;
       width: 5.33vw;

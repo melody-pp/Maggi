@@ -22,7 +22,7 @@
       <InfoCollect :moveIn="current===7"/>
     </div>
     <div class="page-8 section">
-      <LeaveInfo :moveIn="current===8"/>
+      <Tips :moveIn="current===8"/>
     </div>
     <div class="page-9 section">
       <Comments :moveIn="current===9"/>
@@ -39,7 +39,7 @@
   import InfoCollect from './infoCollect/InfoCollect'
   import PersonalInfo from './personalInfo/PersonalInfo'
   import Prize from './prize/Prize'
-  import LeaveInfo from './leaveInfo/LeaveInfo'
+  import Tips from './tips/Tips'
   import Comments from './comments/Comments'
   import Guide4 from './guide4/Guide4'
 
@@ -80,7 +80,7 @@
       })
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, LeaveInfo, Comments, Guide4
+      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4
     }
   }
 </script>
