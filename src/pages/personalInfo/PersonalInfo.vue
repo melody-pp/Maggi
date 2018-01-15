@@ -2,9 +2,9 @@
   <div class="personalInfo">
     <div>
       <div class="themeTxt clearfix">
-        <img class="theme" src="../../assets/personalInfo/theme.png" alt="">
+        <img class="theme" src="../../assets/personalInfo/theme.png">
         <span class="num">30</span>
-        <img class="theme1" src="../../assets/personalInfo/theme1.png" alt="">
+        <img class="theme1" src="../../assets/personalInfo/theme1.png">
       </div>
 
       <div class="theme2">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="headPortraitBox">
-      <img class="headPortrait" src="../../assets/personalInfo/headPortrait.png" alt="">
+      <img class="headPortrait" src="../../assets/personalInfo/headPortrait.png">
       <span class="like"></span>
       <span class="likeNum">116</span>
     </div>
@@ -25,8 +25,8 @@
       <img class="" src="../../assets/personalInfo/button.png" alt="">
       <img @click="toComments" src="../../assets/personalInfo/button2.png" alt="">
     </div>
-    <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
-               :append-to-body="true">
+    <el-dialog class="agreement" :visible.sync="dialogVisible"
+               :modal="false" :show-close="false" :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则:</span>
       <div @touchmove="touchmove" @touchstart="touchstart">
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
@@ -44,6 +44,7 @@
   </div>
 </template>
 <script>
+  import $ from 'jquery'
   export default {
     data () {
       return {
@@ -55,7 +56,15 @@
         this.dialogVisible = true
       },
       toComments () {
-        this.$router.push({path: '/comments'})
+        $('#fullpage').fullpage.moveTo(9)
+      },
+      touchstart (event) {
+        this.positionY = event.touches[0].clientY
+      },
+      touchmove (event) {
+        const currentY = event.touches[0].clientY
+        document.querySelector('agreement .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
+        this.positionY = currentY
       }
     }
   }

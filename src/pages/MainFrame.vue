@@ -36,6 +36,11 @@
       <Comments :moveIn="current===9"/>
       <img class="logo" src="../assets/logo.png" alt="">
     </div>
+    <div class="page-10 section">
+      <PersonalInfo :moveIn="current===10"/>
+      <img class="logo" src="../assets/logo.png" alt="">
+    </div>
+
   </div>
 </template>
 
@@ -45,12 +50,12 @@
   import Guide1 from './guide1/Guide1'
   import Guide2 from './guide2/Guide2'
   import Guide3 from './guide3/Guide3'
-  import InfoCollect from './infoCollect/InfoCollect'
-  import PersonalInfo from './personalInfo/PersonalInfo'
+  import Guide4 from './guide4/Guide4'
   import Prize from './prize/Prize'
+  import InfoCollect from './infoCollect/InfoCollect'
   import Tips from './tips/Tips'
   import Comments from './comments/Comments'
-  import Guide4 from './guide4/Guide4'
+  import PersonalInfo from './personalInfo/PersonalInfo'
 
   export default {
     name: 'MainFrame',

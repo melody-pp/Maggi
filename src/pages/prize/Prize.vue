@@ -19,7 +19,7 @@
     </div>
     <img class="btn" src="../../assets/prize/start.png" alt="">
     <!--<img class="theRules" src="../../assets/prize/The-rules.png" alt="">-->
-    <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
+    <el-dialog class="activityRule" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则:</span>
       <div @touchmove="touchmove" @touchstart="touchstart">
@@ -69,7 +69,7 @@
       },
       touchmove (event) {
         const currentY = event.touches[0].clientY
-        document.querySelector('.el-dialog__body').scrollTop += (this.positionY - currentY) * 2
+        document.querySelector('activityRule .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
         this.positionY = currentY
       }
     }

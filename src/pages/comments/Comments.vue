@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import CommentItem from './CommentItem'
 
   export default {
@@ -130,7 +131,7 @@
         this.positionY = currentY
       },
       toPersonalInfo () {
-        this.$router.push({path: '/personalInfo'})
+        $('#fullpage').fullpage.moveSectionDown()
       }
     }
   }

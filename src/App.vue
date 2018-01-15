@@ -140,7 +140,7 @@
     line-height: 8vh;
   }
 
-  .agreement {
+  .agreement, .activityRule {
     background: url("./assets/background.png") no-repeat;
     position: absolute;
     height: 100vh;
