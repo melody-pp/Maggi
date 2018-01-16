@@ -32,6 +32,7 @@
     },
     methods: {
       submit () {
+        if (!this.content) return
         this.axios({
             method: 'post',
             url: '/meiji/public/api/messagestore',
