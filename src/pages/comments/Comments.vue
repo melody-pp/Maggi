@@ -6,7 +6,8 @@
       <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">最新上榜</div>
     </div>
     <div class="rankContent" ref="rankContent" @touchmove="touchmove" @touchstart="touchstart">
-      <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :rankType="rankType" :key="index"/>
+      <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :rankType="rankType"
+                   :key="index"/>
     </div>
     <div class="btnBox">
       <img class="" src="../../assets/comments/button1.png" @click="">
@@ -148,6 +149,7 @@
       font-size: 16px;
       padding: 2vw 5vw;
       border: 1px solid #fff;
+      width: 20vw;
     }
     .active {
       color: orange;
