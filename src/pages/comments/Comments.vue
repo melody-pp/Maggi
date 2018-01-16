@@ -146,7 +146,7 @@
     div {
       color: #fff;
       display: inline-block;
-      font-size: 16px;
+      font-size: 3.8vw;
       padding: 2vw 5vw;
       border: 1px solid #fff;
       width: 20vw;

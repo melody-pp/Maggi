@@ -61,14 +61,14 @@
 <style scoped lang="scss">
   .comment {
     color: #fff;
-    font-size: 14px;
+    font-size: 3.4vw;
     text-align: left;
     position: relative;
     padding: 5vw 0 0 24vw;
     &.noNum {
-      padding-left: 18vw;
+      padding-left: 17vw;
       > img {
-        left: 6vw;
+        left: 4vw;
       }
     }
     > img {
@@ -109,7 +109,7 @@
 
     .liked {
       width: 4.6vw;
-      vertical-align: -5px;
+      vertical-align: -6px;
     }
     .likesNum {
       display: inline-block;

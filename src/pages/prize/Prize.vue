@@ -127,7 +127,7 @@
 
   .agreeBox {
     text-align: left;
-    width: 80vw;
+    width: 87vw;
     margin: 0 auto;
     margin-top: 3vh;
     .linkTxt {
