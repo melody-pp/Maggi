@@ -1,32 +1,25 @@
 <template>
-  <div class="guidePage1">
+  <div>
     <div class="txt">
       <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png" alt="">
       <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png" alt="">
     </div>
     <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="toComments">
-
+    <ArrowBtn/>
   </div>
 </template>
 
 <script>
-  import $ from 'jquery'
-
   export default {
     methods: {
       toComments () {
-        $('#fullpage').fullpage.moveSectionDown()
+        this.$store.commit('moveDown')
       }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .guidePage1 {
-    position: relative;
-    height: 100vh;
-  }
-
   .bg-container img {
     vertical-align: middle;
     height: 50vh;

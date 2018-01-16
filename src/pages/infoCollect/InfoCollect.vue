@@ -32,15 +32,17 @@
     },
     methods: {
       submit () {
-        if (!this.content) return
+        if (!this.content) {
+          return this.$message.warning('留言不能为空哦！')
+        }
+
         this.axios({
-            method: 'post',
-            url: '/meiji/public/api/messagestore',
-            data: {content: this.content}
-          }
-        ).then(res => {
+          method: 'post',
+          url: '/meiji/public/api/messagestore',
+          data: {content: this.content}
+        }).then(res => {
           this.$message.success('提交成功！')
-          $('#fullpage').fullpage.moveSectionDown()
+          this.$store.commit('moveDown')
         })
       },
     }

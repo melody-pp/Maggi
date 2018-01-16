@@ -7,8 +7,8 @@
       <el-input v-model="tel" placeholder="手机号"/>
       <area-cascader type='text' v-model="area" :level="1"/>
       <el-input v-model="address" placeholder="详细地址"/>
-      <div class="agreenBox clearfix">
-        <span class="agreenBtn" @click="changeBtn"></span>
+      <div class="agreeBox clearfix">
+        <span class="agreeBtn" @click="changeBtn"></span>
         <span type="text" @click="showDialog">我已阅读协议</span>
       </div>
       <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="save">
@@ -17,7 +17,7 @@
     <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
       <span slot="title" class="dialog-title">这里是title</span>
-      <div @touchmove="touchmove" @touchstart="touchstart">
+      <div>
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
         <p>雀巢重视对消费者个人隐私权的保护，为各位消费者设立本隐私权声明并将努力更新本声明的内容，使其更加全面并更加符合您的期望。</p>
         <p>1．隐私权条款的适用范围</p>
@@ -70,6 +70,7 @@
           {name: this.name, tel: this.tel, address: this.area + this.address}
         ).then(res => {
           this.$message.success('保存成功！')
+          this.$store.commit('moveDown')
         })
       },
       changeBtn () {
@@ -77,14 +78,14 @@
       showDialog () {
         this.dialogVisible = true
       },
-      touchstart (event) {
-        this.positionY = event.touches[0].clientY
-      },
-      touchmove (event) {
-        const currentY = event.touches[0].clientY
-        document.querySelector('.el-dialog__body').scrollTop += (this.positionY - currentY) * 2
-        this.positionY = currentY
-      }
+      // touchstart (event) {
+      //   this.positionY = event.touches[0].clientY
+      // },
+      // touchmove (event) {
+      //   const currentY = event.touches[0].clientY
+      //   document.querySelector('.el-dialog__body').scrollTop += (this.positionY - currentY) * 2
+      //   this.positionY = currentY
+      // }
     }
   }
 </script>
@@ -106,7 +107,7 @@
     right: 2vw;
   }
 
-  .agreenBox {
+  .agreeBox {
     margin-left: 10vw;
     margin-top: 5vw;
     span, button {
@@ -116,7 +117,7 @@
       padding: 3px;
       color: #fff;
     }
-    .agreenBtn {
+    .agreeBtn {
       display: inline-block;
       width: 5.33vw;
       height: 3.15vh;

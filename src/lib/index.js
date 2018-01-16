@@ -1,6 +1,5 @@
 import 'animate.css'
 import './axios'
 import './slick'
-import './fullpage'
 import './element-ui'
 import './vue-area-linkage'

@@ -1,5 +1,5 @@
 <template>
-  <div class="guidePage1">
+  <div>
     <div class="bg-container">
       <div class="topImg clearfix">
         <img src="../../assets/p2/01.jpg" ref="img1">
@@ -108,10 +108,6 @@
 </script>
 
 <style scoped lang="scss">
-  .guidePage1 {
-    position: relative;
-  }
-
   .bg-container {
     > img {
       height: 50vh;

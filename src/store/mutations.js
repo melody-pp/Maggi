@@ -10,5 +10,15 @@ export default {
   },
   moveTo (state, current) {
     state.current = current
+  },
+  moveDown (state) {
+    if (state.current < 9) {
+      state.current++
+    }
+  },
+  moveUp (state) {
+    if (state.current > 0) {
+      state.current--
+    }
   }
 }

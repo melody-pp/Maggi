@@ -5,9 +5,9 @@
       <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">心意排行榜</div>
       <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">最新上榜</div>
     </div>
-    <div class="rankContent" ref="rankContent" @touchmove="touchmove" @touchstart="touchstart">
-      <CommentItem v-for="(comment, index) of comments" v-bind="comment" :index="index" :rankType="rankType"
-                   :key="index"/>
+    <div class="rankContent" ref="rankContent">
+      <CommentItem v-for="(comment, index) of comments" v-bind="comment"
+                   :rankType="rankType" :index="index" :key="index"/>
     </div>
     <div class="btnBox">
       <img class="" src="../../assets/comments/button1.png" @click="">
@@ -122,17 +122,17 @@
       }
     },
     methods: {
-      touchstart (event) {
-        this.positionY = event.touches[0].clientY
-        window.disableFullpage = !!document.querySelector('.rankContent').scrollTop
-      },
-      touchmove (event) {
-        const currentY = event.touches[0].clientY
-        this.$refs.rankContent.scrollTop += (this.positionY - currentY) * 2
-        this.positionY = currentY
-      },
+      // touchstart (event) {
+      //   this.positionY = event.touches[0].clientY
+      //   window.disableFullpage = !!document.querySelector('.rankContent').scrollTop
+      // },
+      // touchmove (event) {
+      //   const currentY = event.touches[0].clientY
+      //   this.$refs.rankContent.scrollTop += (this.positionY - currentY) * 2
+      //   this.positionY = currentY
+      // },
       toPersonalInfo () {
-        $('#fullpage').fullpage.moveSectionDown()
+        this.$store.commit('moveDown')
       }
     }
   }

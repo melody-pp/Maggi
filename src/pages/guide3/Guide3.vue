@@ -1,5 +1,5 @@
 <template>
-  <div class="guidePage1">
+  <div>
     <div class="bg-container">
       <img src="../../assets/p3/family.jpg" ref="img1">
       <img src="../../assets/p3/busy.jpg" ref="img2">
@@ -90,10 +90,6 @@
 </script>
 
 <style scoped lang="scss">
-  .guidePage1 {
-    position: relative;
-  }
-
   .bg-container {
     img {
       vertical-align: middle;

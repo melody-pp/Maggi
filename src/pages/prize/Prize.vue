@@ -22,7 +22,7 @@
     <el-dialog class="activityRule" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则:</span>
-      <div @touchmove="touchmove" @touchstart="touchstart">
+      <div>
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
         <p>1. 活动时间：2018年2月2日21时-2018年2月12日24时。</p>
         <p>2. 本活动仅限雀巢专业餐饮大厨精英荟微信公众账号粉丝参与，未关注该微信公众账号者关注后方可参与活动。</p>
@@ -43,9 +43,9 @@
   export default {
     data () {
       return {
-        dialogVisible: false,
         follow: true,
         knowRule: true,
+        dialogVisible: false,
       }
     },
     mounted () {
@@ -64,16 +64,16 @@
       showDialog () {
         this.dialogVisible = true
       },
-      touchstart (event) {
-        this.positionY = event.touches[0].clientY
-      },
-      touchmove (event) {
-        const currentY = event.touches[0].clientY
-        document.querySelector('.activityRule .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
-        this.positionY = currentY
-      },
+      // touchstart (event) {
+      //   this.positionY = event.touches[0].clientY
+      // },
+      // touchmove (event) {
+      //   const currentY = event.touches[0].clientY
+      //   document.querySelector('.activityRule .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
+      //   this.positionY = currentY
+      // },
       toInfoCollect () {
-        $('#fullpage').fullpage.moveSectionDown()
+        this.$store.commit('moveDown')
       }
     }
   }

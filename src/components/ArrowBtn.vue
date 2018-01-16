@@ -8,11 +8,6 @@
   import { tween, styler, easing } from 'popmotion'
 
   export default {
-    computed: {
-      current () {
-        return this.$store.state.current
-      }
-    },
     mounted () {
       tween({
         to: 15,
@@ -23,7 +18,7 @@
     },
     methods: {
       moveDown () {
-        this.$store.commit('moveTo', this.current + 1)
+        this.$store.commit('moveDown')
       }
     }
   }
