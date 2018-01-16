@@ -13,7 +13,13 @@
     </div>
     <div class="headPortraitBox">
       <img class="headPortrait" src="../../assets/personalInfo/headPortrait.png">
-      <span class="like"></span>
+      <span class="like">
+        <svg class="liked" ref="liked" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             width="4.6vw" height="4vh" :fill="color">
+          <path
+            d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+        </svg></span>
       <span class="likeNum">116</span>
     </div>
     <div class="nickName">我是张大厨</div>
@@ -45,10 +51,13 @@
 </template>
 <script>
   import $ from 'jquery'
+  import { showUpvote, sample } from '../../utils/utils'
+
   export default {
     data () {
       return {
-        dialogVisible: false
+        dialogVisible: false,
+        color: '#ccc'
       }
     },
     methods: {
@@ -66,6 +75,13 @@
         document.querySelector('agreement .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
         this.positionY = currentY
       }
+    },
+    mounted () {
+      const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
+      this.$refs.liked.addEventListener('touchstart', event => {
+        this.color = '#cc9119'
+        showUpvote(event, sample(colors))
+      })
     }
   }
 </script>
@@ -119,18 +135,25 @@
 
   .headPortrait {
     width: 41.33vw;
+    border-radius: 50%;
   }
 
   .like {
-    background: url("../../assets/personalInfo/like.png") no-repeat 0 -10.67vw;
     display: block;
     width: 10.67vw;
     height: 10.67vw;
     background-size: 10.67vw;
     position: absolute;
-    top: 1.5vh;
+    top: 0.8vh;
     left: 50%;
     transform: translateX(107%);
+    background-color: #fff;
+    border-radius: 50%;
+    .liked {
+      position: absolute;
+      left: 3.2vw;
+      top: 1vh;
+    }
   }
 
   .headPortraitBox {
