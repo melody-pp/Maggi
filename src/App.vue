@@ -5,26 +5,32 @@
 </template>
 
 <script>
+  import $ from 'jquery'
+  import Vue from 'vue'
+
   export default {
     name: 'app',
     mounted () {
-      const {openid, nickname, headimgurl, timestamp, nonceStr, signature} = this.$route.query
+      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = this.$route.query
 
-      this.configWX(timestamp, nonceStr, signature)
-      window.userInfo = {openid, nickname, headimgurl}
+      Vue.prototype.isFromTimeLine = !!openIdPk
+      Vue.prototype.userInfo = {openId, nickName, headPic}
+      this.configWX(appId, timestamp, nonceStr, signature)
     },
     methods: {
-      configWX (timestamp, nonceStr, signature) {
+      configWX (appId, timestamp, nonceStr, signature) {
         const wx = require('weixin-js-sdk')
-        const appId = 'wx073d89db692f82e0'
 
         wx.config({
-          debug: false, // 调试模式
-          appId, // 必填，公众号的唯一标识
-          timestamp, // 必填，生成签名的时间戳
-          nonceStr, // 必填，生成签名的随机串
-          signature,// 必填，签名
-          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表
+          appId,
+          timestamp,
+          nonceStr,
+          signature,
+          debug: false,
+          jsApiList: [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+          ]
         })
 
         wx.ready(() => {

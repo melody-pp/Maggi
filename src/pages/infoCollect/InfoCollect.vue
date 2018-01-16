@@ -39,11 +39,9 @@
           }
         ).then(res => {
           this.$message.success('提交成功！')
+          $('#fullpage').fullpage.moveSectionDown()
         })
       },
-      toTips () {
-        $('#fullpage').fullpage.moveSectionDown()
-      }
     }
   }
 </script>
