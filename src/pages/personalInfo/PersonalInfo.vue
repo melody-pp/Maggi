@@ -14,7 +14,7 @@
     <div class="headPortraitBox">
       <img class="headPortrait" src="../../assets/personalInfo/headPortrait.png">
       <span class="like">
-        <svg class="liked" ref="liked" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
+        <svg class="liked" ref="likedPersonal" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              width="4.6vw" height="4vh" :fill="color">
           <path
@@ -78,7 +78,7 @@
     },
     mounted () {
       const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
-      this.$refs.liked.addEventListener('touchstart', event => {
+      this.$refs.likedPersonal.addEventListener('touchstart', event => {
         this.color = '#cc9119'
         showUpvote(event, sample(colors))
       })
@@ -163,8 +163,8 @@
       position: absolute;
       top: 1.5vh;
       left: 50%;
-      transform: translateX(200%);
-      font-size: 7vw;
+      transform: translateX(217%);
+      font-size: 6.6vw;
     }
   }
 
