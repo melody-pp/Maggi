@@ -45,7 +45,6 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import Home from './home/Home'
   import Guide1 from './guide1/Guide1'
   import Guide2 from './guide2/Guide2'
@@ -63,18 +62,6 @@
       current () {
         return this.$store.state.current
       }
-    },
-    mounted () {
-      const $app = $('#app')
-      const total = window.innerHeight
-
-      window.addEventListener('resize', () => {
-        if (window.innerHeight === total) {
-          setTimeout(() => {
-            $app.css('margin-top', -$app.position().top + 'px')
-          }, 500)
-        }
-      })
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4

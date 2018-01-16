@@ -66,14 +66,6 @@
       toComments () {
         this.$store.commit('moveDown')
       },
-      // touchstart (event) {
-      //   this.positionY = event.touches[0].clientY
-      // },
-      // touchmove (event) {
-      //   const currentY = event.touches[0].clientY
-      //   document.querySelector('.agreement .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
-      //   this.positionY = currentY
-      // }
     },
     mounted () {
       const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']

@@ -17,7 +17,6 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import CommentItem from './CommentItem'
 
   export default {
@@ -122,15 +121,6 @@
       }
     },
     methods: {
-      // touchstart (event) {
-      //   this.positionY = event.touches[0].clientY
-      //   window.disableFullpage = !!document.querySelector('.rankContent').scrollTop
-      // },
-      // touchmove (event) {
-      //   const currentY = event.touches[0].clientY
-      //   this.$refs.rankContent.scrollTop += (this.positionY - currentY) * 2
-      //   this.positionY = currentY
-      // },
       toPersonalInfo () {
         this.$store.commit('moveDown')
       }

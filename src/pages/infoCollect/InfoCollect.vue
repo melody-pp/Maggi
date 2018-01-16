@@ -11,7 +11,6 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import Ripple from '../../lib/Ripple/Ripple'
 
   export default {

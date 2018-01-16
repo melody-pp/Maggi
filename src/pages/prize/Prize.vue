@@ -64,14 +64,6 @@
       showDialog () {
         this.dialogVisible = true
       },
-      // touchstart (event) {
-      //   this.positionY = event.touches[0].clientY
-      // },
-      // touchmove (event) {
-      //   const currentY = event.touches[0].clientY
-      //   document.querySelector('.activityRule .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
-      //   this.positionY = currentY
-      // },
       toInfoCollect () {
         this.$store.commit('moveDown')
       }

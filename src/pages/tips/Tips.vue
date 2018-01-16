@@ -5,7 +5,6 @@
       <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png" alt="">
     </div>
     <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="toComments">
-    <ArrowBtn/>
   </div>
 </template>
 
