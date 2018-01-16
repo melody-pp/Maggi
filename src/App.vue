@@ -106,6 +106,10 @@
     margin-top: 7vh;
   }
 
+  canvas{
+    display: none;
+  }
+
   .clearfix {
     overflow: hidden;
     _zoom: 1;

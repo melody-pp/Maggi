@@ -61,6 +61,7 @@
   }
 
   .canvas {
+    display: block;
     width: 100vw;
     margin: 2vh 0 2.5vh;
   }

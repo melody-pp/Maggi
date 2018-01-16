@@ -9,11 +9,9 @@ export default class Ripple {
 
     this.displacementImg = document.createElement('img')
     this.displacementImg.src = require('./img/displacementImg.png')
-    this.displacementImg.style.display = 'none'
 
     this.displacementOverlayImg = document.createElement('img')
     this.displacementOverlayImg.src = require('./img/displacementOverlayImg.png')
-    this.displacementOverlayImg.style.display = 'none'
 
     this.normalImgData
     this.displacedImgData
