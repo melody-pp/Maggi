@@ -72,7 +72,7 @@
       },
       touchmove (event) {
         const currentY = event.touches[0].clientY
-        document.querySelector('agreement .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
+        document.querySelector('.agreement .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
         this.positionY = currentY
       }
     },
