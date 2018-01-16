@@ -1,21 +1,30 @@
 <template>
   <div id="app">
-    <router-view/>
+    <MainFrame/>
   </div>
 </template>
 
 <script>
-  import $ from 'jquery'
   import Vue from 'vue'
+  import MainFrame from './pages/MainFrame'
 
   export default {
     name: 'app',
+    components: {MainFrame},
     mounted () {
-      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = this.$route.query
+      const urlParams = (new URL(window.location)).searchParams
+      const appId = urlParams.get('appId')
+      const openId = urlParams.get('openId')
+      const openIdPk = urlParams.get('openIdPk')
+      const nickName = urlParams.get('nickName')
+      const headPic = urlParams.get('headPic')
+      const timestamp = urlParams.get('timestamp')
+      const nonceStr = urlParams.get('nonceStr')
+      const signature = urlParams.get('signature')
 
       Vue.prototype.isFromTimeLine = !!openIdPk
-      Vue.prototype.userInfo = {openId, nickName, headPic}
       this.configWX(appId, timestamp, nonceStr, signature)
+      this.$store.commit('setUserInfo', {openId, nickName, headPic})
     },
     methods: {
       configWX (appId, timestamp, nonceStr, signature) {
@@ -72,14 +81,21 @@
   body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
+
+    /*Avoid flicker on slides transitions for mobile phones #336 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   #app {
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #fff;
   }
 
   img {

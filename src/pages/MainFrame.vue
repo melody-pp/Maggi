@@ -1,44 +1,44 @@
 <template>
-  <div id="fullpage">
-    <div class="page-1 section">
-      <Home :moveIn="current===1"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+  <div id="main-frame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
+    <div class="page-1 page">
+      <Home :moveIn="current===0"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-2 section">
-      <Guide1 :moveIn="current===2"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-2 page">
+      <Guide1 :moveIn="current===1"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-3 section">
-      <Guide2 :moveIn="current===3"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-3 page">
+      <Guide2 :moveIn="current===2"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-4 section">
-      <Guide3 :moveIn="current===4"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-4 page">
+      <Guide3 :moveIn="current===3"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-5 section">
-      <Guide4 :moveIn="current===5"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-5 page">
+      <Guide4 :moveIn="current===4"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-6 section">
-      <Prize :moveIn="current===6"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-6 page">
+      <Prize :moveIn="current===5"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-7 section">
-      <InfoCollect :moveIn="current===7"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-7 page">
+      <InfoCollect :moveIn="current===6"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-8 section">
-      <PersonalInfo :moveIn="current===8"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-8 page">
+      <PersonalInfo :moveIn="current===7"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-9 section">
-      <Tips :moveIn="current===9"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-9 page">
+      <Tips :moveIn="current===8"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
-    <div class="page-10 section">
-      <Comments :moveIn="current===10"/>
-      <img class="logo" src="../assets/logo.png" alt="">
+    <div class="page-10 page">
+      <Comments :moveIn="current===9"/>
+      <img class="logo" src="../assets/logo.png">
     </div>
 
   </div>
@@ -59,36 +59,19 @@
 
   export default {
     name: 'MainFrame',
-    data () {
-      return {
-        current: 1
+    computed: {
+      current () {
+        return this.$store.state.current
       }
     },
     mounted () {
-      const that = this
       const $app = $('#app')
-      const $fullpage = $('#fullpage')
       const total = window.innerHeight
-
-      $fullpage.fullpage({
-        css3: false,
-        verticalCentered: false,
-        onLeave (index, nextIndex, direction) {
-          if (window.disableFullpage) {
-            return false
-          }
-          that.current = nextIndex
-        }
-      })
 
       window.addEventListener('resize', () => {
         if (window.innerHeight === total) {
           setTimeout(() => {
-            for (const page of document.querySelectorAll('#fullpage>.section')) {
-              page.style.height = '100vh'
-            }
             $app.css('margin-top', -$app.position().top + 'px')
-            $fullpage.fullpage.moveTo(that.current)
           }, 500)
         }
       })
@@ -100,11 +83,17 @@
 </script>
 
 <style scoped lang="scss">
-  .page-1, .page-2, .page-3, .page-4, .page-5, .page-6, .page-7, .page-8, .page-9, .page-10, .page-11 {
-    background: url("../assets/index/background.jpg") no-repeat;
-    background-size: cover;
-    overflow: hidden;
+  #main-frame {
+    transition: all 700ms ease-out;
+  }
 
+  .page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background: url("../assets/index/background.jpg") no-repeat;
   }
 
   .logo {

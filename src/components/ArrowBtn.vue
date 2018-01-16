@@ -5,24 +5,25 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import { tween, styler, easing } from 'popmotion'
 
   export default {
+    computed: {
+      current () {
+        return this.$store.state.current
+      }
+    },
     mounted () {
-      const $arrow = this.$refs.arrow
-      const arrowStyler = styler($arrow)
-
       tween({
         to: 15,
         ease: easing.easeInOut,
         flip: Infinity,
         duration: 500
-      }).start(arrowStyler.set('y'))
+      }).start(styler(this.$refs.arrow).set('y'))
     },
     methods: {
       moveDown () {
-        $('#fullpage').fullpage.moveSectionDown()
+        this.$store.commit('moveTo', this.current + 1)
       }
     }
   }
