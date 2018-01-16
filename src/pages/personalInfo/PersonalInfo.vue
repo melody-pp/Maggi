@@ -164,7 +164,7 @@
     width: 100vw;
     bottom: 1.5vh;
     img {
-      width: 41.33vw;
+      width: 36.27vw;
     }
   }
 

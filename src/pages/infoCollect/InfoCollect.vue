@@ -40,6 +40,9 @@
         ).then(res => {
           this.$message.success('提交成功！')
         })
+      },
+      toTips () {
+        $('#fullpage').fullpage.moveSectionDown()
       }
     }
   }

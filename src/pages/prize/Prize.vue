@@ -17,7 +17,7 @@
         <span class="linkTxt" @click="showDialog">我已了解活动规则</span>
       </div>
     </div>
-    <img class="btn" src="../../assets/prize/start.png" alt="">
+    <img class="btn" src="../../assets/prize/start.png" @click="toInfoCollect">
     <!--<img class="theRules" src="../../assets/prize/The-rules.png" alt="">-->
     <el-dialog class="activityRule" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
@@ -71,6 +71,9 @@
         const currentY = event.touches[0].clientY
         document.querySelector('activityRule .el-dialog__body').scrollTop += (this.positionY - currentY) * 2
         this.positionY = currentY
+      },
+      toInfoCollect () {
+        $('#fullpage').fullpage.moveSectionDown()
       }
     }
   }

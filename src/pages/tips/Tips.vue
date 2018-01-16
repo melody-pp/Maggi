@@ -4,13 +4,21 @@
       <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png" alt="">
       <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png" alt="">
     </div>
-    <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="">
+    <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="toComments">
 
   </div>
 </template>
 
 <script>
-  export default {}
+  import $ from 'jquery'
+
+  export default {
+    methods: {
+      toComments () {
+        $('#fullpage').fullpage.moveSectionDown()
+      }
+    }
+  }
 </script>
 
 <style scoped lang="scss">
