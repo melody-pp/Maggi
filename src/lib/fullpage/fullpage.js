@@ -527,7 +527,7 @@ $.fn.fullpage = function (options) {
 
     init()
 
-    bindEvents()
+    /*bindEvents()*/
   }
 
   function init () {

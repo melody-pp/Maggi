@@ -29,15 +29,15 @@
       <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-8 section">
-      <Tips :moveIn="current===8"/>
+      <PersonalInfo :moveIn="current===8"/>
       <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-9 section">
-      <Comments :moveIn="current===9"/>
+      <Tips :moveIn="current===9"/>
       <img class="logo" src="../assets/logo.png" alt="">
     </div>
     <div class="page-10 section">
-      <PersonalInfo :moveIn="current===10"/>
+      <Comments :moveIn="current===10"/>
       <img class="logo" src="../assets/logo.png" alt="">
     </div>
 
