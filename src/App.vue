@@ -5,7 +5,6 @@
 </template>
 
 <script>
-  import Vue from 'vue'
   import MainFrame from './pages/MainFrame'
 
   export default {
@@ -20,7 +19,6 @@
       }, {})
       const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = urlParams
 
-      Vue.prototype.isFromTimeLine = !!openIdPk
       this.configWX(appId, timestamp, nonceStr, signature)
       this.$store.commit('setUserInfo', {openId, nickName, headPic})
     },

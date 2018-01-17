@@ -11,6 +11,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/dist/',
     proxyTable: {
+      '/api': {
+        target: 'http://kj.century-galaxy.com/',
+        changeOrigin: true
+      },
       '/meiji/public': {
         target: 'http://2048j.century-galaxy.com/',
         changeOrigin: true

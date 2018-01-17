@@ -5,7 +5,7 @@
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……" :maxlength="80" v-model="content"/>
+    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……" :maxlength="80" v-model="comment"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
   </div>
 </template>
@@ -16,7 +16,12 @@
   export default {
     data () {
       return {
-        content: ''
+        comment: ''
+      }
+    },
+    computed: {
+      userInfo () {
+        return this.$store.state.userInfo
       }
     },
     mounted () {
@@ -31,17 +36,20 @@
     },
     methods: {
       submit () {
-        if (!this.content) {
+        if (!this.comment) {
           return this.$message.warning('留言不能为空哦！')
         }
 
-        this.axios({
-          method: 'post',
-          url: '/meiji/public/api/messagestore',
-          data: {content: this.content}
-        }).then(res => {
-          this.$message.success('提交成功！')
-          this.$store.commit('moveDown')
+        this.axios.post(
+          '/api/activity/adduser',
+          {comment: this.comment, ...this.userInfo}
+        ).then(res => {
+          if (res.errcode === 0) {
+            this.$message.success('提交成功！')
+            this.$store.commit('moveDown')
+          } else {
+            this.$message.error(res.errmsg)
+          }
         })
       },
     }
