@@ -10,7 +10,7 @@
   export default {
     name: 'app',
     components: {MainFrame},
-    mounted () {
+    beforeCreate () {
       const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
         const entry = paramStr.split('=')
         params[entry[0]] = entry[1]
@@ -19,6 +19,7 @@
       }, {})
       const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = urlParams
 
+      this.getLikeLogList(openId)
       this.configWX(appId, timestamp, nonceStr, signature)
       this.$store.commit('setUserInfo', {openId, nickName, headPic})
     },
@@ -67,6 +68,11 @@
               // 用户取消分享后执行的回调函数
             }
           })
+        })
+      },
+      getLikeLogList (openId) {
+        this.axios.post('/api/activity/getlikeloglist', {openId}).then(res => {
+          this.$store.commit('setLikeLog', res.data)
         })
       }
     }

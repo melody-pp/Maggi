@@ -1,6 +1,6 @@
 export default {
   userInfo: {},
-  likes: [],
+  likeLog: [],
   openIdPk: null,
   current: 0
 }

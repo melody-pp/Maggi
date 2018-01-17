@@ -26,7 +26,7 @@
 
       <template v-if="orderBy===1">
         <div class="info">
-          <span>{{CreateTime}}</span>
+          <span>{{CreateTimeStr}}</span>
         </div>
       </template>
     </div>
@@ -34,14 +34,13 @@
 </template>
 
 <script>
-  import { showUpvote, sample } from '../../utils/utils'
+  import { showUpvote, sample, throttle } from '../../utils/utils'
 
   export default {
     name: 'comment-item',
-    props: ['orderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTime', 'LikeCount'],
+    props: ['orderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTimeStr', 'LikeCount'],
     data () {
       return {
-        color: this.likes && this.likes.num ? '#cc9119' : '#ccc',
         imgUrls: [
           require('../../assets/comments/NO1.png'),
           require('../../assets/comments/NO2.png'),
@@ -50,16 +49,45 @@
       }
     },
     computed: {
+      color () {
+        return this.like ? '#cc9119' : '#ccc'
+      },
+      // 用户是否给此条留言点过赞
+      like () {
+        return this.$store.state.likeLog.find(item => item.openId === this.openId)
+      },
+      // 用户总共点过几个赞
+      liked () {
+        return this.$store.state.likeLog.reduce((num, item) => num + item.likeCount, 0)
+      },
+      // 用户所有的点赞信息
       likes () {
-        return this.$store.state.likes.find(item => item.openId === this.openId)
+        return this.$store.state.likeLog
+      },
+      openId () {
+        return this.$store.state.userInfo.openId
       }
     },
     mounted () {
       const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
       this.$refs.liked.addEventListener('touchstart', event => {
-        this.color = '#cc9119'
-        showUpvote(event, sample(colors))
+        if (this.liked < 10) {
+          showUpvote(event, sample(colors))
+
+          this.updateLikeLog()
+          this.$store.commit('upVote', this.openId)
+        }
       })
+    },
+    methods: {
+      updateLikeLog: throttle(() => {
+        this.axios.post(
+          '/api/activity/like',
+          {likes: this.likes, openId: this.openId}
+        ).then(({data: {errcode, errmsg}}) => {
+          errcode === 0 || this.$message.error(errmsg)
+        })
+      }, 500)
     }
   }
 </script>
