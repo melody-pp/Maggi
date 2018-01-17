@@ -12,15 +12,13 @@
     name: 'app',
     components: {MainFrame},
     mounted () {
-      const urlParams = (new URL(window.location)).searchParams
-      const appId = urlParams.get('appId')
-      const openId = urlParams.get('openId')
-      const openIdPk = urlParams.get('openIdPk')
-      const nickName = urlParams.get('nickName')
-      const headPic = urlParams.get('headPic')
-      const timestamp = urlParams.get('timestamp')
-      const nonceStr = urlParams.get('nonceStr')
-      const signature = urlParams.get('signature')
+      const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
+        const entry = paramStr.split('=')
+        params[entry[0]] = entry[1]
+
+        return params
+      }, {})
+      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = urlParams
 
       Vue.prototype.isFromTimeLine = !!openIdPk
       this.configWX(appId, timestamp, nonceStr, signature)
@@ -106,7 +104,7 @@
     margin-top: 7vh;
   }
 
-  canvas{
+  canvas {
     display: none;
   }
 
