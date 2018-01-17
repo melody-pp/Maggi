@@ -80,14 +80,15 @@
       })
     },
     methods: {
-      updateLikeLog: throttle(() => {
+      updateLikeLog: throttle(this.doAjax.bind(this), 500),
+      doAjax () {
         this.axios.post(
           '/api/activity/like',
           {likes: this.likes, openId: this.openId}
         ).then(({data: {errcode, errmsg}}) => {
           errcode === 0 || this.$message.error(errmsg)
         })
-      }, 500)
+      }
     }
   }
 </script>
