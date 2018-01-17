@@ -10,7 +10,7 @@
   export default {
     name: 'app',
     components: {MainFrame},
-    beforeCreate () {
+    mounted () {
       const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
         const entry = paramStr.split('=')
         params[entry[0]] = entry[1]
