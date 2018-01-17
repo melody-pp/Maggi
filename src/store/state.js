@@ -1,6 +1,8 @@
 export default {
+  current: 0,
   userInfo: {},
   likeLog: [],
   openIdPk: null,
-  current: 0
+  step: 1,
+  self: false,
 }

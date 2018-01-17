@@ -17,6 +17,12 @@ export default {
   setOpenIdPk (state, openIdPk) {
     state.openIdPk = openIdPk
   },
+  setStep (state, step) {
+    state.step = step
+  },
+  setSelf (state, self) {
+    state.self = self
+  },
   moveTo (state, current) {
     state.current = current
   },

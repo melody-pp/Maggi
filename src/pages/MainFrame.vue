@@ -1,5 +1,5 @@
 <template>
-  <div id="main-frame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
+  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
     <div class="page-1 page">
       <Home :moveIn="current===0"/>
       <img class="logo" src="../assets/logo.png">
@@ -61,7 +61,30 @@
     computed: {
       current () {
         return this.$store.state.current
+      },
+      step () {
+        return this.$store.state.step
+      },
+
+    },
+    mounted () {
+      let start
+      switch (+this.step) {
+        case 1:
+          start = 0
+          break
+        case 2:
+          start = 7
+          break
+        case 3:
+          start = 9
+          break
       }
+
+      this.$store.commit('moveTo', start)
+      this.nextTick(() => {
+        this.$refs.mainFrame.style.transition = 'all 700ms ease-out'
+      })
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4
@@ -70,10 +93,6 @@
 </script>
 
 <style scoped lang="scss">
-  #main-frame {
-    transition: all 700ms ease-out;
-  }
-
   .page {
     width: 100vw;
     height: 100vh;

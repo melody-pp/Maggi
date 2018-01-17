@@ -83,7 +83,7 @@
         })
       },
       toPersonalInfo () {
-        this.$store.commit('moveDown')
+        this.$store.commit('moveTo', 7)
       }
     }
   }

@@ -10,6 +10,11 @@
   export default {
     name: 'app',
     components: {MainFrame},
+    computed: {
+      hasComment () {
+        return this.$store.state.current > 6
+      }
+    },
     mounted () {
       const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
         const entry = paramStr.split('=')
@@ -17,7 +22,8 @@
 
         return params
       }, {})
-      // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = urlParams
+
+      // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
       const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = {
         'openId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
         'nickName': 'Melody.pp',
@@ -33,6 +39,9 @@
       this.getLikeLogList(openId)
       this.configWX(appId, timestamp, nonceStr, signature)
       this.$store.commit('setUserInfo', {openId, nickName, headPic})
+      this.$store.commit('setOpenIdPk', openIdPk)
+      this.$store.commit('setStep', step)
+      this.$store.commit('setSelf', self)
     },
     methods: {
       configWX (appId, timestamp, nonceStr, signature) {
@@ -51,41 +60,33 @@
         })
 
         wx.ready(() => {
-          // 分享到朋友圈
-          wx.onMenuShareTimeline({
-            title: '', // 分享标题
-            link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '', // 分享图标
-            success () {
-              // 用户确认分享后执行的回调函数
-            },
-            cancel () {
-              // 用户取消分享后执行的回调函数
-            }
-          })
-
-          // 分享给朋友
-          wx.onMenuShareAppMessage({
-            title: '', // 分享标题
-            desc: '', // 分享描述
-            link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: '', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success () {
-              // 用户确认分享后执行的回调函数
-            },
-            cancel () {
-              // 用户取消分享后执行的回调函数
-            }
-          })
+          wx.onMenuShareTimeline(this.getShareConfig())
+          wx.onMenuShareAppMessage(this.getShareConfig())
         })
       },
       getLikeLogList (openId) {
         this.axios.post('/api/activity/getlikeloglist', {openId}).then(res => {
           this.$store.commit('setLikeLog', res.data)
         })
-      }
+      },
+      getShareConfig () {
+        return {
+          title: this.getShareTitle(),
+          link: +this.getShareLink(),
+          imgUrl: this.getShareImg(),
+          desc: this.getShareDesc()
+        }
+      },
+      getShareTitle () {
+        return this.hasComment ? '给我投票' : '快来参加'
+      },
+      getShareLink () {
+        return 'http://kj.century-galaxy.com/api/activity/index?hasComment=' + this.hasComment
+      },
+      getShareImg () {
+        return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'
+      },
+      getShareDesc () {},
     }
   }
 </script>
