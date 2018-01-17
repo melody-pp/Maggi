@@ -44,6 +44,7 @@
           '/api/activity/adduser',
           {comment: this.comment, ...this.userInfo}
         ).then(({data: {errcode, errmsg}}) => {
+          console.log(this.userInfo, this.$store.state)
           if (errcode === 0) {
             this.$message.success('提交成功！')
             this.$store.commit('moveDown')
