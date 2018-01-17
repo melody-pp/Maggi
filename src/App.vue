@@ -24,7 +24,7 @@
       }, {})
 
       // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
-      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature} = {
+      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
         'openId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
         'nickName': 'Melody.pp',
         'headPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',

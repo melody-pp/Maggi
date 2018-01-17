@@ -11,7 +11,7 @@
       </ul>
     </div>
     <div class="btnBox">
-      <img class="" src="../../assets/comments/button1.png" @click="">
+      <img class="" src="../../assets/comments/button1.png" @click="follow">
       <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
     </div>
   </div>
@@ -84,6 +84,9 @@
       },
       toPersonalInfo () {
         this.$store.commit('moveTo', 7)
+      },
+      follow () {
+        location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwNDg0MTQ5OA==&scene=124#wechat_redirect'
       }
     }
   }

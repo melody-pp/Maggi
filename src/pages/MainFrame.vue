@@ -82,7 +82,7 @@
       }
 
       this.$store.commit('moveTo', start)
-      this.nextTick(() => {
+      this.$nextTick(() => {
         this.$refs.mainFrame.style.transition = 'all 700ms ease-out'
       })
     },
