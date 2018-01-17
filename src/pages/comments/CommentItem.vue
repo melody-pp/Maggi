@@ -14,11 +14,11 @@
 
       <template v-if="orderBy===0">
         <div class="info">
-          <svg class="liked" ref="liked" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
+          <svg class="liked" @touchstart="upvote" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                width="4.6vw" height="4vh" :fill="color">
             <path
-              d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+                d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
           </svg>
           <span class="likesNum">{{LikeCount}}</span>
         </div>
@@ -36,11 +36,14 @@
 <script>
   import { showUpvote, sample, throttle } from '../../utils/utils'
 
+  const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
+
   export default {
     name: 'comment-item',
     props: ['orderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTimeStr', 'LikeCount'],
     data () {
       return {
+        timer: null,
         imgUrls: [
           require('../../assets/comments/NO1.png'),
           require('../../assets/comments/NO2.png'),
@@ -54,40 +57,41 @@
       },
       // 用户是否给此条留言点过赞
       like () {
-        return this.$store.state.likeLog.find(item => item.openId === this.openId)
+        return this.$store.state.likeLog.find(item => item.OpenId === this.OpenId)
       },
       // 用户总共点过几个赞
       liked () {
-        return this.$store.state.likeLog.reduce((num, item) => num + item.likeCount, 0)
+        return this.$store.state.likeLog.reduce((num, item) => num + item.LikeCount, 0)
       },
       // 用户所有的点赞信息
       likes () {
         return this.$store.state.likeLog
       },
-      openId () {
+      userOpenId () {
         return this.$store.state.userInfo.openId
       }
     },
-    mounted () {
-      const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
-      this.$refs.liked.addEventListener('touchstart', event => {
+    methods: {
+      updateLikeLog () {
+        clearTimeout(this.timer)
+
+        this.timer = setTimeout(() => {
+          this.axios.post(
+            '/api/activity/like',
+            {likes: this.likes, openId: this.userOpenId}
+          ).then(({data: {errcode, errmsg}}) => {
+            errcode === 0 || this.$message.error(errmsg)
+          })
+        }, 500)
+      },
+      upvote (event) {
         if (this.liked < 10) {
           showUpvote(event, sample(colors))
 
+          this.LikeCount++
+          this.$store.commit('upVote', this.OpenId)
           this.updateLikeLog()
-          this.$store.commit('upVote', this.openId)
         }
-      })
-    },
-    methods: {
-      updateLikeLog: throttle(this.doAjax.bind(this), 500),
-      doAjax () {
-        this.axios.post(
-          '/api/activity/like',
-          {likes: this.likes, openId: this.openId}
-        ).then(({data: {errcode, errmsg}}) => {
-          errcode === 0 || this.$message.error(errmsg)
-        })
       }
     }
   }
