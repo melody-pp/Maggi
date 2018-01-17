@@ -72,9 +72,8 @@
       getShareConfig () {
         return {
           title: this.getShareTitle(),
-          link: +this.getShareLink(),
+          link: this.getShareLink(),
           imgUrl: this.getShareImg(),
-          desc: this.getShareDesc()
         }
       },
       getShareTitle () {
@@ -86,7 +85,6 @@
       getShareImg () {
         return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'
       },
-      getShareDesc () {},
     }
   }
 </script>
