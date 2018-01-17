@@ -43,12 +43,12 @@
         this.axios.post(
           '/api/activity/adduser',
           {comment: this.comment, ...this.userInfo}
-        ).then(res => {
-          if (res.errcode === 0) {
+        ).then(({data: {errcode, errmsg}}) => {
+          if (errcode === 0) {
             this.$message.success('提交成功！')
             this.$store.commit('moveDown')
           } else {
-            this.$message.error(res.errmsg)
+            this.$message.error(errmsg)
           }
         })
       },

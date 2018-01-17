@@ -2,12 +2,13 @@
   <div class="comments">
     <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png" alt="">
     <div class="rank-type">
-      <div :class="{active: rankType === 'likedNum'}" @click="rankType='likedNum'">心意排行榜</div>
-      <div :class="{active: rankType === 'createTime'}" @click="rankType='createTime'">最新上榜</div>
+      <div :class="{active: orderBy===0}" @click="orderBy=0">心意排行榜</div>
+      <div :class="{active: orderBy===1}" @click="orderBy=1">最新上榜</div>
     </div>
-    <div class="rankContent" ref="rankContent">
-      <CommentItem v-for="(comment, index) of comments" v-bind="comment"
-                   :rankType="rankType" :index="index" :key="index"/>
+    <div class="rankContent">
+      <ul>
+        <CommentItem v-for="comment of comments" v-bind="comment" :orderBy="orderBy" :key="comment.openId"/>
+      </ul>
     </div>
     <div class="btnBox">
       <img class="" src="../../assets/comments/button1.png" @click="">
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+  import BScroll from 'better-scroll'
   import CommentItem from './CommentItem'
 
   export default {
@@ -24,103 +26,62 @@
     components: {CommentItem},
     data () {
       return {
-        positionY: null,
-        rankType: 'likedNum',
-        comments: [
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-          {
-            pic: 'http://img1.imgtn.bdimg.com/it/u=3746075707,1914896074&fm=27&gp=0.jpg',
-            content: '我是张大厨：2018年我想对父母说，老爸老妈儿子不在身边要照顾好自己，对自己好一点',
-            liked: Math.random() > 0.5,
-            likes: Math.floor(Math.random() * 500)
-          },
-        ]
+        orderBy: 0,
+        orderBy0: {
+          pageIndex: 1,
+          comments: []
+        },
+        orderBy1: {
+          pageIndex: 1,
+          comments: []
+        },
+      }
+    },
+    mounted () {
+      new BScroll('.rankContent', {
+        pullUpLoad: true,
+        pullDownRefresh: true,
+        pullingUp: this.pullingUp.bind(this),
+        pullingDown: this.pullingDown.bind(this)
+      })
+      this.getComments()
+    },
+    computed: {
+      comments: {
+        get () {
+          return this['orderBy' + this.orderBy].comments
+        },
+        set (val) {
+          this['orderBy' + this.orderBy].comments = val
+        }
+      },
+      pageIndex: {
+        get () {
+          return this['orderBy' + this.orderBy].pageIndex
+        },
+        set (val) {
+          this['orderBy' + this.orderBy].pageIndex = val
+        }
       }
     },
     methods: {
+      pullingUp () {
+        this.pageIndex = 1
+        this.comments = []
+        this.getComments()
+      },
+      pullingDown () {
+        this.getComments()
+      },
+      getComments () {
+        this.axios.post(
+          '/api/activity/getuserlist',
+          {orderBy: this.orderBy, pageIndex: this.pageIndex}
+        ).then(res => {
+          this.pageIndex += 1
+          this.comments.push(...res.data)
+        })
+      },
       toPersonalInfo () {
         this.$store.commit('moveDown')
       }

@@ -1,35 +1,36 @@
 <template>
-  <div :class="['comment',{noNum: rankType==='createTime'}]">
-    <template v-if="rankType==='likedNum'">
-      <img v-if="index<3" class="ranking-img" :src="imgUrls[index]">
-      <span v-else class="ranking">{{index+1}}</span>
+  <li :class="['comment',{noNum: orderBy===1}]">
+    <template v-if="orderBy===0">
+      <img v-if="Rank<=3" class="ranking-img" :src="imgUrls[Rank-1]">
+      <span v-else class="ranking">{{Rank}}</span>
     </template>
 
-    <img :src="pic" alt="头像">
+    <img :src="HeadPic" alt="头像">
+
     <div class="right">
       <div class="content">
-        {{content}}
+        {{CommentContent}}
       </div>
-      <template v-if="rankType==='likedNum'">
+
+      <template v-if="orderBy===0">
         <div class="info">
           <svg class="liked" ref="liked" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                width="4.6vw" height="4vh" :fill="color">
             <path
-                d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+              d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
           </svg>
-          <span class="likesNum">{{likes}}</span>
-        </div>
-      </template>
-      <template v-if="rankType==='createTime'">
-        <div class="info">
-          <span>12月15日</span>
-          <span>19：25</span>
+          <span class="likesNum">{{LikeCount}}</span>
         </div>
       </template>
 
+      <template v-if="orderBy===1">
+        <div class="info">
+          <span>{{CreateTime}}</span>
+        </div>
+      </template>
     </div>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -37,15 +38,20 @@
 
   export default {
     name: 'comment-item',
-    props: ['pic', 'content', 'liked', 'likes', 'index', 'rankType'],
+    props: ['orderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTime', 'LikeCount'],
     data () {
       return {
-        color: '#ccc',
+        color: this.likes && this.likes.num ? '#cc9119' : '#ccc',
         imgUrls: [
           require('../../assets/comments/NO1.png'),
           require('../../assets/comments/NO2.png'),
           require('../../assets/comments/NO3.png'),
         ]
+      }
+    },
+    computed: {
+      likes () {
+        return this.$store.state.likes.find(item => item.openId === this.openId)
       }
     },
     mounted () {
@@ -61,6 +67,7 @@
 <style scoped lang="scss">
   .comment {
     color: #fff;
+    display: block;
     font-size: 3.4vw;
     text-align: left;
     position: relative;
