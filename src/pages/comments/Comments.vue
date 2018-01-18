@@ -2,8 +2,8 @@
   <div class="Comments">
     <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/Comments/theme.png" alt="">
     <div class="rank-type">
-      <div :class="{active: OrderBy===0}" @click="OrderBy=0">心意排行榜</div>
-      <div :class="{active: OrderBy===1}" @click="OrderBy=1">最新上榜</div>
+      <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
+      <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
     </div>
     <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
       <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
@@ -32,7 +32,7 @@
         transformY: 0,
         isPullingUp: false,
         isPullingDown: false,
-        OrderBy: 0,
+        OrderBy: 1,
         OrderBy0: {
           PageIndex: 1,
           Comments: []
@@ -81,13 +81,10 @@
 
         if (deltaY < 0 && scrollTop === 0) {
           this.pullingDown()
-          console.log('拉到顶部了')
         }
 
-        console.log(deltaY, maxScroll, scrollTop)
         if (deltaY > 0 && maxScroll === scrollTop) {
           this.pullingUp()
-          console.log('拉到底部了')
         }
 
         this.clientY += deltaY

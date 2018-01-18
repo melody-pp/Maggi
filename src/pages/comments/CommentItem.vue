@@ -1,6 +1,6 @@
 <template>
-  <li :class="['Comment',{noNum: OrderBy===1}]">
-    <template v-if="OrderBy===0">
+  <li :class="['Comment',{noNum: OrderBy===0}]">
+    <template v-if="OrderBy===1">
       <img v-if="Rank<=3" class="ranking-img" :src="imgUrls[Rank-1]">
       <span v-else class="ranking">{{Rank}}</span>
     </template>
@@ -12,7 +12,7 @@
         {{CommentContent}}
       </div>
 
-      <template v-if="OrderBy===0">
+      <template v-if="OrderBy===1">
         <div class="info">
           <svg class="liked" @touchstart="upvote" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -24,7 +24,7 @@
         </div>
       </template>
 
-      <template v-if="OrderBy===1">
+      <template v-if="OrderBy===0">
         <div class="info">
           <span>{{createTimeStr}}</span>
         </div>
