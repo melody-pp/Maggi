@@ -29,7 +29,7 @@
     <img class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
     <div class="btnBox">
       <template v-if="isSelf">
-        <img src="../../assets/personalInfo/button.png">
+        <img @click="showShare" src="../../assets/personalInfo/button.png">
         <img @click="toComments" src="../../assets/personalInfo/button2.png">
       </template>
       <template v-else>
@@ -161,6 +161,14 @@
       },
       toIndex () {
         location.href = 'http://kj.century-galaxy.com/api/activity/index'
+      },
+      showShare () {
+        this.$alert('点击浏览器右上角分享链接。', '提示', {
+          type: 'info',
+          center: true,
+          showClose: false,
+          closeOnClickModal: true,
+        })
       }
     },
     watch: {
