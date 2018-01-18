@@ -26,7 +26,7 @@
 
       <template v-if="OrderBy===0">
         <div class="info">
-          <span>{{createTimeStr}}</span>
+          <span>{{CreateTimeStr}}</span>
         </div>
       </template>
     </div>
@@ -40,7 +40,7 @@
 
   export default {
     name: 'Comment-item',
-    props: ['OrderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'createTimeStr', 'LikeCount'],
+    props: ['OrderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTimeStr', 'LikeCount'],
     data () {
       return {
         clickNum: 0,
