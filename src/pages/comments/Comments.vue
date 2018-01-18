@@ -126,7 +126,7 @@
         this.$store.commit('moveTo', 7)
       },
       follow () {
-        location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwNDg0MTQ5OA==&scene=124#wechat_redirect'
+        location.href = 'http://weixin.qq.com/r/zETcxNzEMYFOrZin9xHe'
       }
     },
     watch: {
