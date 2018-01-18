@@ -23,18 +23,18 @@
         return params
       }, {})
 
-      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
-      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
-        'OpenId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
-        'NickName': '%e7%8e%8b%e8%b7%83',
-        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
-        'AppId': 'wx073d89db692f82e0',
-        'Timestamp': '1516303584',
-        'NonceStr': '47u4LrIQ',
-        'Signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
-        'Step': '2',
-        'Self': 'False'
-      }
+      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
+      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
+      //   'OpenId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
+      //   'NickName': '%e7%8e%8b%e8%b7%83',
+      //   'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
+      //   'AppId': 'wx073d89db692f82e0',
+      //   'Timestamp': '1516303584',
+      //   'NonceStr': '47u4LrIQ',
+      //   'Signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
+      //   'Step': '2',
+      //   'Self': 'False'
+      // }
 
       this.getLikeLogList(OpenId)
       this.configWX(AppId, Timestamp, NonceStr, Signature)
