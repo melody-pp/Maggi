@@ -43,7 +43,8 @@
     props: ['OrderBy', 'rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'createTimeStr', 'LikeCount'],
     data () {
       return {
-        timer: null,
+        clickNum: 0,
+        isBusy: false,
         imgUrls: [
           require('../../assets/Comments/NO1.png'),
           require('../../assets/Comments/NO2.png'),
@@ -73,21 +74,32 @@
     },
     methods: {
       updateLikeLog () {
-        clearTimeout(this.timer)
+        if (this.isBusy) {
+          return
+        }
 
-        this.timer = setTimeout(() => {
-          this.axios.post(
-            '/api/activity/like',
-            {Likes: this.Likes, OpenId: this.userOpenId}
-          ).then(({data: {errcode, errmsg}}) => {
-            errcode === 0 || this.$message.error(errmsg)
-          })
-        }, 500)
+        const LikeCount = this.clickNum
+
+        this.clickNum = 0
+        this.isBusy = true
+        this.axios.post('/api/activity/like', {
+          LikeCount,
+          OpenId: this.userOpenId,
+          OpenIdPk: this.OpenId
+        }).then(({data: {errcode, errmsg}}) => {
+          if (errcode === 0) {
+            return this.$message.error(errmsg)
+          }
+
+          this.isBusy = false
+          this.clickNum && this.updateLikeLog()
+        })
       },
       upvote (event) {
-        if (this.liked < 10) {
+        if (this.liked < 10 && this.openId !== this.userOpenId) {
           showUpvote(event, sample(colors))
 
+          this.clickNum++
           this.LikeCount++
           this.$store.commit('upVote', this.OpenId)
           this.updateLikeLog()
