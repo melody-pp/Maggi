@@ -5,13 +5,13 @@ export default {
   setLikeLog (state, likeLog) {
     state.likeLog = likeLog
   },
-  upVote (state, OpenId) {
-    const item = state.likeLog.find(item => item.OpenId === OpenId)
+  upVote (state, openId) {
+    const item = state.likeLog.find(item => item.openId === openId)
 
     if (item) {
-      item.LikeCount++
+      item.likeCount++
     } else {
-      state.likeLog.push({OpenId, LikeCount: 1})
+      state.likeLog.push({openId, likeCount: 1})
     }
   },
   setOpenIdPk (state, openIdPk) {

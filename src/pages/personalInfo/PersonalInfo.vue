@@ -3,7 +3,7 @@
     <div>
       <div class="themeTxt clearfix">
         <img class="theme" src="../../assets/personalInfo/theme.png">
-        <span class="num">{{UserId}}</span>
+        <span class="num">{{userId}}</span>
         <img class="theme1" src="../../assets/personalInfo/theme1.png">
       </div>
 
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="headPortraitBox">
-      <img class="headPortrait" :src="HeadPic">
+      <img class="headPortrait" :src="headPic">
       <span class="like">
         <svg class="liked" @touchstart="upvote" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -20,11 +20,11 @@
           <path
               d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
         </svg></span>
-      <span class="likeNum">{{LikeCount}}</span>
+      <span class="likeNum">{{likeCount}}</span>
     </div>
-    <div class="nickName">{{NickName}}</div>
+    <div class="nickName">{{nickName}}</div>
     <div class="remark">
-      {{CommentContent}}
+      {{commentContent}}
     </div>
     <img class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
     <div class="btnBox">
@@ -59,11 +59,11 @@
     data () {
       return {
         dialogVisible: false,
-        UserId: 0,
-        NickName: '',
-        HeadPic: '',
-        CommentContent: '',
-        LikeCount: 0
+        userId: 0,
+        nickName: '',
+        headPic: '',
+        commentContent: '',
+        likeCount: 0
       }
     },
     mounted () {
@@ -75,18 +75,18 @@
       },
       // 用户是否给此条留言点过赞
       like () {
-        return this.$store.state.likeLog.find(item => item.OpenId === this.OpenId)
+        return this.$store.state.likeLog.find(item => item.openId === this.openId)
       },
       // 用户总共点过几个赞
       liked () {
-        return this.$store.state.likeLog.reduce((num, item) => num + item.LikeCount, 0)
+        return this.$store.state.likeLog.reduce((num, item) => num + item.likeCount, 0)
       },
       // 用户所有的点赞信息
       likes () {
         return this.$store.state.likeLog
       },
 
-      OpenId () {
+      openId () {
         return this.$store.state.openIdPk || this.userOpenId
       },
 
@@ -104,15 +104,15 @@
       getUser () {
         this.axios.post(
           '/api/activity/getuser',
-          {openId: this.OpenId}
+          {openId: this.openId}
         ).then(res => {
           const data = res.data
 
-          this.UserId = data.UserId
-          this.NickName = data.NickName
-          this.HeadPic = data.HeadPic
-          this.CommentContent = data.CommentContent
-          this.LikeCount = data.LikeCount
+          this.userId = data.userId
+          this.nickName = data.nickName
+          this.headPic = data.headPic
+          this.commentContent = data.commentContent
+          this.likeCount = data.likeCount
         })
       },
       updateLikeLog () {
@@ -131,8 +131,8 @@
         if (this.liked < 10) {
           showUpvote(event, sample(colors))
 
-          this.LikeCount++
-          this.$store.commit('upVote', this.OpenId)
+          this.likeCount++
+          this.$store.commit('upVote', this.openId)
           this.updateLikeLog()
         }
       }

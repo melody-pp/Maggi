@@ -65,7 +65,6 @@
       step () {
         return this.$store.state.step
       },
-
     },
     mounted () {
       let start

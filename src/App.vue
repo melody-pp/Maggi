@@ -23,18 +23,18 @@
         return params
       }, {})
 
-      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
-      /*const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
-        'openId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
-        'nickName': 'Melody.pp',
-        'headPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
+      // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
+      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
+        'openId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
+        'nickName': '%e7%8e%8b%e8%b7%83',
+        'headPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
         'appId': 'wx073d89db692f82e0',
-        'timestamp': '1516259728',
-        'nonceStr': '61U8bl5h',
-        'signature': 'a93d6436e989ce26780324af151cb41aa9dbc11e',
+        'timestamp': '1516303584',
+        'nonceStr': '47u4LrIQ',
+        'signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
         'step': '2',
         'self': 'False'
-      }*/
+      }
 
       this.getLikeLogList(openId)
       this.configWX(appId, timestamp, nonceStr, signature)
