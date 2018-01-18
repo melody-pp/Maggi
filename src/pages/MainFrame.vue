@@ -1,43 +1,43 @@
 <template>
-  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
+  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${Current*100}vh,0)`}">
     <div class="page-1 page">
-      <Home :moveIn="current===0"/>
+      <Home :moveIn="Current===0"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-2 page">
-      <Guide1 :moveIn="current===1"/>
+      <Guide1 :moveIn="Current===1"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-3 page">
-      <Guide2 :moveIn="current===2"/>
+      <Guide2 :moveIn="Current===2"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-4 page">
-      <Guide3 :moveIn="current===3"/>
+      <Guide3 :moveIn="Current===3"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-5 page">
-      <Guide4 :moveIn="current===4"/>
+      <Guide4 :moveIn="Current===4"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-6 page">
-      <Prize :moveIn="current===5"/>
+      <Prize :moveIn="Current===5"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-7 page">
-      <InfoCollect :moveIn="current===6"/>
+      <InfoCollect :moveIn="Current===6"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-8 page">
-      <PersonalInfo :moveIn="current===7"/>
+      <PersonalInfo :moveIn="Current===7"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-9 page">
-      <Tips :moveIn="current===8"/>
+      <Tips :moveIn="Current===8"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-10 page">
-      <Comments :moveIn="current===9"/>
+      <Comments :moveIn="Current===9"/>
       <img class="logo" src="../assets/logo.png">
     </div>
 
@@ -53,22 +53,22 @@
   import Prize from './prize/Prize'
   import InfoCollect from './infoCollect/InfoCollect'
   import Tips from './tips/Tips'
-  import Comments from './comments/Comments'
+  import Comments from './Comments/Comments'
   import PersonalInfo from './personalInfo/PersonalInfo'
 
   export default {
     name: 'MainFrame',
     computed: {
-      current () {
-        return this.$store.state.current
+      Current () {
+        return this.$store.state.Current
       },
-      step () {
-        return this.$store.state.step
+      Step () {
+        return this.$store.state.Step
       },
     },
     mounted () {
       let start
-      switch (+this.step) {
+      switch (+this.Step) {
         case 1:
           start = 0
           break

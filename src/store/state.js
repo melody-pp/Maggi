@@ -1,8 +1,8 @@
 export default {
-  current: 0,
+  Current: 0,
   userInfo: {},
-  likeLog: [],
-  openIdPk: null,
-  step: 1,
-  self: false,
+  LikeLog: [],
+  OpenIdPk: null,
+  Step: 1,
+  Self: false,
 }

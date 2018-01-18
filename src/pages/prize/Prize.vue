@@ -80,7 +80,7 @@
       transition: all 500ms;
     }
 
-    .slick-current {
+    .slick-Current {
       img {
         transform: scale(1.2);
         opacity: 1;

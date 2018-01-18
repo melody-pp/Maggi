@@ -12,7 +12,7 @@
     components: {MainFrame},
     computed: {
       hasComment () {
-        return this.$store.state.current > 6
+        return this.$store.state.Current > 6
       }
     },
     mounted () {
@@ -23,25 +23,25 @@
         return params
       }, {})
 
-      // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
-      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
-        'openId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
-        'nickName': '%e7%8e%8b%e8%b7%83',
-        'headPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
-        'appId': 'wx073d89db692f82e0',
-        'timestamp': '1516303584',
-        'nonceStr': '47u4LrIQ',
-        'signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
-        'step': '2',
-        'self': 'False'
+      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
+      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
+        'OpenId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
+        'NickName': '%e7%8e%8b%e8%b7%83',
+        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
+        'AppId': 'wx073d89db692f82e0',
+        'Timestamp': '1516303584',
+        'NonceStr': '47u4LrIQ',
+        'Signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
+        'Step': '2',
+        'Self': 'False'
       }
 
-      this.getLikeLogList(openId)
-      this.configWX(appId, timestamp, nonceStr, signature)
-      this.$store.commit('setUserInfo', {openId, nickName, headPic})
-      this.$store.commit('setOpenIdPk', openIdPk)
-      this.$store.commit('setStep', step)
-      this.$store.commit('setSelf', self)
+      this.getLikeLogList(OpenId)
+      this.configWX(AppId, Timestamp, NonceStr, Signature)
+      this.$store.commit('setUserInfo', {OpenId, NickName, HeadPic})
+      this.$store.commit('setOpenIdPk', OpenIdPk)
+      this.$store.commit('setStep', Step)
+      this.$store.commit('setSelf', Self)
     },
     methods: {
       configWX (appId, timestamp, nonceStr, signature) {
@@ -64,8 +64,8 @@
           wx.onMenuShareAppMessage(this.getShareConfig())
         })
       },
-      getLikeLogList (openId) {
-        this.axios.post('/api/activity/getlikeloglist', {openId}).then(res => {
+      getLikeLogList (OpenId) {
+        this.axios.post('/api/activity/getlikeloglist', {OpenId}).then(res => {
           this.$store.commit('setLikeLog', res.data)
         })
       },
@@ -80,7 +80,7 @@
         return this.hasComment ? '给我投票' : '快来参加'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index?opendId=' + this.$store.state.openId
+        return 'http://kj.century-galaxy.com/api/activity/index?OpenId=' + this.$store.state.OpenId
       },
       getShareImg () {
         return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'

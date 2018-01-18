@@ -1,18 +1,18 @@
 <template>
-  <div class="comments">
-    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png" alt="">
+  <div class="Comments">
+    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/Comments/theme.png" alt="">
     <div class="rank-type">
-      <div :class="{active: orderBy===0}" @click="orderBy=0">心意排行榜</div>
-      <div :class="{active: orderBy===1}" @click="orderBy=1">最新上榜</div>
+      <div :class="{active: OrderBy===0}" @click="OrderBy=0">心意排行榜</div>
+      <div :class="{active: OrderBy===1}" @click="OrderBy=1">最新上榜</div>
     </div>
     <div class="rankContent">
       <ul>
-        <CommentItem v-for="comment of comments" v-bind="comment" :orderBy="orderBy" :key="comment.openId"/>
+        <CommentItem v-for="Comment of Comments" v-bind="Comment" :OrderBy="OrderBy" :key="Comment.OpenId"/>
       </ul>
     </div>
     <div class="btnBox">
-      <img class="" src="../../assets/comments/button1.png" @click="follow">
-      <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
+      <img class="" src="../../assets/Comments/button1.png" @click="follow">
+      <img class="" src="../../assets/Comments/button2.png" @click="toPersonalInfo">
     </div>
   </div>
 </template>
@@ -22,18 +22,18 @@
   import CommentItem from './CommentItem'
 
   export default {
-    name: 'comments',
+    name: 'Comments',
     components: {CommentItem},
     data () {
       return {
-        orderBy: 0,
-        orderBy0: {
-          pageIndex: 1,
-          comments: []
+        OrderBy: 0,
+        OrderBy0: {
+          PageIndex: 1,
+          Comments: []
         },
-        orderBy1: {
-          pageIndex: 1,
-          comments: []
+        OrderBy1: {
+          PageIndex: 1,
+          Comments: []
         },
       }
     },
@@ -47,27 +47,27 @@
       this.getComments()
     },
     computed: {
-      comments: {
+      Comments: {
         get () {
-          return this['orderBy' + this.orderBy].comments
+          return this['OrderBy' + this.OrderBy].Comments
         },
         set (val) {
-          this['orderBy' + this.orderBy].comments = val
+          this['OrderBy' + this.OrderBy].Comments = val
         }
       },
-      pageIndex: {
+      PageIndex: {
         get () {
-          return this['orderBy' + this.orderBy].pageIndex
+          return this['OrderBy' + this.OrderBy].PageIndex
         },
         set (val) {
-          this['orderBy' + this.orderBy].pageIndex = val
+          this['OrderBy' + this.OrderBy].PageIndex = val
         }
       }
     },
     methods: {
       pullingUp () {
-        this.pageIndex = 1
-        this.comments = []
+        this.PageIndex = 1
+        this.Comments = []
         this.getComments()
       },
       pullingDown () {
@@ -76,10 +76,10 @@
       getComments () {
         this.axios.post(
           '/api/activity/getuserlist',
-          {orderBy: this.orderBy, pageIndex: this.pageIndex}
+          {OrderBy: this.OrderBy, PageIndex: this.PageIndex}
         ).then(res => {
-          this.pageIndex += 1
-          this.comments.push(...res.data)
+          this.PageIndex += 1
+          this.Comments.push(...res.data)
         })
       },
       toPersonalInfo () {
@@ -116,7 +116,7 @@
     overflow: auto;
   }
 
-  .comments {
+  .Comments {
     background: url("../../assets/index/background.jpg") no-repeat;
     background-size: cover;
     overflow: hidden;

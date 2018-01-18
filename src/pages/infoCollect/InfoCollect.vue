@@ -5,7 +5,7 @@
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/04.png" alt="">
-    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……" :maxlength="80" v-model="comment"/>
+    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……" :maxlength="80" v-model="Comment"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
   </div>
 </template>
@@ -16,7 +16,7 @@
   export default {
     data () {
       return {
-        comment: ''
+        Comment: ''
       }
     },
     computed: {
@@ -36,13 +36,13 @@
     },
     methods: {
       submit () {
-        if (!this.comment) {
+        if (!this.Comment) {
           return this.$message.warning('留言不能为空哦！')
         }
 
         this.axios.post(
           '/api/activity/adduser',
-          {comment: this.comment, ...this.userInfo}
+          {Comment: this.Comment, ...this.userInfo}
         ).then(({data: {errcode, errmsg}}) => {
           if (errcode === 0) {
             this.$message.success('提交成功！')

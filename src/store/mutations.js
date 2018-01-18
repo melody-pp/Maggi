@@ -2,38 +2,38 @@ export default {
   setUserInfo (state, userInfo) {
     state.userInfo = userInfo
   },
-  setLikeLog (state, likeLog) {
-    state.likeLog = likeLog
+  setLikeLog (state, LikeLog) {
+    state.LikeLog = LikeLog
   },
-  upVote (state, openId) {
-    const item = state.likeLog.find(item => item.openId === openId)
+  upVote (state, OpenId) {
+    const item = state.LikeLog.find(item => item.OpenId === OpenId)
 
     if (item) {
-      item.likeCount++
+      item.LikeCount++
     } else {
-      state.likeLog.push({openId, likeCount: 1})
+      state.LikeLog.push({OpenId, LikeCount: 1})
     }
   },
-  setOpenIdPk (state, openIdPk) {
-    state.openIdPk = openIdPk
+  setOpenIdPk (state, OpenIdPk) {
+    state.OpenIdPk = OpenIdPk
   },
-  setStep (state, step) {
-    state.step = step
+  setStep (state, Step) {
+    state.Step = Step
   },
-  setSelf (state, self) {
-    state.self = self
+  setSelf (state, Self) {
+    state.Self = Self
   },
-  moveTo (state, current) {
-    state.current = current
+  moveTo (state, Current) {
+    state.Current = Current
   },
   moveDown (state) {
-    if (state.current < 9) {
-      state.current++
+    if (state.Current < 9) {
+      state.Current++
     }
   },
   moveUp (state) {
-    if (state.current > 0) {
-      state.current--
+    if (state.Current > 0) {
+      state.Current--
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="txt">
-      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png" alt="">
+      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/Comments/theme.png" alt="">
       <img style="width: 80vw;" src="../../assets/p4/content.png" alt="">
     </div>
 
