@@ -177,6 +177,7 @@
     > ul {
       height: 65vh;
       overflow: auto;
+      padding-left: 0;
     }
   }
 

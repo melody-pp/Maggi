@@ -9,6 +9,7 @@
 
     <div class="right">
       <div class="content">
+        {{NickName}}：
         {{CommentContent}}
       </div>
 
