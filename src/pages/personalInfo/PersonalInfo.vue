@@ -3,7 +3,7 @@
     <div>
       <div class="themeTxt clearfix">
         <img class="theme" src="../../assets/personalInfo/theme.png">
-        <span class="num">{{userId}}</span>
+        <span class="num">{{UserId}}</span>
         <img class="theme1" src="../../assets/personalInfo/theme1.png">
       </div>
 
@@ -59,7 +59,7 @@
     data () {
       return {
         dialogVisible: false,
-        userId: 0,
+        UserId: 0,
         NickName: '',
         HeadPic: '',
         CommentContent: '',
@@ -110,7 +110,7 @@
         ).then(res => {
           const data = res.data
 
-          this.userId = data.userId
+          this.UserId = data.UserId
           this.NickName = data.NickName
           this.HeadPic = data.HeadPic
           this.CommentContent = data.CommentContent
