@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import BScroll from 'better-scroll'
   import CommentItem from './CommentItem'
 
   export default {
@@ -37,13 +36,7 @@
         },
       }
     },
-    mounted () {
-      new BScroll('.rankContent', {
-        pullUpLoad: true,
-        pullDownRefresh: true,
-        pullingUp: this.pullingUp.bind(this),
-        pullingDown: this.pullingDown.bind(this)
-      })
+    created () {
       this.getComments()
     },
     computed: {
