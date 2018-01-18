@@ -23,8 +23,8 @@
         return params
       }, {})
 
-      // const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
-      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
+      const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = urlParams
+      /*const {appId, openId, openIdPk, nickName, headPic, timestamp, nonceStr, signature, step, self} = {
         'openId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
         'nickName': 'Melody.pp',
         'headPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
@@ -34,7 +34,7 @@
         'signature': 'a93d6436e989ce26780324af151cb41aa9dbc11e',
         'step': '2',
         'self': 'False'
-      }
+      }*/
 
       this.getLikeLogList(openId)
       this.configWX(appId, timestamp, nonceStr, signature)
@@ -80,7 +80,7 @@
         return this.hasComment ? '给我投票' : '快来参加'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index?hasComment=' + this.hasComment
+        return 'http://kj.century-galaxy.com/api/activity/index?opendId=' + this.$store.state.openId
       },
       getShareImg () {
         return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'
