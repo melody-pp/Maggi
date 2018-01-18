@@ -5,14 +5,16 @@
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">心意排行榜</div>
       <div :class="{active: OrderBy===1}" @click="OrderBy=1">最新上榜</div>
     </div>
-    <div class="rankContent">
-      <ul>
+    <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
+      <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
+      <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
         <CommentItem v-for="Comment of Comments" v-bind="Comment" :OrderBy="OrderBy" :key="Comment.OpenId"/>
       </ul>
+      <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
     </div>
     <div class="btnBox">
-      <img class="" src="../../assets/Comments/button1.png" @click="follow">
-      <img class="" src="../../assets/Comments/button2.png" @click="toPersonalInfo">
+      <img class="" src="../../assets/comments/button1.png" @click="follow">
+      <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
     </div>
   </div>
 </template>
@@ -25,6 +27,11 @@
     components: {CommentItem},
     data () {
       return {
+        isBusy: false,
+        clientY: null,
+        transformY: 0,
+        isPullingUp: false,
+        isPullingDown: false,
         OrderBy: 0,
         OrderBy0: {
           PageIndex: 1,
@@ -58,12 +65,51 @@
       }
     },
     methods: {
+      touchstart () {
+        this.clientY = this.getClientY(event)
+      },
+      touchmove (event) {
+        if (this.isBusy) {
+          return
+        }
+
+        const ul = this.$refs.ul
+        const scrollTop = ul.scrollTop
+        const maxScroll = this.getMaxScroll(ul)
+        const clientY = this.getClientY(event)
+        const deltaY = this.clientY - clientY
+
+        if (deltaY < 0 && scrollTop === 0) {
+          this.pullingDown()
+          console.log('拉到顶部了')
+        }
+
+        console.log(deltaY, maxScroll, scrollTop)
+        if (deltaY > 0 && maxScroll === scrollTop) {
+          this.pullingUp()
+          console.log('拉到底部了')
+        }
+
+        this.clientY += deltaY
+      },
+      getClientY (event) {
+        return event.touches[0].clientY
+      },
+      getMaxScroll (el) {
+        return el.scrollHeight - el.offsetHeight
+      },
       pullingUp () {
-        this.PageIndex = 1
-        this.Comments = []
+        this.transformY = 30
+        this.isBusy = true
+        this.isPullingUp = true
         this.getComments()
       },
       pullingDown () {
+        this.transformY = 30
+        this.isBusy = true
+        this.isPullingDown = true
+        this.PageIndex = 1
+        this.Comments = []
         this.getComments()
       },
       getComments () {
@@ -71,6 +117,10 @@
           '/api/activity/getuserlist',
           {OrderBy: this.OrderBy, PageIndex: this.PageIndex}
         ).then(res => {
+          this.transformY = 0
+          this.isBusy = false
+          this.isPullingUp = false
+          this.isPullingDown = false
           this.PageIndex += 1
           this.Comments.push(...res.data)
         })
@@ -106,7 +156,24 @@
 
   .rankContent {
     height: 65vh;
-    overflow: auto;
+    overflow: visible;
+    position: relative;
+    transition: all 700ms;
+    .loading {
+      width: 30px;
+      position: absolute;
+      &.top {
+        top: -30px
+      }
+      &.bottom {
+        bottom: -30px
+      }
+    }
+
+    > ul {
+      height: 65vh;
+      overflow: auto;
+    }
   }
 
   .Comments {
