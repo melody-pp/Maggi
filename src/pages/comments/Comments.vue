@@ -16,6 +16,12 @@
       <img class="" src="../../assets/comments/button1.png" @click="follow">
       <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
     </div>
+
+
+    <el-dialog title="扫码关注公众号" :visible.sync="dialogVisible" width="90%"
+               center :show-close="false" :append-to-body="true">
+      <img src="../../assets/gongzhonghao.jpg">
+    </el-dialog>
   </div>
 </template>
 
@@ -27,6 +33,7 @@
     components: {CommentItem},
     data () {
       return {
+        dialogVisible: false,
         isBusy: false,
         clientY: null,
         transformY: 0,
@@ -126,7 +133,7 @@
         this.$store.commit('moveTo', 7)
       },
       follow () {
-        location.href = 'http://weixin.qq.com/r/zETcxNzEMYFOrZin9xHe'
+        this.dialogVisible = true
       }
     },
     watch: {

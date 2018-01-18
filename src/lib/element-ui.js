@@ -8,7 +8,6 @@ import message from 'element-ui/packages/message'
 import messageBox from 'element-ui/packages/message-box'
 import 'element-ui/lib/theme-chalk/index.css'
 
-console.log(messageBox)
 Vue.use(Dialog)
 Vue.use(Input)
 Vue.use(Carousel)
