@@ -1,8 +1,8 @@
 <template>
   <li :class="['Comment',{noNum: OrderBy===1}]">
     <template v-if="OrderBy===0">
-      <img v-if="rank<=3" class="ranking-img" :src="imgUrls[rank-1]">
-      <span v-else class="ranking">{{rank}}</span>
+      <img v-if="Rank<=3" class="ranking-img" :src="imgUrls[Rank-1]">
+      <span v-else class="ranking">{{Rank}}</span>
     </template>
 
     <img :src="HeadPic" alt="头像">
@@ -40,7 +40,7 @@
 
   export default {
     name: 'Comment-item',
-    props: ['OrderBy', 'rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'createTimeStr', 'LikeCount'],
+    props: ['OrderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'createTimeStr', 'LikeCount'],
     data () {
       return {
         timer: null,
