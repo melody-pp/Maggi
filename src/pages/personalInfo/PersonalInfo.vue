@@ -18,7 +18,7 @@
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              width="4.6vw" height="4vh" :fill="color">
           <path
-            d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+              d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
         </svg></span>
       <span class="likeNum">{{LikeCount}}</span>
     </div>
@@ -28,8 +28,14 @@
     </div>
     <img class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
     <div class="btnBox">
-      <img class="" src="../../assets/personalInfo/button.png" alt="">
-      <img @click="toComments" src="../../assets/personalInfo/button2.png" alt="">
+      <template v-if="isSelf">
+        <img src="../../assets/personalInfo/button.png">
+        <img @click="toComments" src="../../assets/personalInfo/button2.png">
+      </template>
+      <template v-else>
+        <img @click="upvote" src="../../assets/personalInfo/To-view.png">
+        <img @click="toIndex" src="../../assets/personalInfo/want-to-express.png">
+      </template>
     </div>
     <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
@@ -94,6 +100,10 @@
 
       userOpenId () {
         return this.$store.state.userInfo.OpenId
+      },
+
+      isSelf () {
+        return JSON.parse(this.$store.state.Self.toLowerCase())
       }
     },
     methods: {
@@ -148,6 +158,9 @@
           this.$store.commit('upVote', this.OpenId)
           this.updateLikeLog()
         }
+      },
+      toIndex () {
+        location.href = 'http://kj.century-galaxy.com/api/activity/index'
       }
     },
     watch: {
