@@ -80,9 +80,9 @@
           break
       }
       this.$store.commit('moveTo', start)
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.$refs.mainFrame.style.transition = 'all 700ms ease-out'
-      })
+      }, 500)
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4
