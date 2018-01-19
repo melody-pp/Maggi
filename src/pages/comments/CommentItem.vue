@@ -47,9 +47,9 @@
         clickNum: 0,
         isBusy: false,
         imgUrls: [
-          require('../../assets/Comments/NO1.png'),
-          require('../../assets/Comments/NO2.png'),
-          require('../../assets/Comments/NO3.png'),
+          require('../../assets/comments/NO1.png'),
+          require('../../assets/comments/NO2.png'),
+          require('../../assets/comments/NO3.png'),
         ]
       }
     },

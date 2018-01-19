@@ -1,6 +1,6 @@
 <template>
   <div class="Comments">
-    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/Comments/theme.png" alt="">
+    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png" alt="">
     <div class="rank-type">
       <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
