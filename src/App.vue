@@ -80,7 +80,7 @@
         return this.hasComment ? '给我投票' : '快来参加'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index?OpenId=' + this.$store.state.OpenId
+        return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPk=' + this.$store.state.OpenId
       },
       getShareImg () {
         return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'

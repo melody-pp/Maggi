@@ -103,7 +103,7 @@
       },
 
       isSelf () {
-        return JSON.parse(this.$store.state.Self.toLowerCase())
+        return !!JSON.parse(this.$store.state.Self.toLowerCase())
       }
     },
     methods: {
