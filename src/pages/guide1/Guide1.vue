@@ -68,22 +68,11 @@
           duration: 1500,
           easings: easing.easeInOut,
         }).start(textStyler.set)
-      },
-      resetNodes () {
-        this.showModal = false
-        this.showArrow = false
-        this.$refs.img1.style.opacity = 0
-        this.$refs.img2.style.opacity = 0
-        this.$refs.title.style.opacity = 0
-        this.$refs.content.style.opacity = 0
       }
     },
     watch: {
       moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          setTimeout(this.animate.bind(this), 700)
-        }
+        newVal && setTimeout(this.animate.bind(this), 700)
       }
     },
   }
@@ -93,6 +82,7 @@
   .bg-container {
     img {
       height: 50vh;
+      opacity: 0;
       vertical-align: middle;
     }
   }
@@ -103,6 +93,7 @@
     position: absolute;
     text-align: left;
     img {
+      opacity: 0;
       margin-left: 4vw;
     }
   }

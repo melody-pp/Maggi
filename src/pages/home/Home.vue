@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <img src="../../assets/index/topText.png" ref="topImg">
+      <img ref="topImg" src="../../assets/index/topText.png" class="hide">
     </div>
 
     <div ref="main" class="main clearfix">
@@ -9,13 +9,13 @@
     </div>
 
     <div class="footer">
-      <img src="../../assets/index/bottomText.png" ref="bottomImg">
+      <img ref="bottomImg" src="../../assets/index/bottomText.png" class="hide">
     </div>
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog :visible.sync="dialogVisible" top="30vh" width="100%" :append-to-body="true" :show-close="false"
-               class="home-dialog">
+    <el-dialog class="home-dialog" :visible.sync="dialogVisible" top="30vh" width="100%"
+               :append-to-body="true" :show-close="false">
       <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
           <img :src="img" style="width:auto; height:auto; max-width:100%; max-height: 100%;vertical-align: middle;">
@@ -31,7 +31,6 @@
 
   export default {
     name: 'Home',
-    props: ['moveIn'],
     components: {ArrowBtn},
     data () {
       return {
@@ -52,9 +51,7 @@
       }
     },
     mounted () {
-      this.resetNodes()
-      this.animate()
-
+      setTimeout(this.animate.bind(this))
     },
     methods: {
       showDialog (index) {
@@ -63,10 +60,10 @@
       },
       animate () {
         this.showImgs()
+        setTimeout(this.showMainBG.bind(this), 2000)
         setTimeout(this.showTop.bind(this), 2000)
         setTimeout(this.showBottom.bind(this), 2500)
         setTimeout(() => this.showArrow = true, 2500)
-        setTimeout(this.showMainBG.bind(this), 2000)
       },
       showTop () {
         const topImg = this.$refs.topImg
@@ -111,29 +108,15 @@
           to: {scale: 1, opacity: 1},
         }).start(imgAni)
       },
-      resetNodes () {
-        this.showArrow = false
-        for (const img of document.querySelectorAll('.main>img')) {
-          img.style.opacity = 0
-          img.style.scale = 0
-        }
-        this.$refs.main.style.background = 'rgba(0,0,0,0)'
-        this.$refs.topImg.style.opacity = 0
-        this.$refs.bottomImg.style.opacity = 0
-      }
-    },
-    watch: {
-      moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          setTimeout(this.animate.bind(this), 700)
-        }
-      }
-    },
+    }
   }
 </script>
 
 <style scoped lang="scss">
+  .hide {
+    opacity: 0;
+  }
+
   .header {
     width: 79.2vw;
     height: auto !important;
@@ -151,8 +134,10 @@
     padding: 0;
     overflow: hidden;
     vertical-align: middle;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0);
     img {
+      opacity: 0;
+      transform: scale(0);
       float: left;
       height: 16vh;
       vertical-align: middle;

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import { tween, styler, value, spring, easing, keyframes } from 'popmotion'
+  import { tween, styler, easing } from 'popmotion'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -69,27 +69,20 @@
           easings: easing.easeInOut,
         }).start(textStyler.set)
       },
-      resetNodes () {
-        this.showModal = false
-        this.showArrow = false
-        this.$refs.img1.style.opacity = 0
-        this.$refs.img2.style.opacity = 0
-        this.$refs.title.style.opacity = 0
-        this.$refs.content.style.opacity = 0
-      }
     },
     watch: {
       moveIn (newVal) {
-        if (newVal) {
-          this.resetNodes()
-          setTimeout(this.animate.bind(this), 700)
-        }
+        newVal && setTimeout(this.animate.bind(this), 700)
       }
     },
   }
 </script>
 
 <style scoped lang="scss">
+  img {
+    opacity: 0;
+  }
+
   .bg-container {
     img {
       vertical-align: middle;
@@ -100,7 +93,7 @@
     img:nth-child(1) {
       transform-origin: right center;
     }
-    
+
     img:nth-child(2) {
       transform-origin: left center;
     }
