@@ -5,16 +5,9 @@
 </template>
 
 <script>
-  import { tween, styler, easing } from 'popmotion'
-
   export default {
     mounted () {
-      tween({
-        to: 15,
-        ease: easing.easeInOut,
-        flip: Infinity,
-        duration: 500
-      }).start(styler(this.$refs.arrow).set('y'))
+
     },
     methods: {
       moveDown () {
