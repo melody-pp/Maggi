@@ -14,7 +14,7 @@
 
     <el-dialog class="activityRule" :visible.sync="dialogVisible"
                :modal="false" :show-close="false" :append-to-body="true">
-      <span slot="title" class="dialog-title">活动规则:</span>
+      <span slot="title" class="dialog-title">活动规则</span>
       <div style="text-align: center">
         <div class="content">
           <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">

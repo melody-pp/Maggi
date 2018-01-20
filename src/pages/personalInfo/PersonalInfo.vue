@@ -39,7 +39,7 @@
     </div>
     <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
-      <span slot="title" class="dialog-title">活动规则:</span>
+      <span slot="title" class="dialog-title">活动规则</span>
       <div>
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
         <p>1. 活动时间：2018年2月2日21时-2018年2月12日24时。</p>

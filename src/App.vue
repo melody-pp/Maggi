@@ -191,18 +191,21 @@
       width: 90vw;
     }
     .el-dialog__header {
-      color: #fff;
+      color: #e5d918;
       padding: 10px;
+      letter-spacing: 3px;
+      text-align: center;
     }
     .el-dialog__body {
       color: #fff;
       padding: 0 20px;
       max-height: 70vh;
       text-align: left;
+      overflow: auto;
       .content {
         text-align: left;
         max-height: 60vh;
-        overflow: scroll;
+        overflow: auto;
         margin-bottom: 2vh;
       }
       button {
