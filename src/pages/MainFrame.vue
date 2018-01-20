@@ -36,6 +36,7 @@
       <Tips :moveIn="current===8"/>
       <img class="logo" src="../assets/logo.png">
     </div>
+
     <div class="page-10 page">
       <PersonalInfo :moveIn="current===9"/>
       <img class="logo" src="../assets/logo.png">
@@ -44,7 +45,6 @@
       <Comments :moveIn="current===10"/>
       <img class="logo" src="../assets/logo.png">
     </div>
-
   </div>
 </template>
 
@@ -78,13 +78,13 @@
           start = 0
           break
         case 2:
-          start = 7
-          break
-        case 3:
           start = 9
           break
+        case 3:
+          start = 10
+          break
       }
-      this.$store.commit('moveTo', 8)
+      this.$store.commit('moveTo', start)
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow

@@ -30,7 +30,7 @@
     <div class="btnBox">
       <template v-if="isSelf">
         <img @click="showShare" src="../../assets/personalInfo/button.png">
-        <img @click="toComments" src="../../assets/personalInfo/button2.png">
+        <img @click="moveDown" src="../../assets/personalInfo/button2.png">
       </template>
       <template v-else>
         <img @click="upvote" src="../../assets/personalInfo/To-view.png">
@@ -110,7 +110,7 @@
       showDialog () {
         this.dialogVisible = true
       },
-      toComments () {
+      moveDown () {
         this.$store.commit('moveDown')
       },
       getUser () {

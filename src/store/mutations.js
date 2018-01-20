@@ -27,11 +27,18 @@ export default {
     state.Current = Current
   },
   moveDown (state) {
-    if (state.Current < 9) {
+    const el = document.getElementById('main-frame')
+    el.style.transition = 'all 700ms ease-out'
+    setTimeout(() => el.style.transition = '', 1000)
+    if (state.Current < 10) {
       state.Current++
     }
   },
   moveUp (state) {
+    const el = document.getElementById('main-frame')
+    el.style.transition = 'all 700ms ease-out'
+    setTimeout(() => el.style.transition = '', 1000)
+
     if (state.Current > 0) {
       state.Current--
     }

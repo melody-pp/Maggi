@@ -4,7 +4,7 @@
     <img class="content" src="../../assets/leaveInfo/Activity-rules.png">
     <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="showDialog">
 
-    <el-dialog title="扫码关注公众号" :visible.sync="dialogVisible" width="90%"
+    <el-dialog title="长按识别公众号二维码" :visible.sync="dialogVisible" width="90%"
                center :show-close="false" :append-to-body="true">
       <img src="../../assets/gongzhonghao.jpg">
     </el-dialog>

@@ -13,8 +13,7 @@
       <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
     </div>
     <div class="btnBox">
-      <img class="" src="../../assets/comments/button1.png">
-      <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
+      <img class="" src="../../assets/comments/button2.png" @click="moveUp">
     </div>
 
   </div>
@@ -123,8 +122,8 @@
           this.Comments.push(...res.data)
         })
       },
-      toPersonalInfo () {
-        this.$store.commit('moveTo', 7)
+      moveUp () {
+        this.$store.commit('moveUp')
       },
     },
     watch: {
