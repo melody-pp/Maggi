@@ -88,7 +88,7 @@
           OpenId: this.userOpenId,
           OpenIdPk: this.OpenId
         }).then(({data: {errcode, errmsg}}) => {
-          if (errcode === 0) {
+          if (errcode === 1) {
             return this.$message.error(errmsg)
           }
 
