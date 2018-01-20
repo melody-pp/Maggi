@@ -1,6 +1,6 @@
 <template>
-  <div class="arrowUp">
-    <img ref="arrow" src="../assets/index/001.png" @touchstart="moveDown">
+  <div class="arrowUp" @touchstart="moveDown">
+    <img ref="arrow" src="../assets/index/001.png">
   </div>
 </template>
 
@@ -19,8 +19,9 @@
 
 <style scoped lang="scss">
   .arrowUp {
+    padding: 20px;
     position: absolute;
-    bottom: 6vh;
+    bottom: 0;
     z-index: 10;
     left: 50%;
     transform: translateX(-50%);

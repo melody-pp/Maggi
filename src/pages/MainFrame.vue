@@ -21,7 +21,7 @@
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-6 page">
-      <Flow :moveIn="current===4"/>
+      <Flow :moveIn="current===5"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-7 page">
