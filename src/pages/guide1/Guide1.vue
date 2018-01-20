@@ -5,8 +5,9 @@
       <img src="../../assets/p1/02.jpg" ref="img2">
     </div>
     <div class="txt">
-      <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p1/03.png" ref="title">
-      <img style="width: 80%;" src="../../assets/p1/content.png" ref="content">
+      <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p1/theme.png" ref="title">
+      <img style="width: 32.27vw;margin-bottom: 2vh;" src="../../assets/p1/theme1.png" ref="title">
+      <img style="width: 61.33vw;" src="../../assets/p1/content.png" ref="content">
     </div>
 
     <ArrowBtn v-show="showArrow"/>
@@ -95,6 +96,7 @@
     img {
       opacity: 0;
       margin-left: 4vw;
+      display: block;
     }
   }
 </style>

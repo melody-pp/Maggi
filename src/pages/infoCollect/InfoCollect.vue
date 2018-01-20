@@ -63,10 +63,6 @@
     overflow: hidden;
   }
 
-  .title {
-    margin: 5.47vh auto 0;
-    width: 65.5%;
-  }
 
   .canvas {
     display: block;

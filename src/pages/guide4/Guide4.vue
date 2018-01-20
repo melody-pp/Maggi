@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="txt">
-      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png" alt="">
-      <img style="width: 80vw;" src="../../assets/p4/content.png" alt="">
+      <img style="width: 63.47vw;margin-bottom: 3.98vh;" src="../../assets/p4/theme.png" alt="">
+      <img style="width: 66.93vw;" src="../../assets/p4/content.png" alt="">
     </div>
-
-    <ArrowBtn/>
+    <img class="btn" src="../../assets/p4/participation.png" @touchstart="moveDown">
 
   </div>
 </template>
@@ -15,7 +14,12 @@
   import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
-    components: {ArrowBtn}
+    components: {ArrowBtn},
+    methods: {
+      moveDown () {
+        this.$store.commit('moveDown')
+      }
+    }
   }
 </script>
 

@@ -10,8 +10,9 @@
       <img src="../../assets/p2/05.jpg" ref="bottomImg">
     </div>
     <div class="txt">
-      <img style="width: 49.06%;margin-bottom: 3.65vh;" src="../../assets/p2/06.png" ref="title">
-      <img style="width: 76.4vw;" src="../../assets/p2/content.png" ref="content">
+      <img style="width: 46.8vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme.png" ref="title">
+      <img style="width: 28.27vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme1.png" ref="title">
+      <img style="width: 60vw;" src="../../assets/p2/content.png" ref="content">
     </div>
 
     <ArrowBtn v-show="showArrow"/>
@@ -115,6 +116,7 @@
     text-align: left;
     img {
       margin-left: 4vw;
+      display: block;
     }
   }
 </style>

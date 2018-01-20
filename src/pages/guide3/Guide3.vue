@@ -5,8 +5,9 @@
       <img src="../../assets/p3/busy.jpg" ref="img2">
     </div>
     <div class="txt">
-      <img style="width: 47.73%;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
-      <img style="width: 76%;" src="../../assets/p3/content.png" ref="content">
+      <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
+      <img style="width: 32.13vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme1.png" ref="title">
+      <img style="width: 63.07vw;" src="../../assets/p3/content.png" ref="content">
     </div>
 
     <ArrowBtn v-show="showArrow"/>
@@ -106,6 +107,7 @@
     position: absolute;
     img {
       margin-left: 4vw;
+      display: block;
     }
   }
 </style>

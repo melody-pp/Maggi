@@ -1,21 +1,16 @@
 <template>
   <div>
-    <div id="slick" class="slick">
+    <img class="prizeThem title" src="../../assets/prize/theme.png" alt="">
+    <div class="prizeBox">
       <div><img src="../../assets/prize/Warm-air-blower.png"></div>
+      <div class="gutter"></div>
       <div><img src="../../assets/prize/Vacuum-cup.png"></div>
       <div><img src="../../assets/prize/Intelligent-bracelet.png"></div>
+      <div class="gutter"></div>
       <div><img src="../../assets/prize/Charging.png"></div>
       <div><img src="../../assets/prize/Electronic-gift-card.png"></div>
+      <div class="gutter"></div>
       <div><img src="../../assets/prize/The-cook.png"></div>
-    </div>
-    <img class="rules" src="../../assets/prize/Sweepstakes-rules.png" alt="">
-    <div>
-      <div class="agreeBox clearfix">
-        <!-- <span :class="['agreeBtn',{follow}]" @click="follow=!follow"></span>
-         <span style="margin-right: 17vw;">关注公众号</span>-->
-        <span :class="['agreeBtn',{knowRule}]" @click="knowRule=!knowRule"></span>
-        <span class="linkTxt" @click="showDialog">我已了解活动规则</span>
-      </div>
     </div>
     <img class="btn" src="../../assets/prize/start.png" @click="toInfoCollect">
     <!--<img class="theRules" src="../../assets/prize/The-rules.png" alt="">-->
@@ -71,21 +66,8 @@
   }
 </script>
 <style scoped lang="scss">
-  .slick {
-    margin-top: 2vh;
-
-    img {
-      width: 20vw;
-      opacity: .7;
-      transition: all 500ms;
-    }
-
-    .slick-Current {
-      img {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-    }
+  .prizeThem {
+    width: 74.4vw;
   }
 
   .close {
@@ -140,6 +122,17 @@
       &.follow, &.knowRule {
         background-position: 0 -3.15vh;
       }
+    }
+  }
+
+  .prizeBox {
+    width: 92vw;
+    > div {
+      width: 48vw;
+      float: left;
+    }
+    .gutter{
+      width: 4vw;
     }
   }
 </style>
