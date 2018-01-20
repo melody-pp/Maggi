@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <img class="logo left" src="./assets/logo1.png">
+    <img class="logo right" src="./assets/logo2.png">
+
     <MainFrame/>
   </div>
 </template>
@@ -141,12 +144,30 @@
     }
   }
 
+  .logo {
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    &.left {
+      left: 0;
+      width: 8vw;
+    }
+    &.right {
+      right: 0;
+      width: 10.8vw;
+    }
+  }
+
   .btn {
     width: 48.4vw;
     position: absolute;
     bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .title {
+    margin: 5.47vh auto 0;
   }
 
   .themeTxt {
@@ -223,7 +244,8 @@
     }
   }
 
-  .title {
-    margin: 5.47vh auto 0;
+  .el-message-box {
+    border: none;
+    background-color: transparent;
   }
 </style>

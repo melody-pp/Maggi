@@ -6,25 +6,23 @@
       <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
     </div>
+
+    <div :class="['self', {hideRank}]">
+      <span class="self-ranking">58</span>
+      <img class="headerPic"
+           src="http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132">
+      <div class="right">
+        <span>获赞总数</span>
+        <span style="font-size: 8vw;">26</span>
+        <span style="margin-left: 4vw;">今日获赞</span>
+        <span style="font-size: 5vw;font-weight: 100;">16</span>
+      </div>
+    </div>
+
     <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
       <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
       <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
-        <li class="self">
-          <span class="self-ranking">
-            58
-          </span>
-          <img class="headerPic"
-               src="http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132">
-          <div class="right">
-            <span>获赞总数</span>
-            <span style="font-size: 8vw;">26</span>
-            <span style="margin-left: 4vw;">今日获赞</span>
-            <span style="font-size: 5vw;font-weight: 100;">16</span>
-          </div>
-
-        </li>
-
-        <CommentItem v-for="Comment of showComments" :key="Comment.OpenId"
+        <CommentItem v-for="Comment of Comments" :key="Comment.OpenId"
                      v-bind="Comment" :OrderBy="OrderBy" @upvote="upvote"/>
       </ul>
       <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
@@ -63,6 +61,9 @@
       this.getComments()
     },
     computed: {
+      hideRank () {
+        return this.OrderBy === 0
+      },
       Comments: {
         get () {
           return this['OrderBy' + this.OrderBy].Comments
@@ -78,9 +79,6 @@
         set (val) {
           this['OrderBy' + this.OrderBy].PageIndex = val
         }
-      },
-      showComments () {
-        return this.Comments.slice().sort((a, b) => b.LikeCount - a.LikeCount)
       },
     },
     methods: {
@@ -180,7 +178,7 @@
   }
 
   .rankContent {
-    height: 65vh;
+    height: 50vh;
     overflow: visible;
     position: relative;
     transition: all 700ms;
@@ -196,7 +194,7 @@
     }
 
     > ul {
-      height: 65vh;
+      height: 50vh;
       overflow: auto;
       padding-left: 0;
     }
@@ -226,14 +224,6 @@
     border-bottom: 1px solid #444;
   }
 
-  .headerPic {
-    top: 7vw;
-    left: 12vw;
-    position: absolute;
-    width: 10vw;
-    border-radius: 50%;
-  }
-
   .self {
     color: #fff;
     display: block;
@@ -241,7 +231,6 @@
     text-align: left;
     position: relative;
     padding: 5vw 0 0 24vw;
-
     .self-ranking {
       font-size: 16px;
       font-weight: 300;
@@ -249,6 +238,24 @@
       position: absolute;
       top: 5.5vh;
       left: 5vw;
+    }
+
+    .headerPic {
+      top: 7vw;
+      left: 12vw;
+      position: absolute;
+      width: 10vw;
+      border-radius: 50%;
+    }
+
+    &.hideRank {
+      padding-left: 17vw;
+      .self-ranking {
+        display: none;
+      }
+      .headerPic {
+        left: 4vw;
+      }
     }
   }
 </style>
