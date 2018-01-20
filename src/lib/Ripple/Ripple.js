@@ -1,5 +1,4 @@
-import './createjs-2013.12.12.min'
-import './TweenMax.min'
+import { TweenMax } from 'gsap'
 
 export default class Ripple {
   constructor (_ctx, _x, _y, _diameter, mainImg) {
