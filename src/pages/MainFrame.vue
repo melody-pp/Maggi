@@ -21,23 +21,27 @@
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-6 page">
-      <Prize :moveIn="current===5"/>
+      <Flow :moveIn="current===4"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-7 page">
-      <InfoCollect :moveIn="current===6"/>
+      <Prize :moveIn="current===6"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-8 page">
-      <PersonalInfo :moveIn="current===7"/>
+      <InfoCollect :moveIn="current===7"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-9 page">
-      <Tips :moveIn="current===8"/>
+      <PersonalInfo :moveIn="current===8"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-10 page">
-      <Comments :moveIn="current===9"/>
+      <Tips :moveIn="current===9"/>
+      <img class="logo" src="../assets/logo.png">
+    </div>
+    <div class="page-11 page">
+      <Comments :moveIn="current===10"/>
       <img class="logo" src="../assets/logo.png">
     </div>
 
@@ -50,6 +54,7 @@
   import Guide2 from './guide2/Guide2'
   import Guide3 from './guide3/Guide3'
   import Guide4 from './guide4/Guide4'
+  import Flow from './Flow/Flow'
   import Prize from './prize/Prize'
   import InfoCollect from './infoCollect/InfoCollect'
   import Tips from './tips/Tips'
@@ -80,12 +85,13 @@
           break
       }
       this.$store.commit('moveTo', start)
+
       setTimeout(() => {
         this.$refs.mainFrame.style.transition = 'all 700ms ease-out'
       }, 500)
     },
     components: {
-      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4
+      Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow
     }
   }
 </script>
