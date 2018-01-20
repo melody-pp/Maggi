@@ -8,7 +8,8 @@
     <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
       <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
       <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
-        <CommentItem v-for="Comment of Comments" v-bind="Comment" :OrderBy="OrderBy" :key="Comment.OpenId"/>
+        <CommentItem v-for="Comment of showComments" v-bind="Comment" :OrderBy="OrderBy" :key="Comment.OpenId"
+                     @upvote="upvote"/>
       </ul>
       <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
     </div>
@@ -62,7 +63,10 @@
         set (val) {
           this['OrderBy' + this.OrderBy].PageIndex = val
         }
-      }
+      },
+      showComments () {
+        return this.Comments.slice().sort((a, b) => b.LikeCount - a.LikeCount)
+      },
     },
     methods: {
       touchstart () {
@@ -122,6 +126,11 @@
           this.Comments.push(...res.data)
         })
       },
+
+      upvote (OpenId) {
+        console.log('upvote')
+        this.Comments.find(item => item.OpenId === OpenId).LikeCount++
+      },
       moveUp () {
         this.$store.commit('moveUp')
       },
@@ -175,6 +184,9 @@
       height: 65vh;
       overflow: auto;
       padding-left: 0;
+      > li {
+        transition: all 700ms;
+      }
     }
   }
 

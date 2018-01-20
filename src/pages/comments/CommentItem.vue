@@ -27,7 +27,7 @@
 
       <template v-if="OrderBy===0">
         <div class="info">
-          <span>{{CreateTimeStr}}</span>
+          <span>{{dateFormat(CreateTimeStr)}}</span>
         </div>
       </template>
     </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import { showUpvote, sample } from '../../utils/utils'
+  import { showUpvote, sample, dateFormat } from '../../utils/utils'
 
   const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
 
@@ -44,6 +44,7 @@
     props: ['OrderBy', 'Rank', 'OpenId', 'NickName', 'HeadPic', 'CommentContent', 'CreateTimeStr', 'LikeCount'],
     data () {
       return {
+        dateFormat,
         clickNum: 0,
         isBusy: false,
         imgUrls: [
@@ -99,10 +100,10 @@
       upvote (event) {
         if (this.liked < 10 && this.openId !== this.userOpenId) {
           showUpvote(event, sample(colors))
-
+          console.log('upvote')
           this.clickNum++
-          this.LikeCount++
-          this.$store.commit('upVote', this.OpenId)
+          this.$emit('upvote', this.OpenId)
+          this.$store.commit('upvote', this.OpenId)
           this.updateLikeLog()
         }
       }

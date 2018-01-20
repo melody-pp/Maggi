@@ -155,7 +155,7 @@
 
           this.clickNum++
           this.LikeCount++
-          this.$store.commit('upVote', this.OpenId)
+          this.$store.commit('upvote', this.OpenId)
           this.updateLikeLog()
         }
       },

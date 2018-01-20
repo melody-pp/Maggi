@@ -5,7 +5,7 @@ export default {
   setLikeLog (state, LikeLog) {
     state.LikeLog = LikeLog
   },
-  upVote (state, OpenId) {
+  upvote (state, OpenId) {
     const item = state.LikeLog.find(item => item.OpenId === OpenId)
 
     if (item) {

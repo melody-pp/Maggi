@@ -6,14 +6,20 @@ const svgAnimate = svg => {
 export const sample = arr => arr[Math.floor(Math.random() * arr.length)]
 
 export const showUpvote = (event, color) => {
-  const $svg = document.createElement('div')
-  const touch = event.changedTouches[0]
+  // const $svg = document.createElement('div')
+  // const touch = event.changedTouches[0]
+  //
+  // $svg.innerHTML = getSvg(color)
+  // $svg.style.position = 'absolute'
+  // $svg.style.left = touch.pageX - 15 + 'px'
+  // $svg.style.top = touch.pageY - 15 + 'px'
+  // document.body.appendChild($svg)
+  //
+  // svgAnimate($svg)
+}
 
-  $svg.innerHTML = getSvg(color)
-  $svg.style.position = 'absolute'
-  $svg.style.left = touch.pageX - 15 + 'px'
-  $svg.style.top = touch.pageY - 15 + 'px'
-  document.body.appendChild($svg)
+export const dateFormat = dateStr => {
+  const date = new Date(dateStr)
 
-  svgAnimate($svg)
+  return `${date.getMonth() + 1}月${date.getDate()}日 ${date.getHours()}:${date.getMinutes()}`
 }
