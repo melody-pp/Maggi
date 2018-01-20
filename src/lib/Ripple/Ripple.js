@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import './createjs-2013.12.12.min'
 import './TweenMax.min'
 
