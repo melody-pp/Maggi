@@ -120,10 +120,6 @@
     position: relative;
     padding: 5vw 0 0 24vw;
 
-    .content {
-      transition: all 600ms;
-    }
-
     &.noNum {
       padding-left: 17vw;
       > img {
@@ -136,7 +132,6 @@
       position: absolute;
       width: 10vw;
       border-radius: 50%;
-      transition: all 600ms;
     }
 
     .ranking-img {

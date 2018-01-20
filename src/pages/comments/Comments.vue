@@ -1,6 +1,7 @@
 <template>
   <div class="Comments">
-    <img style="width: 56.4vw;margin-top: 2vh;" src="../../assets/comments/theme.png">
+    <img style="width: 63.33vw;margin-top: 2vh;" src="../../assets/comments/theme.png">
+
     <div class="rank-type">
       <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
@@ -8,15 +9,29 @@
     <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
       <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
       <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
-        <CommentItem v-for="Comment of showComments" v-bind="Comment" :OrderBy="OrderBy" :key="Comment.OpenId"
-                     @upvote="upvote"/>
+        <li class="self">
+          <span class="self-ranking">
+            58
+          </span>
+          <img class="headerPic"
+               src="http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132">
+          <div class="right">
+            <span>获赞总数</span>
+            <span style="font-size: 8vw;">26</span>
+            <span style="margin-left: 4vw;">今日获赞</span>
+            <span style="font-size: 5vw;font-weight: 100;">16</span>
+          </div>
+
+        </li>
+
+        <CommentItem v-for="Comment of showComments" :key="Comment.OpenId"
+                     v-bind="Comment" :OrderBy="OrderBy" @upvote="upvote"/>
       </ul>
       <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
     </div>
     <div class="btnBox">
       <img class="" src="../../assets/comments/button2.png" @click="moveUp">
     </div>
-
   </div>
 </template>
 
@@ -153,8 +168,8 @@
     div {
       color: #fff;
       display: inline-block;
-      font-size: 3.8vw;
-      padding: 2vw 5vw;
+      font-size: 3.9vw;
+      padding: 1.5vw 8vw;
       border: 1px solid #fff;
       width: 20vw;
     }
@@ -184,9 +199,6 @@
       height: 65vh;
       overflow: auto;
       padding-left: 0;
-      > li {
-        transition: all 700ms;
-      }
     }
   }
 
@@ -204,8 +216,39 @@
     transform: translateX(-50%);
     width: 100%;
     img {
-      width: 36.27vw;
+      width: 48.4vw;
       vertical-align: middle;
+    }
+  }
+
+  .right {
+    padding: 0 5vw 4vh 0;
+    border-bottom: 1px solid #444;
+  }
+
+  .headerPic {
+    top: 7vw;
+    left: 12vw;
+    position: absolute;
+    width: 10vw;
+    border-radius: 50%;
+  }
+
+  .self {
+    color: #fff;
+    display: block;
+    font-size: 3.4vw;
+    text-align: left;
+    position: relative;
+    padding: 5vw 0 0 24vw;
+
+    .self-ranking {
+      font-size: 16px;
+      font-weight: 300;
+      margin-right: 1vw;
+      position: absolute;
+      top: 5.5vh;
+      left: 5vw;
     }
   }
 </style>

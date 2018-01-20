@@ -13,6 +13,12 @@
     computed: {
       hasComment () {
         return this.$store.state.Current > 6
+      },
+      UserId () {
+        return this.$store.state.UserId
+      },
+      userInfo () {
+        return this.$state.state.userInfo
       }
     },
     created () {
@@ -23,19 +29,19 @@
         return params
       }, {})
 
-      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
-      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
-        'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
-        'NickName': 'Melody.pp',
-        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
-        'AppId': 'wx073d89db692f82e0',
-        'Timestamp': '1516486995',
-        'NonceStr': '9H5CLIYs',
-        'Signature': '519dbbd8aabc44b67266067a9c91c08d517f864a',
-        'Step': '2',
-        'Self': '1',
-        'OpenIdPK': ''
-      }
+      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
+      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
+      //   'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
+      //   'NickName': 'Melody.pp',
+      //   'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
+      //   'AppId': 'wx073d89db692f82e0',
+      //   'Timestamp': '1516486995',
+      //   'NonceStr': '9H5CLIYs',
+      //   'Signature': '519dbbd8aabc44b67266067a9c91c08d517f864a',
+      //   'Step': '2',
+      //   'Self': '1',
+      //   'OpenIdPK': ''
+      // }
 
       this.getLikeLogList(OpenId)
       this.configWX(AppId, Timestamp, NonceStr, Signature)
@@ -78,13 +84,13 @@
         }
       },
       getShareTitle () {
-        return this.hasComment ? '给我投票' : '快来参加'
+        return this.hasComment ? `我是第${this.UserId}不能回家过年的厨师，快来为我助力，赢得美极暖心好礼！` : '年味，有你，美极了！888份好礼，送给每个值得尊敬的厨师！'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPk=' + this.$store.state.OpenId
+        return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPk=' + this.$store.state.userInfo.OpenId
       },
       getShareImg () {
-        return this.hasComment ? 'http://geiwotoupiao.png' : 'http://kuailaicanjia.png'
+        return this.hasComment ? this.userInfo.HeadPic : localStorage + require('./assets/infoCollect/family.png')
       },
     }
   }
@@ -106,7 +112,7 @@
     height: 100vh;
     overflow: hidden;
     text-align: center;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

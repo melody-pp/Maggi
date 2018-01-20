@@ -180,18 +180,18 @@
 </script>
 <style scoped lang="scss">
   .theme {
-    width: 37.47vw;
+    width: 44.67vw;
     float: left;
   }
 
   .theme1 {
-    width: 4.53vw;
+    width: 5.73vw;
     float: left;
     margin-top: 3px;
   }
 
   .theme2 {
-    width: 49.2vw;
+    width: 65.07vw;
     margin: 0 auto;
   }
 
