@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="prizeThem title" src="../../assets/prize/theme.png" alt="">
+    <img class="prizeThem title" src="../../assets/prize/theme.png">
     <div class="prizeBox">
       <div><img src="../../assets/prize/Warm-air-blower.png"></div>
       <div class="gutter"></div>
@@ -13,7 +13,7 @@
       <div><img src="../../assets/prize/The-cook.png"></div>
     </div>
     <img class="btn" src="../../assets/prize/start.png" @click="toInfoCollect">
-    <!--<img class="theRules" src="../../assets/prize/The-rules.png" alt="">-->
+    <!--<img class="theRules" src="../../assets/prize/The-rules.png">-->
     <el-dialog class="activityRule" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则:</span>

@@ -11,7 +11,7 @@
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme.png" ref="title">
-      <img style="width: 28.27vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme1.png" ref="title">
+      <img style="width: 28.27vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme1.png" ref="subTitle">
       <img style="width: 60vw;" src="../../assets/p2/content.png" ref="content">
     </div>
 
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-  import { tween, styler, easing } from 'popmotion'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -33,69 +32,18 @@
     components: {Modal, ArrowBtn},
     data () {
       return {
-        Xs: [200, -200, 200, -200],
-        Ys: [200, 200, -200, -200],
-        showArrow: false,
-        showModal: false,
+        showArrow: true,
+        showModal: true,
       }
-    },
-    methods: {
-      animate () {
-        this.showImgs()
-        setTimeout(() => this.showModal = true, 2000)
-        setTimeout(() => this.showArrow = true, 2000)
-        setTimeout(() => this.showText(this.$refs.title), 2500)
-        setTimeout(() => this.showText(this.$refs.content), 4000)
-      },
-      showImgs () {
-        const imgs = this.$refs
-        ;[imgs.img1, imgs.img2, imgs.img3, imgs.img4].forEach((img, i) => this.showImg(img, i))
-        setTimeout(this.showBottom.bind(this), 1000)
-      },
-
-      showImg (img, i) {
-        tween({
-          from: {x: this.Xs[i], y: this.Ys[i], opacity: 0, scale: 0},
-          to: {x: 0, y: 0, opacity: 1, scale: 1},
-          duration: 1000,
-          easings: easing.easeInOut,
-        }).start(styler(img).set)
-      },
-
-      showBottom () {
-        const img = this.$refs.bottomImg
-        const imgStyler = styler(img)
-        tween({
-          from: {y: -200, opacity: 0, scale: 2},
-          to: {y: 0, opacity: 1, scale: 1},
-          duration: 1000,
-          easings: easing.easeInOut,
-        }).start(imgStyler.set)
-      },
-
-      showText (text) {
-        const textStyler = styler(text)
-        tween({
-          from: {y: -200, opacity: 0},
-          to: {y: 0, opacity: 1},
-          duration: 1500,
-          easings: easing.easeInOut,
-        }).start(textStyler.set)
-      },
     },
     watch: {
       moveIn (newVal) {
-        newVal && setTimeout(this.animate.bind(this), 700)
       }
     },
   }
 </script>
 
 <style scoped lang="scss">
-  img {
-    opacity: 0;
-  }
-
   .bg-container {
     > img {
       height: 50vh;

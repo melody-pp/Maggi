@@ -25,17 +25,17 @@
 
       // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
       const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
-        'OpenId': 'oGgAGv-NzCUyRqCV-ZfWSH3MKUWg',
-        'NickName': '%e7%8e%8b%e8%b7%83',
-        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/ia76LHl9fiaXaIPiblzzhRZAb3yb5kNTRvKsz2cLU5Q3G1MIktasPuua1qFCMVImxsmq7CZBp2VxkOic6ibGU1DfJsQ/132',
+        'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
+        'NickName': 'Melody.pp',
+        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
         'AppId': 'wx073d89db692f82e0',
-        'Timestamp': '1516303584',
-        'NonceStr': '47u4LrIQ',
-        'Signature': '210b765abbaa01785fb6fa084fc0c043c330a352',
+        'Timestamp': '1516475934',
+        'NonceStr': 'Ge6b9Q28',
+        'Signature': 'faf709c689b0f046a2656d89a09ab79855fcb9bc',
         'Step': '1',
-        'Self': 'False'
+        'Self': '1',
+        'OpenIdPK': '',
       }
-
       this.getLikeLogList(OpenId)
       this.configWX(AppId, Timestamp, NonceStr, Signature)
       this.$store.commit('setUserInfo', {OpenId, NickName, HeadPic})

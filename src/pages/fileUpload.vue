@@ -2,7 +2,7 @@
   <div>
     <input ref="input" type="file" accept="image/*" @change="upload"/>
 
-    <img :src="imgUrl" alt="" width="200">
+    <img :src="imgUrl" width="200">
   </div>
 </template>
 

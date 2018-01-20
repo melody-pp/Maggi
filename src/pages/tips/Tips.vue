@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="txt">
-      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png" alt="">
-      <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png" alt="">
+      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png">
+      <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png">
     </div>
     <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="toComments">
   </div>

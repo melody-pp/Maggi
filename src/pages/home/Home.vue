@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <img ref="topImg" src="../../assets/index/top_pic.png" class="hide">
+      <img ref="topImg" src="../../assets/index/top_pic.png">
     </div>
 
     <div ref="main" class="main clearfix">
@@ -9,13 +9,13 @@
     </div>
 
     <div class="footer">
-      <img ref="bottomImg" src="../../assets/index/bom_pic.png" class="hide">
+      <img ref="bottomImg" src="../../assets/index/bom_pic.png">
     </div>
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog class="home-dialog" :visible.sync="dialogVisible" top="30vh" width="100%"
-               :append-to-body="true" :show-close="false">
+    <el-dialog class="home-dialog" top="30vh" width="100%"
+               :visible.sync="dialogVisible" :append-to-body="true" :show-close="false">
       <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
           <img :src="img" style="width:auto; height:auto; max-width:100%; max-height: 100%;vertical-align: middle;">
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  import { tween, styler, value, spring, easing } from 'popmotion'
   import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
@@ -34,7 +33,7 @@
     components: {ArrowBtn},
     data () {
       return {
-        showArrow: false,
+        showArrow: true,
         dialogVisible: false,
         imgs: [
           require('../../assets/index/01.jpg'),
@@ -50,73 +49,16 @@
         ]
       }
     },
-    mounted () {
-      setTimeout(this.animate.bind(this))
-    },
     methods: {
       showDialog (index) {
         this.dialogVisible = true
         setTimeout(() => this.$refs.carousel.setActiveItem(index))
-      },
-      animate () {
-        this.showImgs()
-        setTimeout(this.showMainBG.bind(this), 2000)
-        setTimeout(this.showTop.bind(this), 2000)
-        setTimeout(this.showBottom.bind(this), 2500)
-        setTimeout(() => this.showArrow = true, 2500)
-      },
-      showTop () {
-        const topImg = this.$refs.topImg
-        const topStyler = styler(topImg)
-        tween({
-          from: {opacity: 0, y: -50},
-          to: {opacity: 1, y: 0},
-          ease: easing.easeInOut,
-          duration: 1000
-        }).start(topStyler.set)
-      },
-      showMainBG () {
-        const main = this.$refs.main
-        const mainStyler = styler(main)
-        tween({
-          from: {background: 'rgba(0,0,0,0)'},
-          to: {background: 'rgba(255,255,255,1)'},
-          ease: easing.easeInOut,
-          duration: 1000
-        }).start(mainStyler.set)
-      },
-      showBottom () {
-        const bottomImg = this.$refs.bottomImg
-        const bottomStyler = styler(bottomImg)
-        tween({
-          from: {opacity: 0, y: 50},
-          to: {opacity: 1, y: 0},
-          ease: easing.easeInOut,
-          duration: 1000
-        }).start(bottomStyler.set)
-      },
-      showImgs () {
-        const $imgs = Array.from(document.querySelectorAll('.main>img'))
-        $imgs.forEach((img, i) => setTimeout(() => this.showImg(img), i * 200 + 300))
-      },
-      showImg (img) {
-        const imgStyler = styler(img)
-        const imgAni = value({scale: 0, opacity: 0}, imgStyler.set)
-
-        spring({
-          from: imgAni.get(),
-          to: {scale: 1, opacity: 1},
-        }).start(imgAni)
-      },
+      }
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .hide {
-    opacity: 0;
-  }
-
   .header {
     width: 51.87vw;
     height: auto !important;
@@ -136,8 +78,6 @@
     vertical-align: middle;
     background-color: rgba(0, 0, 0, 0);
     img {
-      opacity: 0;
-      transform: scale(0);
       float: left;
       height: 16vh;
       vertical-align: middle;

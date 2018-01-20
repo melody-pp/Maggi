@@ -6,7 +6,7 @@
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
-      <img style="width: 32.13vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme1.png" ref="title">
+      <img style="width: 32.13vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme1.png" ref="subTitle">
       <img style="width: 63.07vw;" src="../../assets/p3/content.png" ref="content">
     </div>
 
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-  import { tween, styler, easing } from 'popmotion'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -28,62 +27,18 @@
     components: {Modal, ArrowBtn},
     data () {
       return {
-        showArrow: false,
-        showModal: false,
+        showArrow: true,
+        showModal: true,
       }
-    },
-    methods: {
-      animate () {
-        this.showImg1()
-        this.showImg2()
-        setTimeout(() => this.showModal = true, 1500)
-        setTimeout(() => this.showArrow = true, 2000)
-        setTimeout(() => this.showText(this.$refs.title), 2000)
-        setTimeout(() => this.showText(this.$refs.content), 3500)
-      },
-      showImg1 () {
-        const img = this.$refs.img1
-        const imgStyler = styler(img)
-        tween({
-          from: {rotateY: 90, scale: 2, opacity: 0, x: -200,},
-          to: {rotateY: 0, scale: 1, opacity: 1, x: 0,},
-          duration: 1500,
-          easings: easing.easeInOut,
-        }).start(imgStyler.set)
-      },
-      showImg2 () {
-        const img = this.$refs.img2
-        const imgStyler = styler(img)
-        tween({
-          from: {rotateY: -90, scale: 2, opacity: 0, x: 200,},
-          to: {rotateY: 0, scale: 1, opacity: 1, x: 0,},
-          duration: 1500,
-          easings: easing.easeInOut,
-        }).start(imgStyler.set)
-      },
-      showText (text) {
-        const textStyler = styler(text)
-        tween({
-          from: {y: 100, opacity: 0},
-          to: {y: 0, opacity: 1},
-          duration: 1500,
-          easings: easing.easeInOut,
-        }).start(textStyler.set)
-      },
     },
     watch: {
       moveIn (newVal) {
-        newVal && setTimeout(this.animate.bind(this), 700)
       }
     },
   }
 </script>
 
 <style scoped lang="scss">
-  img {
-    opacity: 0;
-  }
-
   .bg-container {
     img {
       vertical-align: middle;

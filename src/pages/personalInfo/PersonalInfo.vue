@@ -8,7 +8,7 @@
       </div>
 
       <div class="theme2">
-        <img src="../../assets/personalInfo/theme2.png" alt="">
+        <img src="../../assets/personalInfo/theme2.png">
       </div>
     </div>
     <div class="headPortraitBox">

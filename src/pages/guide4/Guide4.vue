@@ -1,18 +1,15 @@
 <template>
   <div>
     <div class="txt">
-      <img style="width: 63.47vw;margin-bottom: 3.98vh;" src="../../assets/p4/theme.png" alt="">
-      <img style="width: 66.93vw;" src="../../assets/p4/content.png" alt="">
+      <img style="width: 63.47vw;margin-bottom: 3.98vh;" src="../../assets/p4/theme.png">
+      <img style="width: 66.93vw;" src="../../assets/p4/content.png" >
     </div>
     <img class="btn" src="../../assets/p4/participation.png" @touchstart="moveDown">
-
   </div>
 </template>
 
 <script>
-
   import ArrowBtn from '../../components/ArrowBtn'
-
   export default {
     components: {ArrowBtn},
     methods: {
