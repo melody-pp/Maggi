@@ -13,15 +13,10 @@
       <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
     </div>
     <div class="btnBox">
-      <img class="" src="../../assets/comments/button1.png" @click="follow">
+      <img class="" src="../../assets/comments/button1.png">
       <img class="" src="../../assets/comments/button2.png" @click="toPersonalInfo">
     </div>
 
-
-    <el-dialog title="扫码关注公众号" :visible.sync="dialogVisible" width="90%"
-               center :show-close="false" :append-to-body="true">
-      <img src="../../assets/gongzhonghao.jpg">
-    </el-dialog>
   </div>
 </template>
 
@@ -33,7 +28,6 @@
     components: {CommentItem},
     data () {
       return {
-        dialogVisible: false,
         isBusy: false,
         clientY: null,
         transformY: 0,
@@ -132,9 +126,6 @@
       toPersonalInfo () {
         this.$store.commit('moveTo', 7)
       },
-      follow () {
-        this.dialogVisible = true
-      }
     },
     watch: {
       OrderBy () {

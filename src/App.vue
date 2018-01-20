@@ -137,7 +137,7 @@
   .btn {
     width: 48.4vw;
     position: absolute;
-    bottom: 1.7vh;
+    bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
   }

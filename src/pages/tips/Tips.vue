@@ -1,32 +1,39 @@
 <template>
   <div>
-    <div class="txt">
-      <img style="width: 56.27vw;margin-bottom: 3.98vh;" src="../../assets/comments/theme.png">
-      <img style="width: 80vw;" src="../../assets/leaveInfo/Activity-rules.png">
-    </div>
-    <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="toComments">
+    <img class="title" src="../../assets/leaveInfo/theme.png">
+    <img class="content" src="../../assets/leaveInfo/Activity-rules.png">
+    <img class="btn" src="../../assets/leaveInfo/Save-the-view.png" @click="showDialog">
+
+    <el-dialog title="扫码关注公众号" :visible.sync="dialogVisible" width="90%"
+               center :show-close="false" :append-to-body="true">
+      <img src="../../assets/gongzhonghao.jpg">
+    </el-dialog>
   </div>
 </template>
 
 <script>
   export default {
-    methods: {
-      toComments () {
-        this.$store.commit('moveDown')
+    data () {
+      return {
+        dialogVisible: false,
       }
-    }
+    },
+    methods: {
+      showDialog () {
+        this.dialogVisible = true
+      }
+    },
+
   }
 </script>
 
 <style scoped lang="scss">
-  .bg-container img {
-    vertical-align: middle;
-    height: 50vh;
+  .title {
+    width: 63.33vw;
+    margin: 20vh auto 3.98vh;
   }
 
-  .txt {
-    z-index: 3;
-    top: 25.21vh;
-    position: absolute;
+  .content {
+    width: 71.07vw;
   }
 </style>

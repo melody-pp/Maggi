@@ -33,11 +33,11 @@
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-9 page">
-      <PersonalInfo :moveIn="current===8"/>
+      <Tips :moveIn="current===8"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-10 page">
-      <Tips :moveIn="current===9"/>
+      <PersonalInfo :moveIn="current===9"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-11 page">
@@ -84,6 +84,7 @@
           start = 9
           break
       }
+      this.$store.commit('moveTo', 8)
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow
