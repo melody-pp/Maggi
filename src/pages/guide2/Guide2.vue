@@ -31,7 +31,7 @@
     data () {
       return {
         timeline: null,
-        showArrow: true,
+        showArrow: false,
       }
     },
     methods: {
