@@ -2,20 +2,18 @@
   <div>
     <img class="prizeThem title" src="../../assets/prize/theme.png">
     <div class="prizeBox">
-      <div><img src="../../assets/prize/Warm-air-blower.png"></div>
-      <div class="gutter"></div>
-      <div><img src="../../assets/prize/Vacuum-cup.png"></div>
-      <div><img src="../../assets/prize/Intelligent-bracelet.png"></div>
-      <div class="gutter"></div>
-      <div><img src="../../assets/prize/Charging.png"></div>
-      <div><img src="../../assets/prize/Electronic-gift-card.png"></div>
-      <div class="gutter"></div>
-      <div><img src="../../assets/prize/The-cook.png"></div>
+      <img src="../../assets/prize/Warm-air-blower.png">
+      <img src="../../assets/prize/Vacuum-cup.png">
+      <img src="../../assets/prize/Intelligent-bracelet.png">
+      <img src="../../assets/prize/Charging.png">
+      <img src="../../assets/prize/Electronic-gift-card.png">
+      <img src="../../assets/prize/The-cook.png">
     </div>
+
     <img class="btn" src="../../assets/prize/start.png" @click="toInfoCollect">
-    <!--<img class="theRules" src="../../assets/prize/The-rules.png">-->
-    <el-dialog class="activityRule" :visible.sync="dialogVisible" :modal="false" :show-close="false"
-               :append-to-body="true">
+
+    <el-dialog class="activityRule" :visible.sync="dialogVisible"
+               :modal="false" :show-close="false" :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则:</span>
       <div>
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
@@ -28,6 +26,8 @@
         <p>7. 本活动的最终中奖名单将在2月16日通过雀巢专业餐饮大厨精英荟微信公众账号公布，以示公正。</p>
         <p>8. 本活动严禁刷票，若有违反者，雀巢专业餐饮有权立刻取消其参与资格。</p>
         <p>9. 本活动解释权归雀巢专业餐饮所有。</p>
+
+
       </div>
     </el-dialog>
   </div>
@@ -49,7 +49,7 @@
         this.dialogVisible = true
       },
       toInfoCollect () {
-        this.$store.commit('moveDown')
+        this.dialogVisible = true
       }
     }
   }
@@ -91,8 +91,7 @@
   .agreeBox {
     text-align: left;
     width: 87vw;
-    margin: 0 auto;
-    margin-top: 3vh;
+    margin: 3vh auto 0;
     .linkTxt {
       padding-bottom: 2px;
       border-bottom: 1px solid #fff;
@@ -115,13 +114,13 @@
   }
 
   .prizeBox {
-    width: 92vw;
-    > div {
-      width: 48vw;
-      float: left;
-    }
-    .gutter {
-      width: 4vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    > img {
+      margin-top: 3vh;
+      width: 40vw;
+      height: 30vw;
     }
   }
 </style>
