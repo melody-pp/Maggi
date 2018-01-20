@@ -28,6 +28,13 @@
       <template v-if="OrderBy===0">
         <div class="info">
           <span>{{dateFormat(CreateTimeStr)}}</span>
+          <svg class="liked likedTime" @touchstart="upvoteTime" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
+               xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+               width="4.6vw" height="4vh" :fill="color">
+            <path
+              d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+          </svg>
+          <span class="LikesNum">{{LikeCount}}</span>
         </div>
       </template>
     </div>
@@ -106,6 +113,16 @@
           this.$store.commit('upvote', this.OpenId)
           this.updateLikeLog()
         }
+      },
+      upvoteTime (event) {
+        if (this.liked < 10 && this.openId !== this.userOpenId) {
+          showUpvote(event, sample(colors))
+          console.log('upvote')
+          this.clickNum++
+          this.$emit('upvote', this.OpenId)
+          this.$store.commit('upvote', this.OpenId)
+          this.updateLikeLog()
+        }
       }
     }
   }
@@ -163,12 +180,15 @@
 
     .liked {
       width: 4.6vw;
-      vertical-align: -6px;
+      vertical-align: -7px;
     }
     .LikesNum {
       display: inline-block;
       width: 8vw;
       text-align: center;
     }
+  }
+  .likedTime{
+    margin-left: 4vw;
   }
 </style>
