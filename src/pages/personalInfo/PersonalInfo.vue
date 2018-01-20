@@ -26,7 +26,7 @@
     <div class="remark">
       {{CommentContent}}
     </div>
-    <img class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
+    <img v-if="isSelf" class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
     <div class="btnBox">
       <template v-if="isSelf">
         <img @click="showShare" src="../../assets/personalInfo/button.png">
@@ -221,7 +221,7 @@
   .num {
     float: left;
     font-size: 8vw;
-    color: #fe8e00;
+    color: #e50011;
     margin: -6px 10px 0;
   }
 
@@ -252,9 +252,10 @@
     margin: 5vh auto 3vh;
     .likeNum {
       position: absolute;
-      top: 1.5vh;
+      top: 2vh;
       left: 75vw;
-      font-size: 6.6vw;
+      font-size: 5vw;
+      font-style: italic;
     }
   }
 
