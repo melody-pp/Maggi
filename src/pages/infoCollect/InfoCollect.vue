@@ -1,22 +1,26 @@
 <template>
-  <div class="bg">
+  <div class="bg" ref="page">
     <div class="title">
-      <img src="../../assets/infoCollect/theme.png">
+      <img src="../../assets/infoCollect/theme.png" ref="title">
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
-    <img class="homeTxt" src="../../assets/infoCollect/family1.png">
+    <img class="homeTxt" src="../../assets/infoCollect/family1.png" ref="homeTxt">
     <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……（文字80字以内）" :maxlength="80" v-model="Comment"/>
-    <img class="btn" src="../../assets/infoCollect/button.png" @click="submit">
+    <img class="btn" src="../../assets/infoCollect/button.png" @click="submit" ref="infoCollectBtn">
   </div>
 </template>
 
 <script>
+  import { TimelineMax, Elastic } from 'gsap'
   import Ripple from '../../lib/Ripple/Ripple'
 
   export default {
+    props: ['moveIn'],
     data () {
       return {
-        Comment: ''
+        Comment: '',
+        timeline: null,
+        showArrow: false
       }
     },
     computed: {
@@ -52,7 +56,27 @@
           }
         })
       },
-    }
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.7,
+          onComplete: () => {
+            this.showArrow = true
+          }
+        })
+
+        this.timeline
+          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.canvas, 1, {autoAlpha: 0})
+          .from(this.$refs.homeTxt, 1, {autoAlpha: 0})
+          .from(this.$refs.page.querySelector('.el-textarea'), 1, {autoAlpha: 0, scale: 0})
+          .from(this.$refs.infoCollectBtn, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+      }
+    },
+    watch: {
+      moveIn (newVal) {
+        newVal && this.animate()
+      }
+    },
   }
 </script>
 

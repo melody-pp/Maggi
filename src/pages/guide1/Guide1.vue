@@ -1,8 +1,10 @@
 <template>
   <div ref="page">
     <div class="bg-container">
-      <img src="../../assets/p1/01.jpg" ref="img1">
-      <img src="../../assets/p1/02.jpg" ref="img2">
+      <img class="img1" src="../../assets/p1/01.jpg" ref="img1">
+      <img class="img2" src="../../assets/p1/02.jpg" ref="img2">
+      <img src="../../assets/p1/01.jpg" ref="img3">
+      <img src="../../assets/p1/02.jpg" ref="img4">
     </div>
 
     <div class="txt">
@@ -40,8 +42,12 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
-          .from(this.$refs.img2, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
+          .from(this.$refs.img1, 2, {autoAlpha: 0, x: -50})
+          .to(this.$refs.img1, 2, {autoAlpha: 0, x: '200vw'})
+          .from(this.$refs.img2, 2, {autoAlpha: 0, x: -50})
+          .to(this.$refs.img2, 2, {autoAlpha: 0, x: 100})
+          .from(this.$refs.img3, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
+          .from(this.$refs.img4, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
           .from(this.$refs.title, 1, {autoAlpha: 0, x: -50})
           .from(this.$refs.subTitle, 1, {autoAlpha: 0, x: -50})
@@ -61,6 +67,12 @@
     img {
       height: 50vh;
       vertical-align: middle;
+    }
+    .img1, .img2 {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
   }
 

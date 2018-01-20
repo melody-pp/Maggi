@@ -40,7 +40,7 @@
     <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
                :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则</span>
-      <div>
+      <div class="content">
         <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
         <p>1. 活动时间：2018年2月2日21时-2018年2月12日24时。</p>
         <p>2. 本活动仅限雀巢专业餐饮大厨精英荟微信公众账号粉丝参与，未关注该微信公众账号者关注后方可参与活动。</p>

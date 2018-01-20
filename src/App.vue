@@ -237,7 +237,7 @@
       overflow: auto;
       .content {
         text-align: left;
-        max-height: 60vh;
+        max-height: 63vh;
         overflow: auto;
         margin-bottom: 2vh;
       }

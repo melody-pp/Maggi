@@ -1,16 +1,16 @@
 <template>
   <div>
-    <img class="prizeTheme title" src="../../assets/prize/theme.png">
+    <img class="prizeTheme title" src="../../assets/prize/theme.png" ref="prizeTheme">
     <div class="prizeBox">
-      <img src="../../assets/prize/Warm-air-blower.png">
-      <img src="../../assets/prize/Vacuum-cup.png">
-      <img src="../../assets/prize/Intelligent-bracelet.png">
-      <img src="../../assets/prize/Charging.png">
-      <img src="../../assets/prize/The-cook.png">
-      <img src="../../assets/prize/Electronic-gift-card.png">
+      <img src="../../assets/prize/Warm-air-blower.png" ref="img1">
+      <img src="../../assets/prize/Vacuum-cup.png" ref="img2">
+      <img src="../../assets/prize/Intelligent-bracelet.png" ref="img3">
+      <img src="../../assets/prize/Charging.png" ref="img4">
+      <img src="../../assets/prize/The-cook.png" ref="img5">
+      <img src="../../assets/prize/Electronic-gift-card.png" ref="img6">
     </div>
 
-    <img class="btn" src="../../assets/prize/start.png" @click="dialogVisible=true">
+    <img class="btn" src="../../assets/prize/start.png" @click="dialogVisible=true" ref="prizeBtn">
 
     <el-dialog class="activityRule" :visible.sync="dialogVisible"
                :modal="false" :show-close="false" :append-to-body="true">
@@ -36,18 +36,46 @@
   </div>
 </template>
 <script>
+  import { TimelineMax, Elastic } from 'gsap'
+
   export default {
+    props: ['moveIn'],
     data () {
       return {
         dialogVisible: false,
+        timeline: null,
+        showArrow: false
       }
     },
     methods: {
       moveDown () {
         this.dialogVisible = false
         this.$store.commit('moveDown')
+      },
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.7,
+          onComplete: () => {
+            this.showArrow = true
+          }
+        })
+
+        this.timeline
+          .from(this.$refs.img1, 1.5, {autoAlpha: 0, rotationX: 90})
+          .from(this.$refs.img2, 1.5, {autoAlpha: 0, rotationX: 90})
+          .from(this.$refs.img3, 1.5, {autoAlpha: 0,  rotationX: 90})
+          .from(this.$refs.img4, 1.5, {autoAlpha: 0,  rotationX: 90})
+          .from(this.$refs.img5, 1.5, {autoAlpha: 0,  rotationX: 90})
+          .from(this.$refs.img6, 1.5, {autoAlpha: 0,  rotationX: 90})
+          .from(this.$refs.prizeTheme, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.prizeBtn, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
       }
-    }
+    },
+    watch: {
+      moveIn (newVal) {
+        newVal && this.animate()
+      }
+    },
   }
 </script>
 <style scoped lang="scss">
@@ -70,6 +98,7 @@
       margin-top: 3vh;
       width: 44vw;
       height: 32vw;
+      transform-origin: bottom;
     }
   }
 </style>
