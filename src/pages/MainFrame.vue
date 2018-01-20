@@ -1,43 +1,43 @@
 <template>
-  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${Current*100}vh,0)`}">
+  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
     <div class="page-1 page">
-      <Home :moveIn="Current===0"/>
+      <Home :moveIn="current===0"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-2 page">
-      <Guide1 :moveIn="Current===1"/>
+      <Guide1 :moveIn="current===1"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-3 page">
-      <Guide2 :moveIn="Current===2"/>
+      <Guide2 :moveIn="current===2"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-4 page">
-      <Guide3 :moveIn="Current===3"/>
+      <Guide3 :moveIn="current===3"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-5 page">
-      <Guide4 :moveIn="Current===4"/>
+      <Guide4 :moveIn="current===4"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-6 page">
-      <Prize :moveIn="Current===5"/>
+      <Prize :moveIn="current===5"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-7 page">
-      <InfoCollect :moveIn="Current===6"/>
+      <InfoCollect :moveIn="current===6"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-8 page">
-      <PersonalInfo :moveIn="Current===7"/>
+      <PersonalInfo :moveIn="current===7"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-9 page">
-      <Tips :moveIn="Current===8"/>
+      <Tips :moveIn="current===8"/>
       <img class="logo" src="../assets/logo.png">
     </div>
     <div class="page-10 page">
-      <Comments :moveIn="Current===9"/>
+      <Comments :moveIn="current===9"/>
       <img class="logo" src="../assets/logo.png">
     </div>
 
@@ -59,16 +59,16 @@
   export default {
     name: 'MainFrame',
     computed: {
-      Current () {
+      current () {
         return this.$store.state.Current
       },
-      Step () {
+      step () {
         return this.$store.state.Step
       },
     },
     mounted () {
       let start
-      switch (+this.Step) {
+      switch (+this.step) {
         case 1:
           start = 0
           break
