@@ -21,7 +21,7 @@
         return this.$store.state.UserId
       },
       userInfo () {
-        return this.$state.state.userInfo
+        return this.$store.state.userInfo
       }
     },
     created () {
@@ -70,9 +70,14 @@
         })
 
         wx.ready(() => {
+          console.log('ready')
+          console.log(this.getShareConfig())
+
           wx.onMenuShareTimeline(this.getShareConfig())
           wx.onMenuShareAppMessage(this.getShareConfig())
         })
+
+        wx.error(err => console.log(err))
       },
       getLikeLogList (OpenId) {
         this.axios.post('/api/activity/getlikeloglist', {OpenId}).then(res => {
@@ -93,7 +98,7 @@
         return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPk=' + this.$store.state.userInfo.OpenId
       },
       getShareImg () {
-        return this.hasComment ? this.userInfo.HeadPic : localStorage + require('./assets/infoCollect/family.png')
+        return this.hasComment ? this.userInfo.HeadPic : location + require('./assets/infoCollect/family.png').substr(1)
       },
     }
   }
@@ -222,6 +227,7 @@
       padding: 10px;
       letter-spacing: 3px;
       text-align: center;
+      font-size: 5vw;
     }
     .el-dialog__body {
       color: #fff;
@@ -247,5 +253,11 @@
   .el-message-box {
     border: none;
     background-color: transparent;
+    .share-img {
+      width: 19.07vw;
+      position: relative;
+      top: -7vh;
+      right: -34vw;
+    }
   }
 </style>

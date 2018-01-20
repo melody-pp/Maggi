@@ -5,4 +5,5 @@ export default {
   OpenIdPk: null,
   Step: 1,
   Self: false,
+  UserId: 0,
 }

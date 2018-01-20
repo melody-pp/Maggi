@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/dist/',
+    assetsPublicPath: '/',
     proxyTable: {
       '/api': {
         target: 'http://kj.century-galaxy.com/',
