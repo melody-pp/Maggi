@@ -33,8 +33,6 @@
   </div>
 </template>
 <script>
-  import $ from 'jquery'
-
   export default {
     data () {
       return {
@@ -44,16 +42,7 @@
       }
     },
     mounted () {
-      $('#slick').slick({
-        arrows: false,
-        infinite: true,
-        autoplay: true,
-        centerMode: true,
-        speed: 600,
-        slidesToShow: 3,
-        autoplaySpeed: 1500,
-        easing: 'ease-out',
-      })
+
     },
     methods: {
       showDialog () {
@@ -131,7 +120,7 @@
       width: 48vw;
       float: left;
     }
-    .gutter{
+    .gutter {
       width: 4vw;
     }
   }
