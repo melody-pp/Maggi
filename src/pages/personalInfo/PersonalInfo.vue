@@ -104,7 +104,7 @@
       },
 
       isSelf () {
-        return !!JSON.parse(this.$store.state.Self.toLowerCase())
+        return this.$store.state.Self === '1'
       }
     },
     methods: {
@@ -121,6 +121,7 @@
         ).then(res => {
           const data = res.data
 
+          this.$store.commit('setUserId',data.UserId)
           this.UserId = data.UserId
           this.NickName = data.NickName
           this.HeadPic = data.HeadPic

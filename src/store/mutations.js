@@ -23,6 +23,9 @@ export default {
   setSelf (state, Self) {
     state.Self = Self
   },
+  setUserId (state, UserId) {
+    state.UserId = UserId
+  },
   moveTo (state, Current) {
     state.Current = Current
   },
