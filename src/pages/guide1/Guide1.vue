@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div ref="page">
     <div class="bg-container">
       <img src="../../assets/p1/01.jpg" ref="img1">
       <img src="../../assets/p1/02.jpg" ref="img2">
     </div>
+
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p1/theme.png" ref="title">
       <img style="width: 32.27vw;margin-bottom: 2vh;" src="../../assets/p1/theme1.png" ref="subTitle">
@@ -11,14 +12,12 @@
     </div>
 
     <ArrowBtn v-show="showArrow"/>
-
-    <transition enter-active-class="animated zoomIn">
-      <Modal :z-index="2" v-show="showModal"/>
-    </transition>
+    <Modal :z-index="2"/>
   </div>
 </template>
 
 <script>
+  import { TimelineMax } from 'gsap'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -27,13 +26,31 @@
     components: {Modal, ArrowBtn},
     data () {
       return {
-        showArrow: true,
-        showModal: true,
+        timeline: null,
+        showArrow: false,
       }
     },
-    methods: {},
+    methods: {
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.7,
+          onComplete: () => {
+            this.showArrow = true
+          }
+        })
+
+        this.timeline
+          .from(this.$refs.img1, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
+          .from(this.$refs.img2, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
+          .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
+          .from(this.$refs.title, 1, {autoAlpha: 0, x: -50})
+          .from(this.$refs.subTitle, 1, {autoAlpha: 0, x: -50})
+          .from(this.$refs.content, 1, {autoAlpha: 0, x: -50})
+      }
+    },
     watch: {
       moveIn (newVal) {
+        newVal && this.animate()
       }
     },
   }

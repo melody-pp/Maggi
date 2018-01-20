@@ -73,7 +73,7 @@
           start = 10
           break
       }
-      this.$store.commit('moveTo', start)
+      this.$store.commit('moveTo', 1)
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow

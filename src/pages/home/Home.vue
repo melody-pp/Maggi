@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import { TimelineMax, Elastic } from 'gsap'
   import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
@@ -31,7 +32,8 @@
     components: {ArrowBtn},
     data () {
       return {
-        showArrow: true,
+        timeline: null,
+        showArrow: false,
         dialogVisible: false,
         imgs: [
           require('../../assets/index/01.jpg'),
@@ -46,6 +48,24 @@
           require('../../assets/index/10.jpg'),
         ]
       }
+    },
+    mounted () {
+      this.timeline = new TimelineMax({
+        delay: 0.5,
+        onComplete: () => {
+          this.showArrow = true
+        }
+      })
+
+      this.timeline
+        .staggerFrom(this.$refs.main.querySelectorAll('img'), 2, {
+          autoAlpha: 0,
+          scale: 0,
+          ease: Elastic.easeOut.config(0.9, 0.4)
+        }, 0.2, 'stagger')
+        .from(this.$refs.main, 0.5, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
+        .from(this.$refs.topImg, 1, {autoAlpha: 0, y: -100})
+        .from(this.$refs.bottomImg, 1, {autoAlpha: 0, y: 100})
     },
     methods: {
       showDialog (index) {
@@ -72,7 +92,7 @@
     padding: 0;
     overflow: hidden;
     vertical-align: middle;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #fff;
     img {
       float: left;
       height: 16vh;
