@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { TimelineMax } from 'gsap'
+  import { TimelineMax, Elastic } from 'gsap'
   import Modal from '../../components/Modal'
   import ArrowBtn from '../../components/ArrowBtn'
 
@@ -42,9 +42,9 @@
           .from(this.$refs.img1, 1.5, {autoAlpha: 0, x: 100, y: 100})
           .from(this.$refs.img2, 1.5, {autoAlpha: 0, x: -100, y: 100}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50})
-          .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50})
-          .from(this.$refs.content, 1, {autoAlpha: 0, y: -50})
+          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.content, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
       }
     },
     watch: {

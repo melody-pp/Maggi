@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  import { TweenMax, Power0 } from 'gsap'
+  import { TweenMax, Power1 } from 'gsap'
 
   export default {
     mounted () {
-      TweenMax.to(this.$refs.arrow, 1, {y: -20, repeat: -1, yoyo: true, ease: Power0.easeNone})
+      TweenMax.to(this.$refs.arrow, 1, {y: -20, repeat: -1, yoyo: true, ease: Power1.easeInOut})
     },
     methods: {
       moveDown () {
