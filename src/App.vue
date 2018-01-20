@@ -197,8 +197,19 @@
       color: #fff;
       padding: 0 20px;
       max-height: 70vh;
-      overflow: scroll;
       text-align: left;
+      .content {
+        text-align: left;
+        max-height: 60vh;
+        overflow: scroll;
+        margin-bottom: 2vh;
+      }
+      button {
+        border: none;
+        outline: none;
+        padding: 2vw 7vw;
+        background: #ffc702;
+      }
     }
   }
 
