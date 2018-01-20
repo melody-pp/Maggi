@@ -22,8 +22,8 @@
 
 <style scoped lang="scss">
   .bg-container img {
-    vertical-align: middle;
     height: 50vh;
+    vertical-align: middle;
   }
 
   .txt {

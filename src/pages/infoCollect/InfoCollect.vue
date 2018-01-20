@@ -58,23 +58,22 @@
 
 <style scoped lang="scss">
   .bg {
-    position: relative;
     height: 100%;
     overflow: hidden;
+    position: relative;
   }
 
-
   .canvas {
-    display: block;
     width: 100vw;
+    display: block;
     margin: 2vh 0 2.5vh;
   }
 
   .homeTxt {
-    width: 12.26vw;
-    position: absolute;
     top: 23vh;
     left: 25vw;
+    width: 12.26vw;
+    position: absolute;
   }
 
   .el-textarea {

@@ -219,11 +219,10 @@
   }
 
   .num {
+    float: left;
     font-size: 8vw;
     color: #fe8e00;
-    float: left;
-    margin: 0 10px;
-    margin-top: -6px;
+    margin: -6px 10px 0;
   }
 
   .headPortrait {

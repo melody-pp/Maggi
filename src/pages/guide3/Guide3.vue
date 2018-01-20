@@ -41,17 +41,8 @@
 <style scoped lang="scss">
   .bg-container {
     img {
-      vertical-align: middle;
       height: 50vh;
-      perspective: 1000px;
-    }
-
-    img:nth-child(1) {
-      transform-origin: right center;
-    }
-
-    img:nth-child(2) {
-      transform-origin: left center;
+      vertical-align: middle;
     }
   }
 

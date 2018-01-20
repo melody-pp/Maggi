@@ -61,14 +61,12 @@
 <style scoped lang="scss">
   .header {
     width: 51.87vw;
-    height: auto !important;
     margin: 6.47vh auto 4.98vh;
   }
 
   .footer {
     padding: 0;
     width: 47.07vw;
-    height: auto !important;
     margin: 3.65vh auto 7.3vh;
   }
 
