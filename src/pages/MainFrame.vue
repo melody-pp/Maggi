@@ -84,11 +84,6 @@
           start = 9
           break
       }
-      this.$store.commit('moveTo', start)
-
-      setTimeout(() => {
-        this.$refs.mainFrame.style.transition = 'all 700ms ease-out'
-      }, 500)
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow

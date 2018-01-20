@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <img ref="topImg" src="../../assets/index/top_pic.png">
-    </div>
+    <img class="title" ref="topImg" src="../../assets/index/top_pic.png">
 
     <div ref="main" class="main clearfix">
       <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
@@ -59,7 +57,7 @@
 </script>
 
 <style scoped lang="scss">
-  .header {
+  .title {
     width: 51.87vw;
     margin: 6.47vh auto 4.98vh;
   }
