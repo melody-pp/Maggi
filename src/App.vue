@@ -32,28 +32,33 @@
         return params
       }, {})
 
-      // const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = urlParams
-      const {AppId, OpenId, OpenIdPk, NickName, HeadPic, Timestamp, NonceStr, Signature, Step, Self} = {
-        'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
-        'NickName': 'Melody.pp',
-        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
-        'AppId': 'wx073d89db692f82e0',
-        'Timestamp': '1516486995',
-        'NonceStr': '9H5CLIYs',
-        'Signature': '519dbbd8aabc44b67266067a9c91c08d517f864a',
-        'Step': '2',
-        'Self': '1',
-        'OpenIdPK': ''
-      }
+      const {OpenId, OpenIdPk, NickName, HeadPic, Step, Self} = urlParams
+      // const {OpenId, OpenIdPk, NickName, HeadPic, Step, Self} = {
+      //   'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
+      //   'NickName': 'Melody.pp',
+      //   'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
+      //   'Step': '2',
+      //   'Self': '1',
+      //   'OpenIdPK': ''
+      // }
 
+      this.getSignature()
       this.getLikeLogList(OpenId)
-      this.configWX(AppId, Timestamp, NonceStr, Signature)
+
       this.$store.commit('setUserInfo', {OpenId, NickName, HeadPic})
       this.$store.commit('setOpenIdPk', OpenIdPk)
       this.$store.commit('setStep', Step)
       this.$store.commit('setSelf', Self)
     },
     methods: {
+      getSignature () {
+        this.axios.post(
+          '/api/activity/getshareconfig',
+          {Url: location.href}
+        ).then(({data: {AppId, Timestamp, NonceStr, Signature}}) => {
+          this.configWX(AppId, Timestamp, NonceStr, Signature)
+        })
+      },
       configWX (appId, timestamp, nonceStr, signature) {
         const wx = require('weixin-js-sdk')
 
@@ -71,8 +76,6 @@
 
         wx.ready(() => {
           console.log('ready')
-          console.log(this.getShareConfig())
-
           wx.onMenuShareTimeline(this.getShareConfig())
           wx.onMenuShareAppMessage(this.getShareConfig())
         })
