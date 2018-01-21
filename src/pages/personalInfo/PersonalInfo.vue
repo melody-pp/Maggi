@@ -26,10 +26,10 @@
     <div class="remark">
       {{CommentContent}}
     </div>
-    <img v-if="isSelf" class="theRules" src="../../assets/prize/The-rules.png" @click="showDialog">
+    <img v-if="isSelf" class="theRules" src="../../assets/prize/The-rules.png" @click="showAgreeDialog">
     <div class="btnBox">
       <template v-if="isSelf">
-        <img @click="showShare" src="../../assets/personalInfo/button.png">
+        <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
         <img @click="moveDown" src="../../assets/personalInfo/button2.png">
       </template>
       <template v-else>
@@ -37,11 +37,10 @@
         <img @click="toIndex" src="../../assets/personalInfo/want-to-express.png">
       </template>
     </div>
-    <el-dialog class="agreement" :visible.sync="dialogVisible" :modal="false" :show-close="false"
-               :append-to-body="true">
+    <el-dialog class="agreement" :visible.sync="showAgree" :modal="false" :show-close="false" :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则</span>
       <div class="content">
-        <img class="close" src="../../assets/leaveInfo/close.png" @click="dialogVisible=false">
+        <img class="close" src="../../assets/leaveInfo/close.png" @click="showAgree=false">
         <p>1. 活动时间：2018年2月2日21时-2018年2月12日24时。</p>
         <p>2. 本活动仅限雀巢专业餐饮大厨精英荟微信公众账号粉丝参与，未关注该微信公众账号者关注后方可参与活动。</p>
         <p>3. 每个微信账号仅有一次输入内容的机会，一旦提交，不可更改。</p>
@@ -52,7 +51,11 @@
         <p>8. 本活动严禁刷票，若有违反者，雀巢专业餐饮有权立刻取消其参与资格。</p>
         <p>9. 本活动解释权归雀巢专业餐饮所有。</p>
       </div>
-      <button @click="dialogVisible=false">已了解活动规则</button>
+      <button @click="showAgree=false">已了解活动规则</button>
+    </el-dialog>
+
+    <el-dialog class="share-dialog" :visible.sync="showShare" :modal="false" :show-close="false" :append-to-body="true">
+      <img class="share-img" src="../../assets/personalInfo/center.png" alt="分享">
     </el-dialog>
   </div>
 </template>
@@ -65,7 +68,8 @@
     props: ['moveIn'],
     data () {
       return {
-        dialogVisible: false,
+        showShare: false,
+        showAgree: false,
         UserId: 0,
         NickName: '',
         HeadPic: '',
@@ -108,8 +112,8 @@
       }
     },
     methods: {
-      showDialog () {
-        this.dialogVisible = true
+      showAgreeDialog () {
+        this.showAgree = true
       },
       moveDown () {
         this.$store.commit('moveDown')
@@ -166,14 +170,8 @@
       toIndex () {
         location.href = 'http://kj.century-galaxy.com/api/activity/index'
       },
-      showShare () {
-        this.$alert(`<img class="share-img" src="${require('../../assets/personalInfo/center.png')}">`, {
-          center: true,
-          showClose: false,
-          showConfirmButton: false,
-          closeOnClickModal: true,
-          dangerouslyUseHTMLString: true
-        })
+      showShareDialog () {
+        this.showShare = true
       }
     },
     watch: {

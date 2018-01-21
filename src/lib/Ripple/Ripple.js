@@ -1,4 +1,4 @@
-import { TweenMax } from 'gsap'
+import { TweenMax, Sine, Quad } from 'gsap'
 
 export default class Ripple {
   constructor (_ctx, _x, _y, _diameter, mainImg) {

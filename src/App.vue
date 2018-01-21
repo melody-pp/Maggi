@@ -255,16 +255,29 @@
         background: #ffc702;
       }
     }
+
   }
 
-  .el-message-box {
-    border: none;
-    background-color: transparent;
+  .share-dialog {
+    background: rgba(0, 0, 0, .7);
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    text-align: right;
+    .el-dialog {
+      width: 100vw;
+      margin: 0 !important;
+    }
+    .el-dialog__header, .el-dialog__body {
+      padding: 0;
+    }
+
     .share-img {
+      top: 0;
+      right: 8vw;
       width: 19.07vw;
-      position: relative;
-      top: -7vh;
-      right: -34vw;
+      position: absolute;
     }
   }
+
 </style>

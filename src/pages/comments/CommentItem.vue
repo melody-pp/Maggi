@@ -91,6 +91,8 @@
         })
       },
       upvote (event) {
+        showUpvote(event, sample(colors))
+
         if (this.liked < 10) {
           showUpvote(event, sample(colors))
           this.clickNum++
