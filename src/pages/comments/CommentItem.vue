@@ -91,13 +91,14 @@
         })
       },
       upvote (event) {
-        if (this.liked < 10 && this.openId !== this.userOpenId) {
+        if (this.liked < 10) {
           showUpvote(event, sample(colors))
-          console.log('upvote')
           this.clickNum++
           this.$emit('upvote', this.OpenId)
           this.$store.commit('upvote', this.OpenId)
           this.updateLikeLog()
+        } else {
+          this.$message.warning('每天只能点十次赞哦！')
         }
       },
     }

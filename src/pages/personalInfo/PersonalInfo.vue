@@ -121,7 +121,7 @@
         ).then(res => {
           const data = res.data
 
-          this.$store.commit('setUserId',data.UserId)
+          this.$store.commit('setUserId', data.UserId)
           this.UserId = data.UserId
           this.NickName = data.NickName
           this.HeadPic = data.HeadPic
@@ -152,13 +152,15 @@
         })
       },
       upvote (event) {
-        if (this.liked < 10 && this.openId !== this.userOpenId) {
+        if (this.liked < 10) {
           showUpvote(event, sample(colors))
 
           this.clickNum++
           this.LikeCount++
           this.$store.commit('upvote', this.OpenId)
           this.updateLikeLog()
+        } else {
+          this.$message.warning('每天只能点十次赞哦！')
         }
       },
       toIndex () {

@@ -141,8 +141,11 @@
         })
       },
       upvote (OpenId) {
-        console.log('upvote')
         this.Comments.find(item => item.OpenId === OpenId).LikeCount++
+        if (OpenId === this.selfInfo.OpenId) {
+          this.selfInfo.LikeCount++
+          this.selfInfo.TodayLikeCount++
+        }
       },
       moveUp () {
         this.$store.commit('moveUp')
