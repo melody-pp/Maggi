@@ -1,40 +1,44 @@
 <template>
   <div class="personalInfo">
     <div>
-      <div class="themeTxt clearfix">
+      <div class="themeTxt clearfix" ref="themeTxt">
         <img class="theme" src="../../assets/personalInfo/theme.png">
         <span class="num">{{UserId}}</span>
         <img class="theme1" src="../../assets/personalInfo/theme1.png">
       </div>
 
-      <div class="theme2">
+      <div class="theme2" ref="theme2">
         <img src="../../assets/personalInfo/theme2.png">
       </div>
     </div>
     <div class="headPortraitBox">
-      <img class="headPortrait" :src="HeadPic">
-      <span class="like">
+      <img class="headPortrait" :src="HeadPic" ref="headPortrait">
+      <span class="like" ref="like">
         <svg class="liked" @touchstart="upvote" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              width="4.6vw" height="4vh" :fill="color">
           <path
               d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
         </svg></span>
-      <span class="likeNum">{{LikeCount}}</span>
+      <span class="likeNum" ref="likeNum">{{LikeCount}}</span>
     </div>
-    <div class="NickName">{{NickName}}</div>
-    <div class="remark">
+    <div class="NickName" ref="NickName">{{NickName}}</div>
+    <div class="remark" ref="remark">
       {{CommentContent}}
     </div>
-    <img v-if="isSelf" class="theRules" src="../../assets/prize/The-rules.png" @click="showAgreeDialog">
+    <img v-if="isSelf" class="theRules" ref="theRules" src="../../assets/prize/The-rules.png" @click="showAgreeDialog">
     <div class="btnBox">
       <template v-if="isSelf">
-        <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
-        <img @click="moveDown" src="../../assets/personalInfo/button2.png">
+        <div ref="btns">
+          <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
+          <img @click="moveDown" src="../../assets/personalInfo/button2.png">
+        </div>
       </template>
       <template v-else>
-        <img @click="upvote" src="../../assets/personalInfo/To-view.png">
-        <img @click="toIndex" src="../../assets/personalInfo/want-to-express.png">
+        <div ref="btns">
+          <img @click="upvote" src="../../assets/personalInfo/To-view.png">
+          <img @click="toIndex" src="../../assets/personalInfo/want-to-express.png">
+        </div>
       </template>
     </div>
     <el-dialog class="agreement" :visible.sync="showAgree" :modal="false" :show-close="false" :append-to-body="true">
@@ -60,6 +64,7 @@
   </div>
 </template>
 <script>
+  import { TimelineMax } from 'gsap'
   import { showUpvote, sample } from '../../utils/utils'
 
   const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
@@ -77,6 +82,7 @@
         LikeCount: 0,
         clickNum: 0,
         isBusy: false,
+        timeline: null,
       }
     },
     mounted () {
@@ -112,6 +118,27 @@
       }
     },
     methods: {
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.7,
+          onComplete: () => {
+          }
+        })
+
+        this.timeline
+          .from(this.$refs.themeTxt, 1.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.theme2, 1.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.headPortrait, 1.5, {autoAlpha: 0, scale: 0})
+          .to(this.$refs.headPortrait, 1.5, {autoAlpha: 1, scale: 1.2, rotationZ: 20})
+          .to(this.$refs.headPortrait, 1.5, {autoAlpha: 1, scale: 1.2, rotationZ: -20}, '-=1')
+          .to(this.$refs.headPortrait, 1.5, {autoAlpha: 1, scale: 1, rotationZ: -20})
+          .from(this.$refs.like, 1.5, {autoAlpha: 0, x: -20})
+          .from(this.$refs.likeNum, 1.5, {autoAlpha: 0, x: -20})
+          .from(this.$refs.NickName, 1.5, {autoAlpha: 0})
+          .from(this.$refs.remark, 1, {autoAlpha: 0, scale: 0})
+          .from(this.$refs.theRules, 1, {autoAlpha: 0, x: -50})
+          .from(this.$refs.btns, 1, {autoAlpha: 0, y: 100})
+      },
       showAgreeDialog () {
         this.showAgree = true
       },
@@ -176,7 +203,10 @@
     },
     watch: {
       moveIn (newVal) {
-        newVal && this.getUser()
+        if (newVal) {
+          this.getUser()
+          this.animate()
+        }
       }
     },
   }

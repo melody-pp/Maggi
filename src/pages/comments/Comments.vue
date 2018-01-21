@@ -1,38 +1,41 @@
 <template>
   <div class="Comments">
-    <img style="width: 63.33vw;margin-top: 2vh;" src="../../assets/comments/theme.png">
+    <img style="width: 63.33vw;margin-top: 2vh;" src="../../assets/comments/theme.png" ref="theme">
 
-    <div class="rank-type">
+    <div class="rank-type" ref="rankType">
       <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
     </div>
+    <div ref="rankContent">
+      <div :class="['self', {hideRank}]">
+        <span class="self-ranking">{{selfInfo.Rank}}</span>
+        <img class="headerPic" :src="selfInfo.HeadPic">
+        <div class="right">
+          <span>获赞总数</span>
+          <span style="font-size: 8vw;">{{selfInfo.LikeCount}}</span>
+          <span style="margin-left: 4vw;">今日获赞</span>
+          <span style="font-size: 5vw;font-weight: 100;">{{selfInfo.TodayLikeCount}}</span>
+        </div>
+      </div>
 
-    <div :class="['self', {hideRank}]">
-      <span class="self-ranking">{{selfInfo.Rank}}</span>
-      <img class="headerPic" :src="selfInfo.HeadPic">
-      <div class="right">
-        <span>获赞总数</span>
-        <span style="font-size: 8vw;">{{selfInfo.LikeCount}}</span>
-        <span style="margin-left: 4vw;">今日获赞</span>
-        <span style="font-size: 5vw;font-weight: 100;">{{selfInfo.TodayLikeCount}}</span>
+      <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
+        <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
+        <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
+          <CommentItem v-for="Comment of Comments" :key="Comment.OpenId"
+                       v-bind="Comment" :OrderBy="OrderBy" @upvote="upvote"/>
+        </ul>
+        <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
       </div>
     </div>
 
-    <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
-      <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
-      <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
-        <CommentItem v-for="Comment of Comments" :key="Comment.OpenId"
-                     v-bind="Comment" :OrderBy="OrderBy" @upvote="upvote"/>
-      </ul>
-      <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
-    </div>
-    <div class="btnBox">
+    <div class="btnBox" ref="btnBox">
       <img class="" src="../../assets/comments/button2.png" @click="moveUp">
     </div>
   </div>
 </template>
 
 <script>
+  import { TimelineMax } from 'gsap'
   import CommentItem from './CommentItem'
 
   export default {
@@ -56,6 +59,7 @@
           PageIndex: 1,
           Comments: []
         },
+        timeline: null,
       }
     },
     created () {
@@ -83,6 +87,19 @@
       },
     },
     methods: {
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.7,
+          onComplete: () => {
+          }
+        })
+
+        this.timeline
+          .from(this.$refs.theme, 1.5, {autoAlpha: 0, x: -50})
+          .from(this.$refs.rankType, 1.5, {autoAlpha: 0, x: 50})
+          .from(this.$refs.rankContent, 1.5, {autoAlpha: 0, x: -20})
+          .from(this.$refs.btnBox, 1, {autoAlpha: 0, y: 100})
+      },
       touchstart () {
         this.clientY = this.getClientY(event)
       },
@@ -164,7 +181,10 @@
         })
       },
       moveIn (newVal) {
-        newVal && this.getSelfInfo()
+        if (newVal) {
+          this.getSelfInfo()
+          this.animate()
+        }
       }
     }
   }

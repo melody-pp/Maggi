@@ -87,7 +87,7 @@
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background-size: cover;
     background: url("../assets/index/background.jpg") no-repeat;
+    background-size: cover;
   }
 </style>
