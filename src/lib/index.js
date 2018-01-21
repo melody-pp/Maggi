@@ -1,3 +1,3 @@
-import 'animate.css'
+// import 'animate.css'
 import './axios'
 import './element-ui'
