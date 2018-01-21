@@ -52,7 +52,7 @@
         <p>8. 本活动严禁刷票，若有违反者，雀巢专业餐饮有权立刻取消其参与资格。</p>
         <p>9. 本活动解释权归雀巢专业餐饮所有。</p>
       </div>
-      <button>已了解活动规则</button>
+      <button @click="dialogVisible=false">已了解活动规则</button>
     </el-dialog>
   </div>
 </template>
