@@ -29,5 +29,5 @@ export const showUpvote = (event, color) => {
 export const dateFormat = dateStr => {
   const date = new Date(dateStr)
 
-  return `${date.getMonth() + 1}月${date.getDate()}日   ${date.getHours()}:${date.getMinutes()}`
+  return `${date.getMonth() + 1}月${date.getDate()}日  ${date.getHours()}:${date.getMinutes()}`
 }
