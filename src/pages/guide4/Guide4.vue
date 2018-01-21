@@ -27,9 +27,9 @@
         })
 
         this.timeline
-          .from(this.$refs.title, 1.5, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.content, 1.5, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.btn, 2, {autoAlpha: 0})
+          .from(this.$refs.title, 1, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.content, 1, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.btn, 1, {autoAlpha: 0})
       },
       moveDown () {
         this.$store.commit('moveDown')

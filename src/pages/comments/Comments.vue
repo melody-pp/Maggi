@@ -95,9 +95,9 @@
         })
 
         this.timeline
-          .from(this.$refs.theme, 1.5, {autoAlpha: 0, x: -50})
-          .from(this.$refs.rankType, 1.5, {autoAlpha: 0, x: 50})
-          .from(this.$refs.rankContent, 1.5, {autoAlpha: 0, x: -20})
+          .from(this.$refs.theme, 1, {autoAlpha: 0, x: -50})
+          .from(this.$refs.rankType, 1, {autoAlpha: 0, x: 50})
+          .from(this.$refs.rankContent, 1, {autoAlpha: 0, x: -20})
           .from(this.$refs.btnBox, 1, {autoAlpha: 0, y: 100})
       },
       touchstart () {
