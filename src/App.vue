@@ -67,7 +67,7 @@
           timestamp,
           nonceStr,
           signature,
-          debug: false,
+          debug: true,
           jsApiList: [
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
@@ -93,6 +93,9 @@
           link: this.getShareLink(),
           imgUrl: this.getShareImg(),
           desc: this.getDesc(),
+          success () {
+            console.log('success')
+          }
         }
       },
       getShareTitle () {
