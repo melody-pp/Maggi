@@ -274,7 +274,7 @@
 
     .share-img {
       top: 0;
-      right: 8vw;
+      right: 7vw;
       width: 19.07vw;
       position: absolute;
     }
