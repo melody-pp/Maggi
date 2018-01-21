@@ -8,14 +8,13 @@
     </div>
 
     <div :class="['self', {hideRank}]">
-      <span class="self-ranking">58</span>
-      <img class="headerPic"
-           src="http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132">
+      <span class="self-ranking">{{selfInfo.Rank}}</span>
+      <img class="headerPic" :src="selfInfo.HeadPic">
       <div class="right">
         <span>获赞总数</span>
-        <span style="font-size: 8vw;">26</span>
+        <span style="font-size: 8vw;">{{selfInfo.LikeCount}}</span>
         <span style="margin-left: 4vw;">今日获赞</span>
-        <span style="font-size: 5vw;font-weight: 100;">16</span>
+        <span style="font-size: 5vw;font-weight: 100;">{{selfInfo.TodayLikeCount}}</span>
       </div>
     </div>
 
@@ -38,6 +37,7 @@
 
   export default {
     name: 'Comments',
+    props: ['moveIn'],
     components: {CommentItem},
     data () {
       return {
@@ -46,6 +46,7 @@
         transformY: 0,
         isPullingUp: false,
         isPullingDown: false,
+        selfInfo: {},
         OrderBy: 1,
         OrderBy0: {
           PageIndex: 1,
@@ -139,7 +140,6 @@
           this.Comments.push(...res.data)
         })
       },
-
       upvote (OpenId) {
         console.log('upvote')
         this.Comments.find(item => item.OpenId === OpenId).LikeCount++
@@ -147,12 +147,21 @@
       moveUp () {
         this.$store.commit('moveUp')
       },
+      getSelfInfo () {
+        this.axios.post(
+          '/api/activity/getuser',
+          {OpenId: this.$store.state.userInfo.OpenId}
+        ).then(res => this.selfInfo = res.data)
+      }
     },
     watch: {
       OrderBy () {
         setTimeout(() => {
           this.Comments.length || this.getComments()
         })
+      },
+      moveIn (newVal) {
+        newVal && this.getSelfInfo()
       }
     }
   }

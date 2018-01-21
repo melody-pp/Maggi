@@ -61,13 +61,13 @@
         })
 
         this.timeline
+          .from(this.$refs.prizeTheme, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
           .from(this.$refs.img1, 1.5, {autoAlpha: 0, rotationX: 90})
           .from(this.$refs.img2, 1.5, {autoAlpha: 0, rotationX: 90})
-          .from(this.$refs.img3, 1.5, {autoAlpha: 0,  rotationX: 90})
-          .from(this.$refs.img4, 1.5, {autoAlpha: 0,  rotationX: 90})
-          .from(this.$refs.img5, 1.5, {autoAlpha: 0,  rotationX: 90})
-          .from(this.$refs.img6, 1.5, {autoAlpha: 0,  rotationX: 90})
-          .from(this.$refs.prizeTheme, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.img3, 1.5, {autoAlpha: 0, rotationX: 90})
+          .from(this.$refs.img4, 1.5, {autoAlpha: 0, rotationX: 90})
+          .from(this.$refs.img5, 1.5, {autoAlpha: 0, rotationX: 90})
+          .from(this.$refs.img6, 1.5, {autoAlpha: 0, rotationX: 90})
           .from(this.$refs.prizeBtn, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
       }
     },

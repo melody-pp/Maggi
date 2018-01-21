@@ -43,14 +43,15 @@
         })
 
         this.timeline
+          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
           .from(this.$refs.img1, 1.5, {autoAlpha: 0, x: 100, y: 100})
           .from(this.$refs.img2, 1.5, {autoAlpha: 0, x: -100, y: 100})
           .from(this.$refs.img3, 1.5, {autoAlpha: 0, x: 100, y: -100})
           .from(this.$refs.img4, 1.5, {autoAlpha: 0, x: -100, y: 100})
           .from(this.$refs.img5, 1.5, {autoAlpha: 0, x: -100, y: -100})
           .from(this.$refs.img6, 1.5, {autoAlpha: 0, x: -100, y: 100})
-          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+
       }
     },
     watch: {

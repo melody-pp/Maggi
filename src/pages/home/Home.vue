@@ -54,6 +54,7 @@
         delay: 0.5,
         onComplete: () => {
           this.showArrow = true
+          setTimeout(() => this.dialogVisible = true, 500)
         }
       })
 
