@@ -42,10 +42,10 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 2, {autoAlpha: 0, x: -50})
-          .to(this.$refs.img1, 2, {autoAlpha: 0, x: '200vw'})
-          .from(this.$refs.img2, 2, {autoAlpha: 0, x: -50})
-          .to(this.$refs.img2, 2, {autoAlpha: 0, x: 100})
+          .from(this.$refs.img1, 2, {autoAlpha: 0, x: -window.innerWidth})
+          .to(this.$refs.img1, 2, {autoAlpha: 0, x: window.innerWidth})
+          .from(this.$refs.img2, 2, {autoAlpha: 0, x: -window.innerWidth})
+          .to(this.$refs.img2, 2, {autoAlpha: 0, x: window.innerWidth})
           .from(this.$refs.img3, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
           .from(this.$refs.img4, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})

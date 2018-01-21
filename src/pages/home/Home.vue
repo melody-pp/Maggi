@@ -29,6 +29,7 @@
 
   export default {
     name: 'Home',
+    props:['moveIn'],
     components: {ArrowBtn},
     data () {
       return {
@@ -54,7 +55,7 @@
         delay: 0.5,
         onComplete: () => {
           this.showArrow = true
-          setTimeout(() => this.dialogVisible = true, 500)
+          setTimeout(() => this.dialogVisible = this.moveIn, 500)
         }
       })
 

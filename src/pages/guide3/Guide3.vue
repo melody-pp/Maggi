@@ -1,8 +1,10 @@
 <template>
   <div ref="page">
     <div class="bg-container">
-      <img src="../../assets/p3/family.jpg" ref="img1">
-      <img src="../../assets/p3/busy.jpg" ref="img2">
+      <img class="img1" src="../../assets/p3/family.jpg" ref="img1">
+      <img class="img2" src="../../assets/p3/busy.jpg" ref="img2">
+      <img src="../../assets/p3/family.jpg" ref="img3">
+      <img src="../../assets/p3/busy.jpg" ref="img4">
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
@@ -39,8 +41,12 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 1.5, {autoAlpha: 0, x: 100, y: 100})
-          .from(this.$refs.img2, 1.5, {autoAlpha: 0, x: -100, y: 100}, '-=1.5')
+          .from(this.$refs.img1, 1.5, {autoAlpha: 0, x: -window.innerWidth, y: -window.innerHeight})
+          .to(this.$refs.img1, 2, {autoAlpha: 0, x: window.innerWidth, y: window.innerHeight}, '+=1')
+          .from(this.$refs.img2, 1.5, {autoAlpha: 0, x: -window.innerWidth, y: window.innerHeight})
+          .to(this.$refs.img2, 2, {autoAlpha: 0, x: window.innerWidth, y: -window.innerHeight}, '+=1')
+          .from(this.$refs.img3, 1.5, {autoAlpha: 0, x: 100, y: 100})
+          .from(this.$refs.img4, 1.5, {autoAlpha: 0, x: -100, y: 100}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
           .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
           .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
@@ -60,6 +66,12 @@
     img {
       height: 50vh;
       vertical-align: middle;
+    }
+    .img1, .img2 {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
     }
   }
 
