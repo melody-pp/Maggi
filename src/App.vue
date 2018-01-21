@@ -67,7 +67,7 @@
           timestamp,
           nonceStr,
           signature,
-          debug: true,
+          debug: false,
           jsApiList: [
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
@@ -75,7 +75,6 @@
         })
 
         wx.ready(() => {
-          console.log('ready')
           wx.onMenuShareTimeline(this.getShareConfig())
           wx.onMenuShareAppMessage(this.getShareConfig())
         })
@@ -93,9 +92,6 @@
           link: this.getShareLink(),
           imgUrl: this.getShareImg(),
           desc: this.getDesc(),
-          success () {
-            console.log('success')
-          }
         }
       },
       getShareTitle () {
