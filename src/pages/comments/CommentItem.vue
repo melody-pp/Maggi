@@ -80,7 +80,7 @@
         this.axios.post('/api/activity/like', {
           LikeCount,
           OpenId: this.userOpenId,
-          OpenIdPk: this.OpenId
+          OpenIdPK: this.OpenId
         }).then(({data: {errcode, errmsg}}) => {
           if (errcode === 1) {
             return this.$message.error(errmsg)

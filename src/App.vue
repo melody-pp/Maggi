@@ -15,7 +15,7 @@
     components: {MainFrame},
     computed: {
       hasComment () {
-        return this.$store.state.Current > 6
+        return this.$store.state.Current > 7
       },
       UserId () {
         return this.$store.state.UserId
@@ -32,8 +32,8 @@
         return params
       }, {})
 
-      const {OpenId, OpenIdPk, NickName, HeadPic, Step, Self} = urlParams
-      // const {OpenId, OpenIdPk, NickName, HeadPic, Step, Self} = {
+      const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = urlParams
+      // const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = {
       //   'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
       //   'NickName': 'Melody.pp',
       //   'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
@@ -46,7 +46,7 @@
       this.getLikeLogList(OpenId)
 
       this.$store.commit('setUserInfo', {OpenId, NickName, HeadPic})
-      this.$store.commit('setOpenIdPk', OpenIdPk)
+      this.$store.commit('setOpenIdPK', OpenIdPK)
       this.$store.commit('setStep', Step)
       this.$store.commit('setSelf', Self)
     },
@@ -92,17 +92,21 @@
           title: this.getShareTitle(),
           link: this.getShareLink(),
           imgUrl: this.getShareImg(),
+          desc: this.getDesc(),
         }
       },
       getShareTitle () {
         return this.hasComment ? `我是第${this.UserId}不能回家过年的厨师，快来为我助力，赢得美极暖心好礼！` : '年味，有你，美极了！888份好礼，送给每个值得尊敬的厨师！'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPk=' + this.$store.state.userInfo.OpenId
+        return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPK=' + this.$store.state.userInfo.OpenId
       },
       getShareImg () {
         return this.hasComment ? this.userInfo.HeadPic : location + require('./assets/infoCollect/family.png').substr(1)
       },
+      getDesc () {
+        return this.hasComment ? '' : ''
+      }
     }
   }
 </script>

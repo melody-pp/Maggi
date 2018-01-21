@@ -14,8 +14,8 @@ export default {
       state.LikeLog.push({OpenId, LikeCount: 1})
     }
   },
-  setOpenIdPk (state, OpenIdPk) {
-    state.OpenIdPk = OpenIdPk
+  setOpenIdPK (state, OpenIdPK) {
+    state.OpenIdPK = OpenIdPK
   },
   setStep (state, Step) {
     state.Step = Step
