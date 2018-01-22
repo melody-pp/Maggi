@@ -140,8 +140,12 @@
           .from(this.$refs.likeNum, 0.5, {autoAlpha: 0, x: -20})
           .from(this.$refs.nickName, 0.5, {autoAlpha: 0})
           .from(this.$refs.remark, 0.5, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.theRules, 0.5, {autoAlpha: 0, x: -50})
-          .from(this.$refs.btnBox, 0.5, {autoAlpha: 0, y: 100})
+
+        if (this.isSelf) {
+          this.timeline.from(this.$refs.theRules, 0.5, {autoAlpha: 0, x: -50})
+        }
+
+        this.timeline.from(this.$refs.btnBox, 0.5, {autoAlpha: 0, y: 100})
       },
       showAgreeDialog () {
         this.showAgree = true
