@@ -25,9 +25,44 @@ const showUpvote = (event, color) => {
   svgAnimate(svg)
 }
 
+const getRandomColor = () => '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
+const getFirework = (touch) => {
+  const div = document.createElement('div')
+  div.style.position = 'absolute'
+  div.style.top = touch.pageY + 'px'
+  div.style.left = touch.pageX + 'px'
+  div.style.width = 0 + 'px'
+  div.style.height = 0 + 'px'
+  div.style.borderRadius = '50%'
+  div.style.background = getRandomColor()
+  document.body.appendChild(div)
+
+  return div
+}
+const fireworkAnimate = touch => {
+  const div = getFirework(touch)
+  const timeline = new TimelineMax({
+    onComplete () {
+      div.parentNode.removeChild(div)
+    }
+  })
+
+  const size = Math.floor(Math.random() * 30) + 'px'
+  timeline
+    .to(div, .8, {width: size, height: size, x: Math.random() * 200 - 100, y: Math.random() * 200 - 100})
+    .to(div, 0.4, {autoAlpha: 0}, '-=0.4')
+}
+const showFireworks = event => {
+  const touch = event.changedTouches[0]
+  let i = 50
+  while (--i) {
+    fireworkAnimate(touch)
+  }
+}
+
 const sample = arr => arr[Math.floor(Math.random() * arr.length)]
 const dateFormat = dateStr => `${dateStr.substr(5, 2)}月${dateStr.substr(8, 2)}日  ${dateStr.substr(11, 5)}`
 
 export {
-  sample, showUpvote, dateFormat
+  sample, showUpvote, dateFormat, showFireworks
 }

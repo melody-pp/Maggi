@@ -28,18 +28,17 @@
     </div>
     <img v-if="isSelf" class="theRules" ref="theRules" src="../../assets/prize/The-rules.png" @click="showAgreeDialog">
     <div class="btnBox">
-      <template v-if="isSelf">
-        <div ref="btns">
+      <div ref="btns">
+        <template v-if="isSelf">
           <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
           <img @click="moveDown" src="../../assets/personalInfo/button2.png">
-        </div>
-      </template>
-      <template v-else>
-        <div ref="btns">
-          <img @click="upvote" src="../../assets/personalInfo/To-view.png">
+        </template>
+        <template v-else>
+          <img @touchstart="upvote($event, true)" src="../../assets/personalInfo/To-view.png">
           <img @click="toIndex" src="../../assets/personalInfo/want-to-express.png">
-        </div>
-      </template>
+        </template>
+      </div>
+
     </div>
     <el-dialog class="agreement" :visible.sync="showAgree" :modal="false" :show-close="false" :append-to-body="true">
       <span slot="title" class="dialog-title">活动规则</span>
@@ -68,7 +67,7 @@
 </template>
 <script>
   import { TimelineMax, Elastic } from 'gsap'
-  import { showUpvote, sample } from '../../utils/utils'
+  import { showUpvote, sample, showFireworks } from '../../utils/utils'
 
   const colors = ['#3b8aef', '#bb1687', '#5ccca3', '#dd840e', '#3c10bb', '#b998dd', '#b7bb4f', '#cc070f', '#87dda0']
 
@@ -127,27 +126,19 @@
           onComplete: () => {
           }
         })
-
-        this.timeline
-          .from(this.$refs.themeTxt, 0.3, {autoAlpha: 0, y: -50})
-          .from(this.$refs.theme2, 0.3, {autoAlpha: 0, y: -50})
-          .from(this.$refs.headPortrait, 0.3, {autoAlpha: 0, scale: 0})
-          // .to(this.$refs.headPortrait, 0.2, {autoAlpha: 1, scale: 1.2, rotationZ: 20}, '+=0.2')
-          // .to(this.$refs.headPortrait, 0.2, {autoAlpha: 1, scale: 1.2, rotationZ: -20}, '+=0.2')
-          .to(this.$refs.headPortrait, 0.3, {
-            autoAlpha: 1,
-            scale: 1.2
-          })
-          .to(this.$refs.headPortrait, 0.3, {
-            autoAlpha: 1,
-            scale: 1
-          })
-          .from(this.$refs.like, 0.5, {autoAlpha: 0, x: -20})
-          .from(this.$refs.likeNum, 0.5, {autoAlpha: 0, x: -20})
-          .from(this.$refs.NickName, 0.5, {autoAlpha: 0})
-          .from(this.$refs.remark, 0.5, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.theRules, 0.5, {autoAlpha: 0, x: -50})
-          .from(this.$refs.btns, 0.5, {autoAlpha: 0, y: 100})
+        //
+        // this.timeline
+        //   .from(this.$refs.themeTxt, 0.3, {autoAlpha: 0, y: -50})
+        //   .from(this.$refs.theme2, 0.3, {autoAlpha: 0, y: -50})
+        //   .from(this.$refs.headPortrait, 0.3, {autoAlpha: 0, scale: 0})
+        //   .to(this.$refs.headPortrait, 0.3, {autoAlpha: 1, scale: 1.2})
+        //   .to(this.$refs.headPortrait, 0.3, {autoAlpha: 1, scale: 1})
+        //   .from(this.$refs.like, 0.5, {autoAlpha: 0, x: -20})
+        //   .from(this.$refs.likeNum, 0.5, {autoAlpha: 0, x: -20})
+        //   .from(this.$refs.NickName, 0.5, {autoAlpha: 0})
+        //   .from(this.$refs.remark, 0.5, {autoAlpha: 0, scale: 0})
+        //   .from(this.$refs.theRules, 0.5, {autoAlpha: 0, x: -50})
+        //   .from(this.$refs.btns, 0.5, {autoAlpha: 0, y: 100})
       },
       showAgreeDialog () {
         this.showAgree = true
@@ -192,9 +183,9 @@
           this.clickNum && this.updateLikeLog()
         })
       },
-      upvote (event) {
+      upvote (event, isFromBtn) {
         if (this.liked < 10) {
-          showUpvote(event, sample(colors))
+          isFromBtn ? showFireworks(event) : showUpvote(event, sample(colors))
 
           this.clickNum++
           this.LikeCount++
