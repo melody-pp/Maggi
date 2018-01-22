@@ -11,7 +11,7 @@
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme.png" ref="title">
-      <img style="width: 28.27vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme1.png" ref="subTitle">
+      <img style="width: 28.27vw;margin-bottom: 2vh;" src="../../assets/p2/theme1.png" ref="subTitle">
       <img style="width: 60vw;" src="../../assets/p2/content.png" ref="content">
     </div>
 

@@ -62,12 +62,18 @@
 
         this.timeline
           .from(this.$refs.prizeTheme, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.img1, 0.5, {autoAlpha: 0, rotationX: 90})
-          .from(this.$refs.img2, 0.5, {autoAlpha: 0, rotationX: 90},'-=0.5')
-          .from(this.$refs.img3, 0.5, {autoAlpha: 0, rotationX: 90})
-          .from(this.$refs.img4, 0.5, {autoAlpha: 0, rotationX: 90},'-=0.5')
-          .from(this.$refs.img5, 0.5, {autoAlpha: 0, rotationX: 90})
-          .from(this.$refs.img6, 0.5, {autoAlpha: 0, rotationX: 90},'-=0.5')
+          .from(this.$refs.img1, 0.5, {autoAlpha: 0, scale: 1.5})
+          .to(this.$refs.img1, 0.5, {autoAlpha: 1, scale: 1})
+          .from(this.$refs.img2, 0.5, {autoAlpha: 0, scale: 0}, '-=1')
+          .to(this.$refs.img2, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
+          .from(this.$refs.img4, 0.5, {autoAlpha: 0, scale: 1.5}, '-=1')
+          .to(this.$refs.img4, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
+          .from(this.$refs.img3, 0.5, {autoAlpha: 0, scale: 0}, '-=1')
+          .to(this.$refs.img3, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
+          .from(this.$refs.img5, 0.5, {autoAlpha: 0, scale: 1.5}, '-=1')
+          .to(this.$refs.img5, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
+          .from(this.$refs.img6, 0.5, {autoAlpha: 0, scale: 0}, '-=1')
+          .to(this.$refs.img6, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
           .from(this.$refs.prizeBtn, 0.5, {autoAlpha: 0, y: 50})
       }
     },
@@ -98,7 +104,7 @@
       margin-top: 3vh;
       width: 44vw;
       height: 32vw;
-      transform-origin: bottom;
+      /*transform-origin: bottom;*/
     }
   }
 </style>

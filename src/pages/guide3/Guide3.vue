@@ -8,7 +8,7 @@
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
-      <img style="width: 32.13vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme1.png" ref="subTitle">
+      <img style="width: 32.13vw;margin-bottom: 2vh;" src="../../assets/p3/theme1.png" ref="subTitle">
       <img style="width: 63.07vw;" src="../../assets/p3/content.png" ref="content">
     </div>
 
