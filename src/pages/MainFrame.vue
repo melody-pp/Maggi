@@ -88,7 +88,7 @@
       touchend (event) {
         const endY = event.changedTouches[0].pageY
 
-        if (this.current < 5 && endY - this.startY < -5) {
+        if (this.current < 6 && endY - this.startY < -5) {
           this.$store.commit('moveDown')
         }
         // if (this.current < 6 && endY - this.startY > 5) {
