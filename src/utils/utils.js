@@ -7,23 +7,25 @@ const svgAnimate = svg => {
       svg.parentNode.removeChild(svg)
     }
   })
-  timeline.to(svg, 0.2, {scale: 1.2, y: -15, ease: Elastic.easeOut.config(2, 1)})
-  timeline.to(svg, 2, {y: -100, autoAlpha: 0, scale: 1, x: Math.random() * 30 - 15, ease: Power3.easeOut})
+
+  timeline
+    .to(svg, 0.2, {scale: 1.2, y: -15, ease: Elastic.easeOut.config(2, 1)})
+    .to(svg, 2, {y: -100, autoAlpha: 0, scale: 1, x: Math.random() * 30 - 15, ease: Power3.easeOut})
 }
 
 export const sample = arr => arr[Math.floor(Math.random() * arr.length)]
 
 export const showUpvote = (event, color) => {
-  const $svg = document.createElement('div')
+  const svg = document.createElement('div')
   const touch = event.changedTouches[0]
 
-  $svg.innerHTML = getSvg(color)
-  $svg.style.position = 'absolute'
-  $svg.style.left = touch.pageX - 15 + 'px'
-  $svg.style.top = touch.pageY - 15 + 'px'
-  document.body.appendChild($svg)
+  svg.innerHTML = getSvg(color)
+  svg.style.position = 'absolute'
+  svg.style.left = touch.pageX - 15 + 'px'
+  svg.style.top = touch.pageY - 15 + 'px'
+  document.body.appendChild(svg)
 
-  svgAnimate($svg)
+  svgAnimate(svg)
 }
 
 export const dateFormat = dateStr => {
