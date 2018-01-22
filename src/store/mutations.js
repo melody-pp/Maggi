@@ -1,3 +1,16 @@
+let isMoving = false
+const setMoving = () => {
+  isMoving = true
+
+  const el = document.getElementById('main-frame')
+  el.style.transition = 'all 700ms ease-out'
+
+  setTimeout(() => {
+    isMoving = false
+    el.style.transition = ''
+  }, 1000)
+}
+
 export default {
   setUserInfo (state, userInfo) {
     state.userInfo = userInfo
@@ -30,19 +43,14 @@ export default {
     state.Current = Current
   },
   moveDown (state) {
-    const el = document.getElementById('main-frame')
-    el.style.transition = 'all 700ms ease-out'
-    setTimeout(() => el.style.transition = '', 1000)
-    if (state.Current < 10) {
+    if (state.Current < 10 && !isMoving) {
+      setMoving()
       state.Current++
     }
   },
   moveUp (state) {
-    const el = document.getElementById('main-frame')
-    el.style.transition = 'all 700ms ease-out'
-    setTimeout(() => el.style.transition = '', 1000)
-
-    if (state.Current > 0) {
+    if (state.Current > 0 && !isMoving) {
+      setMoving()
       state.Current--
     }
   }
