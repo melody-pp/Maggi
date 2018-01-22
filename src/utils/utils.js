@@ -12,10 +12,7 @@ const svgAnimate = svg => {
     .to(svg, 0.2, {scale: 1.2, y: -15, ease: Elastic.easeOut.config(2, 1)})
     .to(svg, 2, {y: -100, autoAlpha: 0, scale: 1, x: Math.random() * 30 - 15, ease: Power3.easeOut})
 }
-
-export const sample = arr => arr[Math.floor(Math.random() * arr.length)]
-
-export const showUpvote = (event, color) => {
+const showUpvote = (event, color) => {
   const svg = document.createElement('div')
   const touch = event.changedTouches[0]
 
@@ -28,6 +25,9 @@ export const showUpvote = (event, color) => {
   svgAnimate(svg)
 }
 
-export const dateFormat = dateStr => {
-  return `${dateStr.substr(5, 2)}月${dateStr.substr(8, 2)}日  ${dateStr.substr(11, 5)}`
+const sample = arr => arr[Math.floor(Math.random() * arr.length)]
+const dateFormat = dateStr => `${dateStr.substr(5, 2)}月${dateStr.substr(8, 2)}日  ${dateStr.substr(11, 5)}`
+
+export {
+  sample, showUpvote, dateFormat
 }
