@@ -299,6 +299,8 @@
       left: 75vw;
       font-size: 5vw;
       font-style: italic;
+      text-align: left;
+      width: 21vw;
     }
   }
 
