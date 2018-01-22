@@ -53,7 +53,7 @@
     mounted () {
       this.timeline = new TimelineMax({
         delay: 0.5,
-        onComplete () {
+        onComplete: () => {
           this.showArrow = true
           setTimeout(() => this.dialogVisible = this.moveIn, 500)
         }
