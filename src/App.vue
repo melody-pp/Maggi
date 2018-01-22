@@ -2,7 +2,11 @@
   <div id="app">
     <img class="logo left" src="./assets/logo1.png">
     <img class="logo right" src="./assets/logo2.png">
-
+    <!--<audio>-->
+    <!--<source src="horse.ogg" type="audio/ogg">-->
+    <!--<source src="horse.mp3" type="audio/mpeg">-->
+    <!--Your browser does not support the audio tag.-->
+    <!--</audio>-->
     <MainFrame/>
   </div>
 </template>
@@ -186,7 +190,7 @@
   }
 
   .v-modal {
-    opacity: .8;
+    opacity: .9;
   }
 
   .home-dialog {

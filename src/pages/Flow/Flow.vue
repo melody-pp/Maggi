@@ -45,12 +45,12 @@
         this.timeline
           .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
           .from(this.$refs.subTitle, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.img1, 1, {autoAlpha: 0, x: 100, y: 100})
-          .from(this.$refs.img2, 1, {autoAlpha: 0, x: -100, y: 100})
-          .from(this.$refs.img3, 1, {autoAlpha: 0, x: 100, y: -100})
-          .from(this.$refs.img4, 1, {autoAlpha: 0, x: -100, y: 100})
-          .from(this.$refs.img5, 1, {autoAlpha: 0, x: -100, y: -100})
-          .from(this.$refs.img6, 1, {autoAlpha: 0, x: -100, y: 100})
+          .from(this.$refs.img1, 0.5, {autoAlpha: 0, x: 100, y: 100})
+          .from(this.$refs.img2, 0.5, {autoAlpha: 0, x: -100, y: 100})
+          .from(this.$refs.img3, 0.5, {autoAlpha: 0, x: 100, y: -100})
+          .from(this.$refs.img4, 0.5, {autoAlpha: 0, x: -100, y: 100})
+          .from(this.$refs.img5, 0.5, {autoAlpha: 0, x: -100, y: -100})
+          .from(this.$refs.img6, 0.5, {autoAlpha: 0, x: -100, y: 100})
 
       }
     },

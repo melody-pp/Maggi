@@ -42,10 +42,10 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 1, {autoAlpha: 0, x: -window.innerWidth})
-          .to(this.$refs.img1, 1, {autoAlpha: 0, x: window.innerWidth},'+=0.6')
-          .from(this.$refs.img2, 1, {autoAlpha: 0, x: -window.innerWidth})
-          .to(this.$refs.img2, 1, {autoAlpha: 0, x: window.innerWidth},'+=0.6')
+          .from(this.$refs.img1, 0.5, {autoAlpha: 0, x: -window.innerWidth})
+          .to(this.$refs.img1, 0.5, {autoAlpha: 0, x: window.innerWidth}, '+=0.6')
+          .from(this.$refs.img2, 0.5, {autoAlpha: 0, x: -window.innerWidth})
+          .to(this.$refs.img2, 0.5, {autoAlpha: 0, x: window.innerWidth}, '+=0.6')
           .from(this.$refs.img3, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
           .from(this.$refs.img4, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
@@ -64,15 +64,18 @@
 
 <style scoped lang="scss">
   .bg-container {
+    text-align: center;
     img {
       height: 50vh;
       vertical-align: middle;
     }
     .img1, .img2 {
       position: absolute;
-      top: 50%;
-      left: 0;
+      top: 30vh;
+      left: 5vw;
       transform: translateY(-50%);
+      width: 90vw;
+      height: auto;
     }
   }
 
