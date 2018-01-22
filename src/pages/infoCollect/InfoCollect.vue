@@ -65,11 +65,11 @@
         })
 
         this.timeline
-          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
           .from(this.$refs.canvas, 1, {autoAlpha: 0})
-          .from(this.$refs.homeTxt, 1, {autoAlpha: 0})
+          .from(this.$refs.homeTxt, 0.5, {autoAlpha: 0})
           .from(this.$refs.page.querySelector('.el-textarea'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.infoCollectBtn, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.infoCollectBtn, 0.5, {autoAlpha: 0, y: -50})
       }
     },
     watch: {

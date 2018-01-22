@@ -50,9 +50,9 @@
           .from(this.$refs.img4, 1, {autoAlpha: 0, x: -100, y: -100}, '-=1')
           .from(this.$refs.bottomImg, 1, {autoAlpha: 0, scale: 2})
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.title, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.subTitle, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.content, 1, {autoAlpha: 0, y: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.content, 0.5, {autoAlpha: 0, y: -50})
       }
     },
     watch: {

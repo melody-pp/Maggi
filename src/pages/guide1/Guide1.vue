@@ -49,9 +49,9 @@
           .from(this.$refs.img3, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360})
           .from(this.$refs.img4, 1.5, {autoAlpha: 0, scale: 0, rotationZ: 360}, '-=1.5')
           .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.title, 1, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.subTitle, 1, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
-          .from(this.$refs.content, 1, {autoAlpha: 0, x: -50, ease: Elastic.easeOut.config(1.2, 0.3)})
+          .from(this.$refs.title, 0.5, {autoAlpha: 0, x: -50})
+          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0, x: -50})
+          .from(this.$refs.content, 0.5, {autoAlpha: 0, x: -50})
       }
     },
     watch: {

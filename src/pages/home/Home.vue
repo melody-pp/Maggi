@@ -66,8 +66,8 @@
           ease: Elastic.easeOut.config(0.9, 0.4)
         }, 0.2, 'stagger')
         .from(this.$refs.main, 0.5, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
-        .from(this.$refs.topImg, 1, {autoAlpha: 0, y: -100})
-        .from(this.$refs.bottomImg, 1, {autoAlpha: 0, y: 100})
+        .from(this.$refs.topImg, 0.5, {autoAlpha: 0, y: -100},'-=0.5')
+        .from(this.$refs.bottomImg, 0.5, {autoAlpha: 0, y: 100})
     },
     methods: {
       showDialog (index) {
