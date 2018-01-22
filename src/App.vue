@@ -18,15 +18,18 @@
     name: 'app',
     components: {MainFrame},
     computed: {
-      hasComment () {
-        return this.$store.state.Current > 7
-      },
       UserId () {
         return this.$store.state.UserId
       },
+      Current () {
+        return this.$store.state.Current
+      },
       userInfo () {
         return this.$store.state.userInfo
-      }
+      },
+      hasComment () {
+        return this.Current > 7
+      },
     },
     created () {
       const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
