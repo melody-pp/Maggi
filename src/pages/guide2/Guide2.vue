@@ -38,7 +38,7 @@
       animate () {
         this.timeline = new TimelineMax({
           delay: 0.7,
-          onComplete: () => {
+          onComplete () {
             this.showArrow = true
           }
         })
