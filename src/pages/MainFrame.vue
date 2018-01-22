@@ -1,5 +1,6 @@
 <template>
-  <div id="main-frame" ref="mainFrame" :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
+  <div id="main-frame" ref="mainFrame" @touchstart="touchstart" @touchend="touchend"
+       :style="{transform: `translate3d(0,-${current*100}vh,0)`}">
     <div class="page-1 page">
       <Home :moveIn="current===0"/>
     </div>
@@ -52,6 +53,11 @@
 
   export default {
     name: 'MainFrame',
+    data () {
+      return {
+        startY: null
+      }
+    },
     computed: {
       current () {
         return this.$store.state.Current
@@ -73,7 +79,22 @@
           start = 10
           break
       }
-      this.$store.commit('moveTo', start)
+      this.$store.commit('moveTo', 0)
+    },
+    methods: {
+      touchstart (event) {
+        this.startY = event.changedTouches[0].pageY
+      },
+      touchend (event) {
+        const endY = event.changedTouches[0].pageY
+
+        if (this.current < 5 && endY - this.startY < -5) {
+          this.$store.commit('moveDown')
+        }
+        // if (this.current < 6 && endY - this.startY > 5) {
+        //   this.$store.commit('moveUp')
+        // }
+      },
     },
     components: {
       Home, Guide1, Guide2, Guide3, InfoCollect, PersonalInfo, Prize, Tips, Comments, Guide4, Flow
