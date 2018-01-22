@@ -58,11 +58,11 @@ export default class Ripple {
     this.displacedImgData = this.ctx.getImageData(this.x, this.y, this.diameter, this.diameter)
 
     // Begin animation
-    TweenMax.to(this.animationProps, 5, {scale: 4, repeat: -1, ease: Sine.easeOut})
+    TweenMax.to(this.animationProps, 3, {scale: 4, repeat: -1, ease: Sine.easeOut})
 
     var tl = new TimelineMax({repeat: -1})
     tl.add(TweenMax.to(this.animationProps, .5, {depth: 10, ease: Quad.easeOut}))
-    tl.add(TweenMax.to(this.animationProps, 4.5, {depth: 0, ease: Quad.easeOut}))
+    tl.add(TweenMax.to(this.animationProps, 2.5, {depth: 0, ease: Quad.easeOut}))
 
     this.render()
   }
