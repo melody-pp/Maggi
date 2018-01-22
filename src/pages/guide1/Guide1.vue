@@ -71,11 +71,9 @@
     }
     .img1, .img2 {
       position: absolute;
-      top: 30vh;
-      left: 5vw;
+      top: 50%;
+      left: 0;
       transform: translateY(-50%);
-      width: 90vw;
-      height: auto;
     }
   }
 
