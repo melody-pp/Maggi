@@ -2,7 +2,7 @@
   <div>
     <img class="title" ref="topImg" src="../../assets/index/top_pic.png">
 
-    <div ref="main" class="main clearfix">
+    <div ref="main" :class="['main', 'clearfix', {dialogVisible}]">
       <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
     </div>
 
@@ -29,7 +29,7 @@
 
   export default {
     name: 'Home',
-    props:['moveIn'],
+    props: ['moveIn'],
     components: {ArrowBtn},
     data () {
       return {
@@ -66,7 +66,7 @@
           ease: Elastic.easeOut.config(0.9, 0.4)
         }, 0.2, 'stagger')
         .from(this.$refs.main, 0.3, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
-        .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100},'-=0.5')
+        .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100}, '-=0.5')
         .from(this.$refs.bottomImg, 0.3, {autoAlpha: 0, y: 100})
     },
     methods: {
@@ -95,6 +95,12 @@
     overflow: hidden;
     vertical-align: middle;
     background-color: #fff;
+    &.dialogVisible {
+      img {
+        opacity: .6;
+      }
+    }
+
     img {
       float: left;
       height: 16vh;

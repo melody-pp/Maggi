@@ -199,6 +199,10 @@
   .home-dialog {
     .el-dialog {
       background: transparent;
+      .el-carousel__mask{
+        opacity: .4;
+        background: #000;
+      }
       .el-carousel__item {
         line-height: 25vh;
       }
