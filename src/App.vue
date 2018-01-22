@@ -105,7 +105,7 @@
         return 'http://kj.century-galaxy.com/api/activity/index?OpenIdPK=' + this.$store.state.userInfo.OpenId
       },
       getShareImg () {
-        return this.hasComment ? this.userInfo.HeadPic : location + require('./assets/infoCollect/family.png').substr(1)
+        return this.hasComment ? this.userInfo.HeadPic : location.origin + require('./assets/infoCollect/family.png')
       },
       getDesc () {
         return this.hasComment ? '' : ''
