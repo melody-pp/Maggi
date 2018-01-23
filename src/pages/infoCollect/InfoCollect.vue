@@ -5,7 +5,8 @@
     </div>
     <canvas class="canvas" ref="canvas" width="750" height="656"></canvas>
     <img class="homeTxt" src="../../assets/infoCollect/family1.png" ref="homeTxt">
-    <el-input type="textarea" :rows="4" placeholder="2018年春节，我想说……（文字80字以内）" :maxlength="80" v-model="Comment"/>
+    <el-input type="textarea" :rows="4" :maxlength="80" placeholder="2018年春节，我想说……（文字80字以内）"
+              @focus="focus" v-model="Comment"/>
     <img class="btn" src="../../assets/infoCollect/button.png" @click="submit" ref="infoCollectBtn">
   </div>
 </template>
@@ -71,6 +72,10 @@
           .from(this.$refs.homeTxt, 0.5, {autoAlpha: 0})
           .from(this.$refs.page.querySelector('.el-textarea'), 0.5, {autoAlpha: 0, scale: 0})
           .from(this.$refs.infoCollectBtn, 0.5, {autoAlpha: 0, y: -50})
+      },
+      focus () {
+        this.Comment += ' '
+        setTimeout(() => this.Comment -= ' ', 500)
       }
     },
     watch: {
