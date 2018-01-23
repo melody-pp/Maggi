@@ -32,7 +32,6 @@
       },
     },
     created () {
-      alert('进入Vue')
       const urlParams = location.search.slice(1).split('&').reduce((params, paramStr) => {
         const entry = paramStr.split('=')
         params[entry[0]] = entry[1]
@@ -83,7 +82,6 @@
         })
 
         wx.ready(() => {
-          alert('配置微信sdk')
           wx.onMenuShareTimeline(this.getShareConfig())
           wx.onMenuShareAppMessage(this.getShareConfig())
         })
