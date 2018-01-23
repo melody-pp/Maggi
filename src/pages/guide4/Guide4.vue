@@ -2,12 +2,14 @@
   <div>
     <img class="title" src="../../assets/p4/theme.png" ref="title">
     <img class="content" src="../../assets/p4/content.png" ref="content">
-    <img class="btn" src="../../assets/p4/participation.png" ref="btn" @touchstart="moveDown">
+    <!--<img class="btn" src="../../assets/p4/participation.png" ref="btn" @touchstart="moveDown">-->
+    <ArrowBtn v-show="showArrow"/>
   </div>
 </template>
 
 <script>
   import { TimelineMax, Elastic } from 'gsap'
+  import ArrowBtn from '../../components/ArrowBtn'
 
   export default {
     data () {
@@ -17,6 +19,7 @@
       }
     },
     props: ['moveIn'],
+    components: {ArrowBtn},
     methods: {
       animate () {
         this.timeline = new TimelineMax({
@@ -29,7 +32,6 @@
         this.timeline
           .from(this.$refs.title, 0.5, {autoAlpha: 0, x: -50})
           .from(this.$refs.content, 0.5, {autoAlpha: 0, x: -50})
-          .from(this.$refs.btn, 0.5, {autoAlpha: 0})
       },
       moveDown () {
         this.$store.commit('moveDown')
