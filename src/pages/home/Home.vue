@@ -12,7 +12,7 @@
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog class="home-dialog" top="30vh" width="100%"
+    <el-dialog class="home-dialog" top="25vh" width="100%"
                :visible.sync="dialogVisible" :append-to-body="true" :show-close="false">
       <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
