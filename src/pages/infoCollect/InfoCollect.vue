@@ -47,8 +47,9 @@
         this.axios.post(
           '/api/activity/adduser',
           {Comment: this.Comment, ...this.userInfo}
-        ).then(({data: {errcode, errmsg}}) => {
+        ).then(({data: {errcode, errmsg, Data}}) => {
           if (errcode === 0) {
+            this.$store.commit('setUserId', Data)
             this.$message.success('提交成功！')
             this.$store.commit('moveDown')
           } else {
