@@ -200,7 +200,7 @@
   }
 
   .v-modal {
-    opacity: .9 !important;
+    opacity: .7 !important;
   }
 
   .home-dialog {
