@@ -52,7 +52,7 @@
       this.getSignature()
       this.getLikeLogList(OpenId)
 
-      this.$store.commit('setUserInfo', {OpenId, NickName, HeadPic})
+      this.$store.commit('setUserInfo', {OpenId, NickName: decodeURI(NickName), HeadPic})
       this.$store.commit('setOpenIdPK', OpenIdPK)
       this.$store.commit('setStep', Step)
       this.$store.commit('setSelf', Self)
