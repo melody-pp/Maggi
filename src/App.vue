@@ -111,7 +111,7 @@
         return this.hasComment ? this.userInfo.HeadPic : location.origin + require('./assets/infoCollect/familyShare.jpg')
       },
       getDesc () {
-        return this.hasComment ? '年味，有你，美极了！888份美极暖心年货，送给春节依然坚守在岗位上的大厨！' : '年味，有你，美极了！'
+        return this.hasComment ? '年味，有你，美极了！888份美极暖心年货，送给春节依然坚守在岗位上的大厨！' : '年味，有你，美极了！888份美极暖心年货，送给春节依然坚守在岗位上的大厨！'
       }
     },
     watch: {
