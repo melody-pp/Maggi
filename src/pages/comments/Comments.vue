@@ -155,6 +155,9 @@
           this.isPullingDown = false
           this.PageIndex += 1
           this.Comments.push(...res.data)
+
+          const self = res.data.find(item => item.OpenId === this.selfInfo.OpenId)
+          self && (this.selfInfo.Rank = self.Rank)
         })
       },
       upvote (OpenId) {
@@ -162,7 +165,7 @@
           this.OrderBy0.Comments.find(item => item.OpenId === OpenId).LikeCount++
           this.OrderBy1.Comments.find(item => item.OpenId === OpenId).LikeCount++
         } catch (e) {}
-        
+
         if (OpenId === this.selfInfo.OpenId) {
           this.selfInfo.LikeCount++
           this.selfInfo.TodayLikeCount++
