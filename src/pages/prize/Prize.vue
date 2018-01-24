@@ -61,7 +61,7 @@
         })
 
         this.timeline
-          .from(this.$refs.prizeTheme, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.prizeTheme, 0.5, {autoAlpha: 0})
           .from(this.$refs.img1, 0.5, {autoAlpha: 0, scale: 2})
           .to(this.$refs.img1, 0.5, {autoAlpha: 1, scale: 1})
           .from(this.$refs.img2, 0.5, {autoAlpha: 0, scale: 0}, '-=1')
@@ -74,7 +74,7 @@
           .to(this.$refs.img5, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
           .from(this.$refs.img6, 0.5, {autoAlpha: 0, scale: 0}, '-=1')
           .to(this.$refs.img6, 0.5, {autoAlpha: 1, scale: 1}, '-=1')
-          .from(this.$refs.prizeBtn, 0.5, {autoAlpha: 0, y: 50})
+          .from(this.$refs.prizeBtn, 0.5, {autoAlpha: 0}, '-=0.5')
       }
     },
     watch: {

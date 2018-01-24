@@ -17,7 +17,7 @@
       <span class="like" ref="like">
         <svg class="liked" @touchstart="upvote" t="1515995941008" viewBox="0 0 1024 1024" version="1.1"
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             width="4.6vw" height="4vh" :fill="color">
+             width="5vw" height="4vh" :fill="color">
           <path
             d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
         </svg>
@@ -36,7 +36,7 @@
     <div class="btnBox" ref="btnBox">
       <template v-if="isSelf">
         <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
-        <img @click="moveDown" src="../../assets/personalInfo/button2.png">
+        <img src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
       </template>
       <template v-else>
         <img @touchstart="upvote($event, true)" src="../../assets/personalInfo/To-view.png">
@@ -66,6 +66,10 @@
     <el-dialog class="share-dialog" :visible.sync="showShare" :modal="false" :show-close="false" :append-to-body="true">
       <img class="share-img" src="../../assets/personalInfo/center.png" alt="分享">
     </el-dialog>
+    <el-dialog title="长按识别公众号二维码" :visible.sync="dialogVisible" width="90%"
+               center :show-close="false" :append-to-body="true">
+      <img src="../../assets/gongzhonghao.jpg">
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -80,6 +84,7 @@
       return {
         showShare: false,
         showAgree: false,
+        dialogVisible: false,
         UserId: 0,
         NickName: '',
         HeadPic: '',
@@ -131,21 +136,21 @@
         })
 
         this.timeline
-          .from(this.$refs.themeTxt, 0.3, {autoAlpha: 0, y: -50})
-          .from(this.$refs.theme2, 0.3, {autoAlpha: 0, y: -50})
           .from(this.$refs.headPortrait, 0.3, {autoAlpha: 0, scale: 0})
           .to(this.$refs.headPortrait, 0.3, {autoAlpha: 1, scale: 1.2})
           .to(this.$refs.headPortrait, 0.3, {autoAlpha: 1, scale: 1})
-          .from(this.$refs.like, 0.5, {autoAlpha: 0, x: -20})
-          .from(this.$refs.likeNum, 0.5, {autoAlpha: 0, x: -20})
-          .from(this.$refs.nickName, 0.5, {autoAlpha: 0})
-          .from(this.$refs.remark, 0.5, {autoAlpha: 0, scale: 0})
+          .from(this.$refs.nickName, 0.5, {autoAlpha: 0}, '-=0.9')
+          .from(this.$refs.remark, 0.5, {autoAlpha: 0}, '-=0.9')
+          .from(this.$refs.themeTxt, 0.3, {autoAlpha: 0}, '-=0.9')
+          .from(this.$refs.theme2, 0.3, {autoAlpha: 0}, '-=0.9')
+          .from(this.$refs.like, 0.5, {autoAlpha: 0})
+          .from(this.$refs.likeNum, 0.5, {autoAlpha: 0}, '-=0.5')
 
         if (this.isSelf) {
-          this.timeline.from(this.$refs.theRules, 0.5, {autoAlpha: 0, x: -50})
+          this.timeline.from(this.$refs.theRules, 0.5, {autoAlpha: 0}, '-=0.9')
         }
 
-        this.timeline.from(this.$refs.btnBox, 0.5, {autoAlpha: 0, y: 100})
+        this.timeline.from(this.$refs.btnBox, 0.5, {autoAlpha: 0}, '-=0.9')
       },
       showAgreeDialog () {
         this.showAgree = true
@@ -207,6 +212,9 @@
       },
       showShareDialog () {
         this.showShare = true
+      },
+      showDialogEWM () {
+        this.dialogVisible = true
       }
     },
     watch: {
@@ -283,7 +291,7 @@
     border-radius: 50%;
     .liked {
       position: absolute;
-      left: 3.2vw;
+      left: 3vw;
       top: 1vh;
     }
   }

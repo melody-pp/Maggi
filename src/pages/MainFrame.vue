@@ -26,14 +26,10 @@
       <InfoCollect :moveIn="current===7"/>
     </div>
     <div class="page-9 page">
-      <Tips :moveIn="current===8"/>
+      <PersonalInfo :moveIn="current===8"/>
     </div>
-
     <div class="page-10 page">
-      <PersonalInfo :moveIn="current===9"/>
-    </div>
-    <div class="page-11 page">
-      <Comments :moveIn="current===10"/>
+      <Comments :moveIn="current===9"/>
     </div>
   </div>
 </template>
@@ -79,7 +75,7 @@
           start = 10
           break
       }
-      this.$store.commit('moveTo', start)
+      this.$store.commit('moveTo', 0)
     },
     methods: {
       touchstart (event) {

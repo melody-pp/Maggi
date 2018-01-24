@@ -67,11 +67,11 @@
         })
 
         this.timeline
-          .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.title, 0.5, {autoAlpha: 0})
           .from(this.$refs.canvas, 1, {autoAlpha: 0})
           .from(this.$refs.homeTxt, 0.5, {autoAlpha: 0})
-          .from(this.$refs.page.querySelector('.el-textarea'), 0.5, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.infoCollectBtn, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.page.querySelector('.el-textarea'), 0.5, {autoAlpha: 0},'-=1')
+          .from(this.$refs.infoCollectBtn, 0.5, {autoAlpha: 0},'-=0.5')
       },
       focus () {
         this.$refs.textarea.$el.firstElementChild.dispatchEvent(new InputEvent('input'))

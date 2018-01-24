@@ -39,15 +39,15 @@
         return params
       }, {})
 
-      const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = urlParams
-      // const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = {
-      //   'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
-      //   'NickName': 'Melody.pp',
-      //   'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
-      //   'Step': '2',
-      //   'Self': '1',
-      //   'OpenIdPK': ''
-      // }
+      // const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = urlParams
+      const {OpenId, OpenIdPK, NickName, HeadPic, Step, Self} = {
+        'OpenId': 'oGgAGv1Em7XBbl53CXY14VQ-gm1Y',
+        'NickName': 'Melody.pp',
+        'HeadPic': 'http://wx.qlogo.cn/mmopen/vi_32/BdJf1ofrOMtT7EmeiaoTUmPyGeLTv1bWjk49GuCWLaZhcoTIwuhPt4YbQA89VMfkGg0M2RfHjykKlWgiaztUjrtA/132',
+        'Step': '2',
+        'Self': '1',
+        'OpenIdPK': ''
+      }
 
       this.getSignature()
       this.getLikeLogList(OpenId)
@@ -289,6 +289,12 @@
       right: 7vw;
       width: 19.07vw;
       position: absolute;
+    }
+  }
+
+  .contentBox {
+    img {
+      margin-bottom: 2vh;
     }
   }
 

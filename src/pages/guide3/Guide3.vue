@@ -1,15 +1,21 @@
 <template>
   <div ref="page">
     <div class="bg-container">
-      <img class="img1" src="../../assets/p3/family.jpg" ref="img1">
-      <img class="img2" src="../../assets/p3/busy.jpg" ref="img2">
       <img src="../../assets/p3/family.jpg" ref="img3">
       <img src="../../assets/p3/busy.jpg" ref="img4">
     </div>
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.98vh;" src="../../assets/p3/theme.png" ref="title">
       <img style="width: 32.13vw;margin-bottom: 2vh;" src="../../assets/p3/theme1.png" ref="subTitle">
-      <img style="width: 63.07vw;" src="../../assets/p3/content.png" ref="content">
+      <div class="contentBox">
+        <img style="width: 58.53vw;" src="../../assets/p3/content1.png" ref="content1">
+        <img style="width: 62.13vw;" src="../../assets/p3/content2.png" ref="content2">
+        <img style="width: 62.93vw;" src="../../assets/p3/content3.png" ref="content3">
+        <img style="width: 9.73vw;" src="../../assets/p3/content4.png" ref="content4">
+        <img style="width: 62.13vw;" src="../../assets/p3/content5.png" ref="content5">
+        <img style="width: 62.93vw;" src="../../assets/p3/content6.png" ref="content6">
+        <img style="width: 16.4vw;" src="../../assets/p3/content7.png" ref="content7">
+      </div>
     </div>
 
     <ArrowBtn v-show="showArrow"/>
@@ -41,16 +47,18 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 1, {autoAlpha: 0, x: -window.innerWidth, y: -window.innerHeight})
-          .to(this.$refs.img1, 1, {autoAlpha: 0, x: window.innerWidth, y: window.innerHeight}, '+=0.6')
-          .from(this.$refs.img2, 1, {autoAlpha: 0, x: -window.innerWidth, y: window.innerHeight})
-          .to(this.$refs.img2, 1, {autoAlpha: 0, x: window.innerWidth, y: -window.innerHeight}, '+=0.6')
-          .from(this.$refs.img3, 1.5, {autoAlpha: 0, x: 100, y: 100})
-          .from(this.$refs.img4, 1.5, {autoAlpha: 0, x: -100, y: 100}, '-=1.5')
-          .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.content, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.img3, 0.5, {autoAlpha: 0})
+          .from(this.$refs.img4, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.page.querySelector('.modal'), 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.title, 0.5, {autoAlpha: 0})
+          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content1, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content2, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content3, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content4, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content5, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content6, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content7, 0.5, {autoAlpha: 0})
       }
     },
     watch: {
@@ -66,12 +74,6 @@
     img {
       height: 50vh;
       vertical-align: middle;
-    }
-    .img1, .img2 {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
     }
   }
 

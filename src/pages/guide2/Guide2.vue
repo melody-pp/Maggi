@@ -12,7 +12,14 @@
     <div class="txt">
       <img style="width: 46.8vw;margin-bottom: 3.65vh;" src="../../assets/p2/theme.png" ref="title">
       <img style="width: 28.27vw;margin-bottom: 2vh;" src="../../assets/p2/theme1.png" ref="subTitle">
-      <img style="width: 60vw;" src="../../assets/p2/content.png" ref="content">
+      <div class="contentBox">
+        <img style="width: 59.47vw;" src="../../assets/p2/content1.png" ref="content1">
+        <img style="width: 59.6vw;" src="../../assets/p2/content2.png" ref="content2">
+        <img style="width: 60vw;" src="../../assets/p2/content3.png" ref="content3">
+        <img style="width: 59.87vw;" src="../../assets/p2/content4.png" ref="content4">
+        <img style="width: 20.13vw;" src="../../assets/p2/content5.png" ref="content5">
+      </div>
+
     </div>
 
     <ArrowBtn v-show="showArrow"/>
@@ -44,15 +51,19 @@
         })
 
         this.timeline
-          .from(this.$refs.img1, 1, {autoAlpha: 0, x: 100, y: 100})
-          .from(this.$refs.img2, 1, {autoAlpha: 0, x: -100, y: 100}, '-=1')
-          .from(this.$refs.img3, 1, {autoAlpha: 0, x: 100, y: -100}, '-=1')
-          .from(this.$refs.img4, 1, {autoAlpha: 0, x: -100, y: -100}, '-=1')
-          .from(this.$refs.bottomImg, 1, {autoAlpha: 0, scale: 2})
-          .from(this.$refs.page.querySelector('.modal'), 1, {autoAlpha: 0, scale: 0})
-          .from(this.$refs.title, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0, y: -50})
-          .from(this.$refs.content, 0.5, {autoAlpha: 0, y: -50})
+          .from(this.$refs.img1, 0.5, {autoAlpha: 0})
+          .from(this.$refs.img2, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.img3, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.img4, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.bottomImg, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.page.querySelector('.modal'), 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.title, 0.5, {autoAlpha: 0})
+          .from(this.$refs.subTitle, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content1, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content2, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content3, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content4, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content5, 0.5, {autoAlpha: 0})
       }
     },
     watch: {

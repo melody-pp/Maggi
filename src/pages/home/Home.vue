@@ -3,7 +3,7 @@
     <img class="title" ref="topImg" src="../../assets/index/top_pic.png">
 
     <div ref="main" :class="['main', 'clearfix', {dialogVisible}]">
-      <img v-for="(img, index) of imgs" :src="img" :key="index" @click="showDialog(index)">
+      <img v-for="(img, index) of imgs" :src="img" :key="index">
     </div>
 
     <div class="footer">
@@ -12,14 +12,14 @@
 
     <ArrowBtn v-show="showArrow"/>
 
-    <el-dialog class="home-dialog" top="25vh" width="100%"
+    <!--<el-dialog class="home-dialog" top="25vh" width="100%"
                :visible.sync="dialogVisible" :append-to-body="true" :show-close="false">
       <el-carousel ref="carousel" type="card" height="25vh" indicator-position="none" :interval="2000" arrow="never">
         <el-carousel-item v-for="(img, index) of imgs" :key="index">
           <img :src="img" style="width:auto; height:auto; max-width:100%; max-height: 100%;vertical-align: middle;">
         </el-carousel-item>
       </el-carousel>
-    </el-dialog>
+    </el-dialog>-->
   </div>
 </template>
 
