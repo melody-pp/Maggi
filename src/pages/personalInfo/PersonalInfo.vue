@@ -19,7 +19,7 @@
              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              width="5vw" height="4vh" :fill="color">
           <path
-            d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
+              d="M18.881772 480.019692l0 384C18.881772 916.795077 60.07808 945.230769 97.651003 945.230769l78.769231 0L176.420234 393.846154 97.651003 393.846154C60.07808 393.846154 18.881772 427.165538 18.881772 480.019692zM940.481772 575.960615c68.292923 0 102.4-191.960615 0-191.960615L735.681772 384C940.481772 64.039385 792.23808 0 735.681772 0c0 155.884308-234.653538 327.837538-480.492308 405.504l0 526.099692C506.227003 961.614769 424.464542 1024 701.574695 1024c68.292923 0 136.507077-31.980308 136.507077-96.019692 68.292923 0 102.4-159.980308 68.292923-159.980308C974.588849 768 1018.384542 575.960615 940.481772 575.960615z"></path>
         </svg>
       </span>
       <span class="likeNum" ref="likeNum">{{LikeCount}}</span>
@@ -36,8 +36,8 @@
     <div class="btnBox" ref="btnBox">
       <template v-if="isSelf">
         <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
-        <img v-if="step===3" src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
-        <img v-else src="../../assets/personalInfo/button2.png" @click="moveDown" style="width: 40vw;">
+        <img v-if="step===3" src="../../assets/personalInfo/button2.png" @click="moveDown" style="width: 40vw;">
+        <img v-else src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
       </template>
       <template v-else>
         <img @touchstart="upvote($event, true)" src="../../assets/personalInfo/To-view.png">
@@ -128,7 +128,7 @@
         return this.$store.state.Self === '1'
       },
 
-      step(){
+      step () {
         return +this.$store.state.Step
       }
     },
