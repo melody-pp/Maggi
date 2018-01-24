@@ -69,13 +69,13 @@
           start = 0
           break
         case 2:
-          start = 9
+          start = 8
           break
         case 3:
-          start = 10
+          start = 9
           break
       }
-      this.$store.commit('moveTo', 0)
+      this.$store.commit('moveTo', start)
     },
     methods: {
       touchstart (event) {

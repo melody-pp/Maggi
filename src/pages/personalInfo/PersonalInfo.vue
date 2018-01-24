@@ -36,7 +36,8 @@
     <div class="btnBox" ref="btnBox">
       <template v-if="isSelf">
         <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
-        <img src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
+        <img v-if="step===3" src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
+        <img v-else src="../../assets/personalInfo/button2.png" @click="moveDown" style="width: 40vw;">
       </template>
       <template v-else>
         <img @touchstart="upvote($event, true)" src="../../assets/personalInfo/To-view.png">
@@ -125,6 +126,10 @@
 
       isSelf () {
         return this.$store.state.Self === '1'
+      },
+
+      step(){
+        return +this.$store.state.Step
       }
     },
     methods: {
