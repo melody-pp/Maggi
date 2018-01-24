@@ -7,7 +7,7 @@
       <img style="width: 41.87vw;" src="../../assets/p4/content3.png" ref="content3">
       <img style="width: 16.4vw;" src="../../assets/p4/content4.png" ref="content4">
       <img style="width: 47.07vw;" src="../../assets/p4/content5.png" ref="content5">
-      <img style="width: 62.13vw;" src="../../assets/p4/content6.png" ref="content6">
+      <!--<img style="width: 62.13vw;" src="../../assets/p4/content6.png" ref="content6">-->
       <img style="width: 62.13vw;" src="../../assets/p4/content7.png" ref="content7">
       <img style="width: 66.93vw;" src="../../assets/p4/content8.png" ref="content8">
       <img style="width: 48.27vw;" src="../../assets/p4/content9.png" ref="content9">
@@ -45,7 +45,7 @@
           .from(this.$refs.content3, 0.5, {autoAlpha: 0})
           .from(this.$refs.content4, 0.5, {autoAlpha: 0})
           .from(this.$refs.content5, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content6, 0.5, {autoAlpha: 0})
+          // .from(this.$refs.content6, 0.5, {autoAlpha: 0})
           .from(this.$refs.content7, 0.5, {autoAlpha: 0})
           .from(this.$refs.content8, 0.5, {autoAlpha: 0})
           .from(this.$refs.content9, 0.5, {autoAlpha: 0})
