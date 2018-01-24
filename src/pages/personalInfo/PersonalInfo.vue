@@ -36,7 +36,7 @@
     <div class="btnBox" ref="btnBox">
       <template v-if="isSelf">
         <img @click="showShareDialog" src="../../assets/personalInfo/button.png">
-        <img v-if="step===3" src="../../assets/personalInfo/button2.png" @click="moveDown" style="width: 40vw;">
+        <img v-if="step===3" src="../../assets/personalInfo/button2.png" @click="moveDown">
         <img v-else src="../../assets/leaveInfo/Save-the-view.png" @click="showDialogEWM" style="width: 43vw;">
       </template>
       <template v-else>
