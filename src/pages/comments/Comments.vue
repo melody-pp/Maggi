@@ -98,7 +98,7 @@
           .from(this.$refs.theme, 0.3, {autoAlpha: 0})
           .from(this.$refs.rankType, 0.3, {autoAlpha: 0})
           .from(this.$refs.rankContent, 0.4, {autoAlpha: 0})
-          .from(this.$refs.btnBox, 0.5, {autoAlpha: 0},'-=0.4')
+          .from(this.$refs.btnBox, 0.5, {autoAlpha: 0}, '-=0.4')
       },
       touchstart () {
         this.clientY = this.getClientY(event)
@@ -158,7 +158,11 @@
         })
       },
       upvote (OpenId) {
-        this.Comments.find(item => item.OpenId === OpenId).LikeCount++
+        try {
+          this.OrderBy0.Comments.find(item => item.OpenId === OpenId).LikeCount++
+          this.OrderBy1.Comments.find(item => item.OpenId === OpenId).LikeCount++
+        } catch (e) {}
+        
         if (OpenId === this.selfInfo.OpenId) {
           this.selfInfo.LikeCount++
           this.selfInfo.TodayLikeCount++
