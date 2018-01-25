@@ -161,10 +161,11 @@
         })
       },
       upvote (OpenId) {
-        try {
-          this.OrderBy0.Comments.find(item => item.OpenId === OpenId).LikeCount++
-          this.OrderBy1.Comments.find(item => item.OpenId === OpenId).LikeCount++
-        } catch (e) {}
+        const item0 = this.OrderBy0.Comments.find(item => item.OpenId === OpenId)
+        item0 && item0.LikeCount++
+
+        const item1 = this.OrderBy1.Comments.find(item => item.OpenId === OpenId)
+        item1 && item1.LikeCount++
 
         if (OpenId === this.selfInfo.OpenId) {
           this.selfInfo.LikeCount++
