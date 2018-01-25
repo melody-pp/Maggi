@@ -63,6 +63,26 @@ const showFireworks = event => {
 const sample = arr => arr[Math.floor(Math.random() * arr.length)]
 const dateFormat = dateStr => `${dateStr.substr(5, 2)}月${dateStr.substr(8, 2)}日  ${dateStr.substr(11, 5)}`
 
+const fitRank = (arr, item) => {
+  const len = arr.length
+  const oldRank = item.Rank
+
+  let i
+  for (i = 0; i < len; i++) {
+    if (arr[i].LikeCount < item.LikeCount) {
+      if (i < oldRank) {
+        item.Rank = i
+      }
+      break
+    }
+  }
+  for (; i < oldRank; i++) {
+    arr[i].Rank++
+  }
+
+  return arr.sort((a, b) => a.Rank - b.Rank)
+}
+
 export {
-  sample, showUpvote, dateFormat, showFireworks
+  sample, showUpvote, dateFormat, showFireworks, fitRank
 }

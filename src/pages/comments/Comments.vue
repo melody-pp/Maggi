@@ -3,8 +3,8 @@
     <img style="width: 63.33vw;margin-top: 2vh;" src="../../assets/comments/theme.png" ref="theme">
 
     <div class="rank-type" ref="rankType">
-      <div :class="{active: OrderBy===1}" @click="OrderBy=1">心意排行榜</div>
-      <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
+      <div :class="{active: OrderBy===1}" @click="changeOrderBy(1)">心意排行榜</div>
+      <div :class="{active: OrderBy===0}" @click="changeOrderBy(0)">最新上榜</div>
     </div>
     <div ref="rankContent">
       <div :class="['self', {hideRank}]">
@@ -18,13 +18,12 @@
         </div>
       </div>
 
-      <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
-        <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
-        <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
+      <div class="rankContent">
+        <img v-show="isBusy" class="loading" src="../../assets/loading.gif" alt="loading">
+        <ul ref="ul">
           <CommentItem v-for="Comment of Comments" :key="Comment.OpenId"
                        v-bind="Comment" :OrderBy="OrderBy" @upvote="upvote"/>
         </ul>
-        <img v-if="isPullingUp" class="loading bottom" src="../../assets/loading.gif" alt="loading">
       </div>
     </div>
 
@@ -37,6 +36,7 @@
 <script>
   import { TimelineMax } from 'gsap'
   import CommentItem from './CommentItem'
+  import { fitRank } from '../../utils/utils'
 
   export default {
     name: 'Comments',
@@ -45,20 +45,10 @@
     data () {
       return {
         isBusy: false,
-        clientY: null,
-        transformY: 0,
-        isPullingUp: false,
-        isPullingDown: false,
-        selfInfo: {},
         OrderBy: 1,
-        OrderBy0: {
-          PageIndex: 1,
-          Comments: []
-        },
-        OrderBy1: {
-          PageIndex: 1,
-          Comments: []
-        },
+        Comments0: [],
+        Comments1: [],
+        selfInfo: {},
         timeline: null,
       }
     },
@@ -69,30 +59,16 @@
       hideRank () {
         return this.OrderBy === 0
       },
-      Comments: {
-        get () {
-          return this['OrderBy' + this.OrderBy].Comments
-        },
-        set (val) {
-          this['OrderBy' + this.OrderBy].Comments = val
-        }
-      },
-      PageIndex: {
-        get () {
-          return this['OrderBy' + this.OrderBy].PageIndex
-        },
-        set (val) {
-          this['OrderBy' + this.OrderBy].PageIndex = val
-        }
+      Comments () {
+        return this['Comments' + this.OrderBy]
       },
     },
     methods: {
+      changeOrderBy (order) {
+        this.isBusy || (this.OrderBy = order)
+      },
       animate () {
-        this.timeline = new TimelineMax({
-          delay: 0.7,
-          onComplete: () => {
-          }
-        })
+        this.timeline = new TimelineMax({delay: 0.7,})
 
         this.timeline
           .from(this.$refs.theme, 0.3, {autoAlpha: 0})
@@ -100,71 +76,29 @@
           .from(this.$refs.rankContent, 0.4, {autoAlpha: 0})
           .from(this.$refs.btnBox, 0.5, {autoAlpha: 0}, '-=0.4')
       },
-      touchstart () {
-        this.clientY = this.getClientY(event)
-      },
-      touchmove (event) {
-        if (this.isBusy) {
-          return
-        }
-
-        const ul = this.$refs.ul
-        const scrollTop = ul.scrollTop
-        const maxScroll = this.getMaxScroll(ul)
-        const clientY = this.getClientY(event)
-        const deltaY = this.clientY - clientY
-
-        if (deltaY < 0 && scrollTop === 0) {
-          this.pullingDown()
-        }
-
-        if (deltaY > 0 && maxScroll === scrollTop) {
-          this.pullingUp()
-        }
-
-        this.clientY += deltaY
-      },
-      getClientY (event) {
-        return event.touches[0].clientY
-      },
-      getMaxScroll (el) {
-        return el.scrollHeight - el.offsetHeight
-      },
-      pullingUp () {
-        this.transformY = 30
-        this.isBusy = true
-        this.isPullingUp = true
-        this.getComments()
-      },
-      pullingDown () {
-        this.transformY = 30
-        this.isBusy = true
-        this.isPullingDown = true
-        this.PageIndex = 1
-        this.Comments = []
-        this.getComments()
-      },
       getComments () {
+        this.isBusy = true
         this.axios.post(
           '/api/activity/getuserlist',
-          {OrderBy: this.OrderBy, PageIndex: this.PageIndex}
+          {OrderBy: this.OrderBy, PageIndex: 1}
         ).then(res => {
-          this.transformY = 0
-          this.isBusy = false
-          this.isPullingUp = false
-          this.isPullingDown = false
-          this.PageIndex += 1
-          this.Comments.push(...res.data)
-
-          const self = res.data.find(item => item.OpenId === this.selfInfo.OpenId)
-          self && (this.selfInfo.Rank = self.Rank)
+          this['Comments' + this.OrderBy] = res.data
+          this.$nextTick(() => this.isBusy = false)
         })
       },
       upvote (OpenId) {
-        try {
-          this.OrderBy0.Comments.find(item => item.OpenId === OpenId).LikeCount++
-          this.OrderBy1.Comments.find(item => item.OpenId === OpenId).LikeCount++
-        } catch (e) {}
+        const item0 = this.Comments0.find(item => item.OpenId === OpenId)
+        const item1 = this.Comments1.find(item => item.OpenId === OpenId)
+
+        if (item0) {
+          item0.LikeCount++
+        }
+
+        if (item1) {
+          item1.LikeCount++
+          this.Comments1 = fitRank(this.Comments1, item1)
+          this.selfInfo.Rank = this.Comments1.find(item => item.OpenId === this.selfInfo.OpenId).Rank
+        }
 
         if (OpenId === this.selfInfo.OpenId) {
           this.selfInfo.LikeCount++
@@ -222,16 +156,8 @@
     position: relative;
     transition: all 700ms;
     .loading {
-      width: 30px;
-      position: absolute;
-      &.top {
-        top: -30px
-      }
-      &.bottom {
-        bottom: -30px
-      }
+      width: 12vw;
     }
-
     > ul {
       height: 50vh;
       overflow: auto;
