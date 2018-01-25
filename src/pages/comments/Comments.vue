@@ -52,9 +52,6 @@
         timeline: null,
       }
     },
-    created () {
-      this.getComments()
-    },
     computed: {
       hideRank () {
         return this.OrderBy === 0
@@ -125,6 +122,7 @@
         if (newVal) {
           this.getSelfInfo()
           this.animate()
+          this.Comments.length || this.getComments()
         }
       }
     }
