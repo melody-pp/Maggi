@@ -157,7 +157,7 @@
           this.Comments.push(...res.data)
 
           const self = res.data.find(item => item.OpenId === this.selfInfo.OpenId)
-          self && this.orderBy && (this.selfInfo.Rank = self.Rank)
+          self && this.OrderBy && (this.selfInfo.Rank = self.Rank)
         })
       },
       upvote (OpenId) {
