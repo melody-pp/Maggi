@@ -269,7 +269,7 @@
     font-size: 3.4vw;
     text-align: left;
     position: relative;
-    padding: 5vw 0 0 24vw;
+    padding: 5vw 0 0 28vw;
     .self-ranking {
       font-size: 16px;
       font-weight: 300;
@@ -281,7 +281,7 @@
 
     .headerPic {
       top: 7vw;
-      left: 12vw;
+      left: 16vw;
       position: absolute;
       width: 10vw;
       border-radius: 50%;
