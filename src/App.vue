@@ -2,11 +2,9 @@
   <div id="app">
     <img class="logo left" src="./assets/logo1.png">
     <img class="logo right" src="./assets/logo2.png">
-    <!--<audio>-->
-    <!--<source src="horse.ogg" type="audio/ogg">-->
-    <!--<source src="horse.mp3" type="audio/mpeg">-->
-    <!--Your browser does not support the audio tag.-->
-    <!--</audio>-->
+    <audio autoplay loop src="./assets/bgm.mp3">
+      Your browser does not support the audio tag.
+    </audio>
     <MainFrame/>
   </div>
 </template>
@@ -139,6 +137,10 @@
     font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  audio {
+    display: none;
   }
 
   img {
