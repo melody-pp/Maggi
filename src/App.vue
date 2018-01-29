@@ -2,23 +2,17 @@
   <div id="app">
     <img class="logo left" src="./assets/logo1.png">
     <img class="logo right" src="./assets/logo2.png">
-    <audio id="bgmusic" autoplay loop :src="bgmusic"></audio>
+    <audio id="bgmusic" autoplay loop src="./assets/bgm.mp3"></audio>
     <MainFrame/>
   </div>
 </template>
 
 <script>
   import MainFrame from './pages/MainFrame'
-  import bgmusic from './assets/bgm.mp3'
 
   export default {
     name: 'app',
     components: {MainFrame},
-    data () {
-      return {
-        bgmusic
-      }
-    },
     computed: {
       UserId () {
         return this.$store.state.UserId
