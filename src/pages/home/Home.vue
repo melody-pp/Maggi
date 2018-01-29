@@ -60,8 +60,13 @@
       })
 
       this.timeline
-        .from(this.$refs.main, 1, {backgroundColor: 'rgba(0,0,0,0)', autoAlpha: 0})
-        .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100}, '-=0.2')
+        .staggerFrom(this.$refs.main.querySelectorAll('img'), 2, {
+          autoAlpha: 0,
+          scale: 0,
+          ease: Elastic.easeOut.config(0.9, 0.4)
+        }, 0.2, 'stagger')
+        .from(this.$refs.main, 0.3, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
+        .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100}, '-=0.5')
         .from(this.$refs.bottomImg, 0.3, {autoAlpha: 0, y: 100})
     },
     methods: {
