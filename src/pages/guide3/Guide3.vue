@@ -53,12 +53,12 @@
           .from(this.$refs.title, 0.5, {autoAlpha: 0})
           .from(this.$refs.subTitle, 0.5, {autoAlpha: 0})
           .from(this.$refs.content1, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content2, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content3, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content4, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content2, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.content3, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.content4, 0.5, {autoAlpha: 0}, '-=0.5')
           .from(this.$refs.content5, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content6, 0.5, {autoAlpha: 0})
-          .from(this.$refs.content7, 0.5, {autoAlpha: 0})
+          .from(this.$refs.content6, 0.5, {autoAlpha: 0}, '-=0.5')
+          .from(this.$refs.content7, 0.5, {autoAlpha: 0}, '-=0.5')
       }
     },
     watch: {
