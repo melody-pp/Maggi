@@ -2,9 +2,7 @@
   <div id="app">
     <img class="logo left" src="./assets/logo1.png">
     <img class="logo right" src="./assets/logo2.png">
-    <audio autoplay loop src="./assets/bgm.mp3">
-      Your browser does not support the audio tag.
-    </audio>
+    <audio id="bgmusic" autoplay loop src="./assets/bgm.mp3"></audio>
     <MainFrame/>
   </div>
 </template>
@@ -82,6 +80,7 @@
         wx.ready(() => {
           wx.onMenuShareTimeline(this.getShareConfig())
           wx.onMenuShareAppMessage(this.getShareConfig())
+          document.getElementById('bgmusic').play()
         })
 
         wx.error(err => console.log(err))
