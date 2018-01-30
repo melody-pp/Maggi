@@ -7,7 +7,7 @@
       <div :class="{active: OrderBy===0}" @click="OrderBy=0">最新上榜</div>
     </div>
     <div ref="rankContent">
-      <div :class="['self', {hideRank}]">
+      <div :class="['self', {hideRank}]" v-if="!hideSelf">
         <span class="self-ranking">{{selfInfo.Rank}}</span>
         <img class="headerPic" :src="selfInfo.HeadPic">
         <div class="right">
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="rankContent" :style="{transform: `translate3d(0,${transformY}px,0)`}">
+      <div :class="['rankContent',{hideSelf}]" :style="{transform: `translate3d(0,${transformY}px,0)`}">
         <img v-if="isPullingDown" class="loading top" src="../../assets/loading.gif" alt="loading">
         <ul ref="ul" @touchmove="touchmove" @touchstart="touchstart">
           <CommentItem v-for="Comment of Comments" :key="Comment.OpenId"
@@ -29,7 +29,8 @@
     </div>
 
     <div class="btnBox" ref="btnBox">
-      <img class="" src="../../assets/comments/button2.png" @click="moveUp">
+      <img v-if="hideSelf"  src="../../assets/personalInfo/want-to-express.png" @click="toIndex">
+      <img v-else src="../../assets/comments/button2.png" @click="moveUp">
     </div>
   </div>
 </template>
@@ -66,6 +67,9 @@
       this.getComments()
     },
     computed: {
+      hideSelf () {
+        return !this.selfInfo
+      },
       hideRank () {
         return this.OrderBy === 0
       },
@@ -175,6 +179,9 @@
       moveUp () {
         this.$store.commit('moveUp')
       },
+      toIndex () {
+        location.href = 'http://kj.century-galaxy.com/api/activity/index'
+      },
       getSelfInfo () {
         this.axios.post(
           '/api/activity/getuser',
@@ -237,6 +244,13 @@
       height: 50vh;
       overflow: auto;
       padding-left: 0;
+    }
+
+    &.hideSelf {
+      height: 60vh;
+      > ul {
+        height: 60vh;
+      }
     }
   }
 
