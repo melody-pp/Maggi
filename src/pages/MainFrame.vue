@@ -56,12 +56,12 @@
         return this.$store.state.Current
       },
       step () {
-        return this.$store.state.Step
+        return +this.$store.state.Step
       },
     },
     mounted () {
       let start
-      switch (+this.step) {
+      switch (this.step) {
         case 1:
           start = 0
           break
@@ -84,7 +84,7 @@
         if (this.current < 5 && endY - this.startY < -5) {
           this.$store.commit('moveDown')
         }
-        if (this.current < 7 && endY - this.startY > 5) {
+        if (this.current < 7 && endY - this.startY > 5 && this.step === 1) {
           this.$store.commit('moveUp')
         }
       },
