@@ -50,6 +50,9 @@
         ]
       }
     },
+    mounted () {
+      this.animate()
+    },
     methods: {
       animate () {
         this.timeline = new TimelineMax({
