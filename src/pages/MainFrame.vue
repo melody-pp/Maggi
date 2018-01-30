@@ -17,19 +17,16 @@
       <Guide4 :moveIn="current===4"/>
     </div>
     <div class="page-6 page">
-      <Flow :moveIn="current===5"/>
+      <Prize :moveIn="current===5"/>
     </div>
     <div class="page-7 page">
-      <Prize :moveIn="current===6"/>
+      <InfoCollect :moveIn="current===6"/>
     </div>
     <div class="page-8 page">
-      <InfoCollect :moveIn="current===7"/>
+      <PersonalInfo :moveIn="current===7"/>
     </div>
     <div class="page-9 page">
-      <PersonalInfo :moveIn="current===8"/>
-    </div>
-    <div class="page-10 page">
-      <Comments :moveIn="current===9"/>
+      <Comments :moveIn="current===8"/>
     </div>
   </div>
 </template>
@@ -69,10 +66,10 @@
           start = 0
           break
         case 2:
-          start = 8
+          start = 7
           break
         case 3:
-          start = 9
+          start = 8
           break
       }
       this.$store.commit('moveTo', start)
@@ -84,12 +81,12 @@
       touchend (event) {
         const endY = event.changedTouches[0].pageY
 
-        if (this.current < 6 && endY - this.startY < -5) {
+        if (this.current < 5 && endY - this.startY < -5) {
           this.$store.commit('moveDown')
         }
-        // if (this.current < 6 && endY - this.startY > 5) {
-        //   this.$store.commit('moveUp')
-        // }
+        if (this.current < 7 && endY - this.startY > 5) {
+          this.$store.commit('moveUp')
+        }
       },
     },
     components: {
