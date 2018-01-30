@@ -50,29 +50,30 @@
         ]
       }
     },
-    mounted () {
-      this.timeline = new TimelineMax({
-        delay: 0.5,
-        onComplete: () => {
-          this.showArrow = true
-          setTimeout(() => this.dialogVisible = this.moveIn, 500)
-        }
-      })
-
-      this.timeline
-        .staggerFrom(this.$refs.main.querySelectorAll('img'), 2, {
-          autoAlpha: 0,
-        }, 0, 'stagger')
-        .from(this.$refs.main, 0.3, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
-        .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100}, '-=0.5')
-        .from(this.$refs.bottomImg, 0.3, {autoAlpha: 0, y: 100})
-    },
     methods: {
-      showDialog (index) {
-        this.dialogVisible = true
-        setTimeout(() => this.$refs.carousel.setActiveItem(index))
+      animate () {
+        this.timeline = new TimelineMax({
+          delay: 0.5,
+          onComplete: () => {
+            this.showArrow = true
+            setTimeout(() => this.dialogVisible = this.moveIn, 500)
+          }
+        })
+
+        this.timeline
+          .staggerFrom(this.$refs.main.querySelectorAll('img'), 2, {
+            autoAlpha: 0,
+          }, 0, 'stagger')
+          .from(this.$refs.main, 0.3, {backgroundColor: 'rgba(0,0,0,0)'}, '-=1')
+          .from(this.$refs.topImg, 0.3, {autoAlpha: 0, y: -100}, '-=0.5')
+          .from(this.$refs.bottomImg, 0.3, {autoAlpha: 0, y: 100})
       }
-    }
+    },
+    watch: {
+      moveIn (newVal) {
+        newVal && this.animate()
+      }
+    },
   }
 </script>
 
