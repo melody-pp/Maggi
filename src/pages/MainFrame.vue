@@ -84,7 +84,7 @@
         if (this.current < 5 && endY - this.startY < -5) {
           this.$store.commit('moveDown')
         }
-        if (this.current < 7 && endY - this.startY > 5 && this.step === 1) {
+        if (this.current < 8 && endY - this.startY > 5 && this.step === 1) {
           this.$store.commit('moveUp')
         }
       },
