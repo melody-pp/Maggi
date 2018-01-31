@@ -85,7 +85,7 @@
 </script>
 <style scoped lang="scss">
   .prizeTheme {
-    width: 74.4vw;
+    width: 82vw;
   }
 
   .close {
@@ -100,7 +100,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     > img {
-      margin-top: 3vh;
+      margin-top: 2.95vh;
       width: 42.93vw;
       height: 31.33vw;
       /*transform-origin: bottom;*/

@@ -72,7 +72,7 @@
           start = 8
           break
       }
-      this.$store.commit('moveTo', start)
+      this.$store.commit('moveTo', 4)
     },
     methods: {
       touchstart (event) {
