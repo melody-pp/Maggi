@@ -24,7 +24,7 @@
         return this.$store.state.userInfo
       },
       hasComment () {
-        return this.Current > 7
+        return this.Current > 6
       },
     },
     created () {
