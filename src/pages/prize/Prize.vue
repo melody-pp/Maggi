@@ -29,7 +29,7 @@
         </div>
 
         <button @click="dialogVisible=false">取消</button>
-        <button @click="moveDown">已了解规则，继续</button>
+        <button @click="moveDown">我同意活动规则，继续</button>
       </div>
     </el-dialog>
   </div>
