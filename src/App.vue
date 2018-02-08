@@ -102,7 +102,7 @@
         return this.hasComment ? `我是第${this.UserId}位不能回家过年的厨师，快来为我助力，赢得美极暖心好礼！` : '年味，有你，美极了！888份好礼，送给每个值得尊敬的厨师！'
       },
       getShareLink () {
-        return 'http://kj.century-galaxy.com/api/activity/index' + (this.hasComment ? `?OpenIdPK=${this.userInfo.OpenId}` : '')
+        return location.origin + '/api/activity/index' + (this.hasComment ? `?OpenIdPK=${this.userInfo.OpenId}` : '')
       },
       getShareImg () {
         return this.hasComment ? this.userInfo.HeadPic : location.origin + require('./assets/infoCollect/familyShare.jpg')

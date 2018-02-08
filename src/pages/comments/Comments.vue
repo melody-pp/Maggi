@@ -180,7 +180,7 @@
         this.$store.commit('moveUp')
       },
       toIndex () {
-        location.href = 'http://kj.century-galaxy.com/api/activity/index'
+        location.href = '/api/activity/index'
       },
       getSelfInfo () {
         this.axios.post(

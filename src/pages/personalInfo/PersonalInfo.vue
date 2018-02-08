@@ -212,7 +212,7 @@
         }
       },
       toIndex () {
-        location.href = 'http://kj.century-galaxy.com/api/activity/index'
+        location.href = '/api/activity/index'
       },
       showShareDialog () {
         this.showShare = true
