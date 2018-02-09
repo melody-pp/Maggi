@@ -271,9 +271,9 @@
   }
 
   .erweima {
-    text-align: center;
+    text-align: center !important;
     .el-dialog__body {
-      text-align: center;
+      text-align: center !important;
     }
     button {
       border: none;
