@@ -268,7 +268,19 @@
         background: #ffc702;
       }
     }
+  }
 
+  .erweima {
+    text-align: center;
+    .el-dialog__body {
+      text-align: center;
+    }
+    button {
+      border: none;
+      outline: none;
+      padding: 2vw 7vw;
+      background: #ffc702;
+    }
   }
 
   .share-dialog {

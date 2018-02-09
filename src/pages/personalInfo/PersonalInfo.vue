@@ -66,9 +66,10 @@
     <el-dialog class="share-dialog" :visible.sync="showShare" :modal="false" :show-close="false" :append-to-body="true">
       <img class="share-img" src="../../assets/personalInfo/center.png" alt="分享">
     </el-dialog>
-    <el-dialog title="长按识别公众号二维码" :visible.sync="dialogVisible" width="90%"
+    <el-dialog class="erweima" title="长按识别公众号二维码" :visible.sync="dialogVisible" width="90%"
                center :show-close="false" :append-to-body="true">
       <img src="../../assets/gongzhonghao.jpg">
+      <button @click="skip">已关注公众号，查看我的排行</button>
     </el-dialog>
   </div>
 </template>
@@ -161,6 +162,10 @@
       },
       moveDown () {
         this.$store.commit('moveDown')
+      },
+      skip () {
+        this.moveDown()
+        this.dialogVisible = false
       },
       getUser () {
         this.axios.post(
